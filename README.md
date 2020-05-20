@@ -1,6 +1,6 @@
 # [En cours] Projet 4 OpenClassrooms : Concevez une carte interactive de location de vélos
 
-[![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](http://forthebadge.com)  [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](http://forthebadge.com)  [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](http://forthebadge.com)  [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](http://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](http://forthebadge.com)  [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](http://forthebadge.com)  [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](http://forthebadge.com)
 
 Vous développerez une application de blog simple en PHP et avec une base de données MySQL. Elle doit fournir une interface frontend (lecture des billets) et une interface backend (administration des billets pour l'écriture). 
 
