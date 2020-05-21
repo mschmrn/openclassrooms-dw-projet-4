@@ -29,7 +29,7 @@ L'interface d'administration sera protégée par mot de passe. La rédaction de 
 Liste des versions : [Cliquer pour afficher](https://github.com/mschmrn/openclassrooms-dw-projet-3/contributors/tags)
 
 ## Auteurs
-Listez le(s) auteur(s) du projet ici !
+
 * **Ismaël Jouhari** _alias_ [@mschmrn](https://github.com/mschmrn)
 
 Lisez la liste des [contributeurs](https://github.com/mschmrn/openclassrooms-dw-projet-3/contributors) pour voir qui à aidé au projet !
