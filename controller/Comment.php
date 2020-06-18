@@ -51,7 +51,7 @@ class Comment extends Controller
         // Si rien n'est revenu, on fait une erreur
         if ($article === false) 
         {
-            die("Ho ! L'article $article_id n'existe pas boloss !");
+            die("L'article $article_id n'existe pas !");
         }
 
         // Insertion du commentaire
@@ -71,15 +71,6 @@ class Comment extends Controller
         }
 
         $id = $_GET['id'];
-
-        /**
-         * 2. Connexion à la base de données avec PDO
-         * Attention, on précise ici deux options :
-         * - Le mode d'erreur : le mode exception permet à PDO de nous prévenir violament quand on fait une connerie ;-)
-         * - Le mode d'exploitation : FETCH_ASSOC veut dire qu'on exploitera les données sous la forme de tableaux associatifs
-         * 
-         * PS : Vous remarquez que ce sont les mêmes lignes que pour l'index.php ?!
-         */
 
         /**
          * 3. Vérification de l'existence du commentaire

@@ -14,13 +14,13 @@
         <blockquote>
             <em><?= $comment['content'] ?></em>
         </blockquote>
-        <a href="index.php?controller=comment&task=delete&id=<?= $comment['id'] ?>" onclick="return window.confirm(`Êtes vous sûr de vouloir supprimer ce commentaire ?!`)">Supprimer</a>
+        <a href="index.php?controller=comment&task=delete&id=<?= $comment['id'] ?>" onclick="return window.confirm(`Êtes vous sûr de vouloir supprimer ce commentaire ?`)">Supprimer</a>
     <?php endforeach ?>
 <?php endif ?>
 
 <form action="index.php?controller=comment&task=insert" method="POST">
     <h3>Vous souhaitez réagir ?</h3>
-    <input type="text" name="author" placeholder="Votre pseudo !">
+    <input type="text" name="author" placeholder="Votre pseudo">
     <textarea name="content" id="" cols="30" rows="10" placeholder="Votre commentaire ..."></textarea>
     <input type="hidden" name="article_id" value="<?= $article_id ?>">
     <button>Commenter !</button>

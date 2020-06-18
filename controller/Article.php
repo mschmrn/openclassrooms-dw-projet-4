@@ -31,7 +31,8 @@ class Article extends Controller
         $article_id = null;
 
         // Mais si il y'en a un et que c'est un nombre entier, alors c'est cool
-        if (!empty($_GET['id']) && ctype_digit($_GET['id'])) {
+        if (!empty($_GET['id']) && ctype_digit($_GET['id'])) 
+        {
             $article_id = $_GET['id'];
         }
 
@@ -72,7 +73,7 @@ class Article extends Controller
          * On vérifie que le GET possède bien un paramètre "id" (delete.php?id=202) et que c'est bien un nombre
          */
         if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
-            die("Ho ?! Tu n'as pas précisé l'id de l'article !");
+            die("Vous n'avez pas précisé l'id de l'article !");
         }
         $id = $_GET['id'];
         
