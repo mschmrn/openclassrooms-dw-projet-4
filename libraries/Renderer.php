@@ -16,7 +16,7 @@ class Renderer
         ob_start();
         require('view/frontend/' . $path . '.html.php');
         $pageContent = ob_get_clean();
-    
+        
         require('view/frontend/layout.html.php');
     }
 }

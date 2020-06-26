@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="page-footer text-white bg-dark mt-4 pt-4">
+<footer class="page-footer text-white bg-secondary pt-4 border-top border-white">
 
   <!-- Footer Links -->
   <div class="container-fluid text-center text-md-left">
@@ -8,43 +8,42 @@
     <div class="row mx-auto">
 
       <!-- Grid column -->
-      <div class="col-md-6 mt-md-0 mt-3">
-
-        <!-- Content -->
-        <h5 class="text-uppercase">Site officiel de Jean Forteroche</h5>
-        <p>Texte provisoire.</p>
-
-      </div>
-      <!-- Grid column -->
-
-      <hr class="w-100 d-md-none pb-3">
-
-      <!-- Grid column -->
-      <div class="col-md-3 mb-md-0 mb-3">
+      <div class="col-md-3 mt-md-0 mt-3">
 
         <!-- Links -->
         <h5 class="text-uppercase text-light">Plan du site</h5>
 
         <ul class="list-unstyled">
           <li>
-            <a href="#!" class="text-white">Accueil</a>
+            <a href="index.php" class="text-white">Accueil</a>
           </li>
           <li>
-            <a href="#!" class="text-white">Chapitres</a>
+            <a href="index.php?controller=article&task=index" class="text-white">Chapitres</a>
           </li>
           <li>
-            <a href="#!" class="text-white">Contact</a>
+            <a href="index.php?controller=contact&task=contact" class="text-white">Contact</a>
           </li>
         </ul>
 
       </div>
+
       <!-- Grid column -->
+      <hr class="w-100 d-md-none pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mb-md-0 mb-3 text-center">
+
+        <!-- Content -->
+        <img src="../public/images/logo.svg" alt="">        
+        <p class="text-uppercase pt-4">Site officiel de Jean Forteroche</p>
+
+      </div>
 
       <!-- Grid column -->
       <div class="col-md-3 mb-md-0 mb-3">
 
         <!-- Links -->
-        <h5 class="text-uppercase">Administration</h5>
+        <h5 class="text-uppercase">Espace Administrateur</h5>
 
         <ul class="list-unstyled">
           <li>

@@ -1,0 +1,166 @@
+
+/**************************** CSS ****************************/
+
+/*** ALL ELEMENTS ***/
+
+*
+{
+	margin:0;
+	padding:0;
+}
+
+html, body 
+{
+	height: 100%;
+}
+
+a
+{
+	text-decoration: none;
+	text-decoration-color: none;
+	-moz-text-decoration-style: none;
+	text-decoration-style: none;
+}
+
+p
+{
+	font-family:Arimo;
+}
+
+em
+{
+	font-family:Vidaloka;
+	font-style:normal;
+	font-size:1.8rem;
+}
+
+input,textarea
+{
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0!important;
+	border-top:0!important;
+	border-left:0!important;
+	border-right:0!important;
+}
+
+/*** BUTTONS ***/
+
+.btn
+{
+	-webkit-border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+	border-radius: 0 !important;
+}
+
+/*** LINKS ***/
+
+
+/*** TITLES ***/
+
+h1,h5
+{
+	font-family: Vidaloka;
+}
+
+h2,h3
+{
+	font-family: Bebas Neue;
+}
+
+h6
+{
+	font-size:1.5rem;
+}
+
+/*** NAV ***/
+
+.navbar
+{
+	font-family: Arimo;
+}
+
+/*** FOOTER ***/
+
+footer h5
+{
+	font-family: Bebas Neue;
+	font-size:1.5rem;
+}
+
+/*** HOME ***/
+
+.img-fluid w-100
+{
+	z-index:0;
+}
+
+#welcome-home
+{
+	min-height:100%;
+}
+
+.img-fluid
+{
+	min-width:80%;
+}
+
+#welcome-book
+{
+	padding:10% 0 10% 0;
+}
+
+/*** ALL ARTICLES ***/
+
+#chapters-deck h3
+{
+	font-size:1.4rem;
+}
+
+#chapters-deck h4
+{
+	font-family:Vidaloka;
+}
+
+.card-title
+{
+	height:3.5rem;
+}
+
+.card .date 
+{
+	line-height:2;
+}
+
+/*** EACH ARTICLE ***/
+
+#chapter-content p
+{
+	font-size:1.2rem;
+}
+
+.author
+{
+	font-family:Bebas Neue;
+	font-size:1.5rem;
+}
+
+/*** CONTACT ***/
+
+
+
+/**************************** SASS ****************************/
+
+// Your variable overrides
+
+$theme-colors:
+(
+	"primary":#F00000,
+	"secondary":#1C1C1A
+);
+
+/**************************** IMPORT ****************************/
+
+// Include all of Bootstrap
+
+@import "../node_modules/bootstrap/scss/bootstrap";

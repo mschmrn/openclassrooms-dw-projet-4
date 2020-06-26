@@ -1,22 +1,23 @@
-<!-- Just an image -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-  <a class="navbar-brand" href="#">
-    <img src="../public/images/bootstrap-solid.svg" width="30" height="30" alt="">
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-primary sticky-top border-bottom border-dark">
+  <a class="navbar-brand ml-4" href="#">
+    <img src="../public/images/logo.svg" width="30" height="30" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse justify-content-end mx-4" id="navbarNav">
+  <div class="collapse navbar-collapse justify-content-end mr-4 text-uppercase" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
+      <li class="nav-item text-dark active">
+        <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Chapitres</a>
+      <li class="nav-item text-dark active">
+        <a class="nav-link" href="index.php?controller=article&task=index">Chapitres</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
+      <li class="nav-item text-dark active">
+        <a class="nav-link" href="index.php?controller=contact&task=contact">Contact</a>
       </li>
     </ul>
   </div>
 </nav>
+

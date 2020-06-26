@@ -6,17 +6,23 @@ class Article extends Controller
 {
     protected $modelName = \Model\Article::class;
 
+    public function home()
+    {
+        $pageTitle = "Accueil";
+        \Renderer::render('index', compact('pageTitle'));
+    }
+
     public function index()
     {
         /**
          * Récupération des articles
          */
-        $articles = $this->model->findAll("created_at DESC");
+        $articles = $this->model->findAll("chapters DESC");
         
         /**
          * Affichage de la page d'accueil
          */
-        $pageTitle = "Accueil";
+        $pageTitle = "Articles";
         \Renderer::render('articles/index', compact('pageTitle', 'articles'));
     }
 
@@ -72,7 +78,8 @@ class Article extends Controller
         /**
          * On vérifie que le GET possède bien un paramètre "id" (delete.php?id=202) et que c'est bien un nombre
          */
-        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
+        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) 
+        {
             die("Vous n'avez pas précisé l'id de l'article !");
         }
         $id = $_GET['id'];
