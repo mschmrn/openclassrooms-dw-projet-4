@@ -7,6 +7,6 @@ class Contact
     public function contact()
     {
         $pageTitle = "Contact";
-        \Renderer::render('form/contact', compact('pageTitle'));
+        \Renderer::render('frontend','form/contact', compact('pageTitle'));
     }
 }

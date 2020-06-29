@@ -9,7 +9,7 @@ class Article extends Controller
     public function home()
     {
         $pageTitle = "Accueil";
-        \Renderer::render('index', compact('pageTitle'));
+        \Renderer::render('frontend','index', compact('pageTitle'));
     }
 
     public function index()
@@ -23,7 +23,7 @@ class Article extends Controller
          * Affichage de la page d'accueil
          */
         $pageTitle = "Articles";
-        \Renderer::render('articles/index', compact('pageTitle', 'articles'));
+        \Renderer::render('frontend','articles/index', compact('pageTitle', 'articles'));
     }
 
     public function show() // Show an article
@@ -64,7 +64,7 @@ class Article extends Controller
          */
         $pageTitle = $article['title'];
 
-        \Renderer::render('/articles/show', [
+        \Renderer::render('frontend','/articles/show', [
             'pageTitle'     => $pageTitle, 
             'article'       => $article, 
             'comments'      => $comments, 

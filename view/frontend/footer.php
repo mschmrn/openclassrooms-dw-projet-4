@@ -47,7 +47,13 @@
 
         <ul class="list-unstyled">
           <li>
-            <a href="/registration/login.php" class="text-white">Se connecter</a>
+            <a href="index.php?controller=admin&task=login" class="text-white">Se connecter</a>
+          </li>
+          <li>
+            <a href="index.php?controller=admin&task=add" class="text-white">Ajouter un utilisateur</a>
+          </li>
+          <li>
+            <a href="index.php?controller=admin&task=index" class="text-white">Administration</a>
           </li>
           
         </ul>

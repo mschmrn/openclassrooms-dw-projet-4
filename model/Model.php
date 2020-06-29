@@ -12,11 +12,6 @@ abstract class Model
         $this->pdo = \Database::getPdo(); // L'antislash signifie que Database n'est dans aucun namespace
     }
 
-    public function setDate()
-    {
-        $this->pdo->query("SET lc_time_names = 'fr_FR'");
-    }
-
     /**
      * Retourne un article ou commentaire de la base de données grâce à son identifiant 
      * 
