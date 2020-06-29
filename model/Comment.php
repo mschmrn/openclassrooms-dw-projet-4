@@ -27,15 +27,16 @@ class Comment extends Model
      * Insère un commentaire dans la base de données
      * 
      * @param string $author
+     * @param string $email
      * @param string $content
      * @param integer $article_id
      * @return void
      */
 
-    public function insert(string $author, string $content, int $article_id) : void
+    public function insert(string $author, string $email, string $content, int $article_id) : void
     {
-        $query = $this->pdo->prepare('INSERT INTO oc_projet4_comments SET author = :author, content = :content, article_id = :article_id, created_at = NOW()');
-        $query->execute(compact('author', 'content', 'article_id'));
+        $query = $this->pdo->prepare('INSERT INTO oc_projet4_comments SET author = :author, email = :email, content = :content, article_id = :article_id, created_at = NOW()');
+        $query->execute(compact('author', 'email', 'content', 'article_id'));
     }
 }
 

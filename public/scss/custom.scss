@@ -12,6 +12,7 @@
 html, body 
 {
 	height: 100%;
+	scroll-behavior: smooth;
 }
 
 a
@@ -34,7 +35,7 @@ em
 	font-size:1.8rem;
 }
 
-input,textarea
+input,textarea,select
 {
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
@@ -147,6 +148,39 @@ footer h5
 
 /*** CONTACT ***/
 
+    /* remove the original arrow */
+	select
+	{
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -o-appearance: none;
+        appearance: none; 
+        background-color: none!important;
+    }
+
+	select::-ms-expand 
+	{
+        display: none;
+    }
+
+	select + i.fa 
+	{
+        float: right;
+        margin-top: -26px;
+        margin-right: 10px;
+        /* this is so when you click on the chevron, your click actually goes on the dropdown menu */
+        pointer-events: none;
+        /* everything after this is just to cover up the original arrow */
+        /* (for browsers that don't support the syntax used above) */
+        background-color: transparent;
+        color:black!important;
+        padding-right: 5px;
+    }
+
+   select option
+   {
+       padding-right: 21px;
+   }
 
 
 /**************************** SASS ****************************/

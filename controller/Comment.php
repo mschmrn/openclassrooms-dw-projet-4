@@ -21,12 +21,18 @@ class Comment extends Controller
             $author = $_POST['author'];
         }
 
-        // Ensuite le contenu
+        // Puis le contenu
         $content = null;
         if (!empty($_POST['content'])) 
         {
-            // On fait quand même gaffe à ce que le gars n'essaye pas des balises cheloues dans son commentaire
             $content = htmlspecialchars($_POST['content']);
+        }
+
+        // Ensuite l'email
+        $email = null;
+        if (!empty($_POST['email'])) 
+        {
+            $email = $_POST['email'];
         }
 
         // Enfin l'id de l'article
@@ -37,8 +43,8 @@ class Comment extends Controller
         }
 
         // Vérification finale des infos envoyées dans le formulaire (donc dans le POST)
-        // Si il n'y a pas d'auteur OU qu'il n'y a pas de contenu OU qu'il n'y a pas d'identifiant d'article
-        if (!$author || !$article_id || !$content) 
+        // Si il n'y a pas d'auteur OU qu'il n'y a pas d'email OU qu'il n'y a pas de contenu OU qu'il n'y a pas d'identifiant d'article
+        if (!$author || !$email || !$article_id || !$content) 
         {
             die("Votre formulaire a été mal rempli !");
         }
@@ -55,7 +61,7 @@ class Comment extends Controller
         }
 
         // Insertion du commentaire
-        $this->model->insert($author, $content, $article_id);
+        $this->model->insert($author, $email, $content, $article_id);
 
         // Redirection vers l'article en question :
         \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);

@@ -59,7 +59,12 @@
             <div class="col-8 offset-2">
                 <?php foreach ($comments as $comment) : ?>
                     <div class="author">@<?= $comment['author'] ?></div>
-                    <small class="text-primary"><?= $timeStamp ?></small>
+                    <?php
+                        $comment_time = $comment['created_at'];
+                        setlocale(LC_TIME, "fr_FR");
+                        $comment_time = strftime("%A %d %B %G", strtotime($comment_time));
+                    ?>
+                    <small class="text-primary"><?= $comment_time ?></small>
                     <blockquote>
                         <p><?= $comment['content'] ?></p>
                     </blockquote>
@@ -83,21 +88,21 @@
             <div class="col-8 offset-2">
                 <form action="index.php?controller=comment&task=insert" method="POST">
                     <div class="form-group">
-                        <label for="username">Votre pseudo</label>
+                        <label for="author">Votre pseudo</label>
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                             <div class="input-group-text border-0">@</div>
                             </div>
-                            <input type="text" class="form-control" id="username" placeholder="Votre pseudo">
+                            <input type="text" class="form-control" name="author" id="author" placeholder="Votre pseudo">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="mail">Votre adresse mail</label>
-                        <input type="email" class="form-control" id="mail" placeholder="nom@exemple.com">
+                        <label for="email">Votre adresse mail</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="nom@exemple.com">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Votre commentaire</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <label for="content">Votre commentaire</label>
+                        <textarea class="form-control" name="content" id="content" rows="3"></textarea>
                     </div>
                     <div class="form-group">
                         <input type="hidden" name="article_id" value="<?= $article_id ?>">

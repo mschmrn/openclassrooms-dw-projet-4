@@ -47,7 +47,7 @@
 
         <ul class="list-unstyled">
           <li>
-            <a href="#!" class="text-white">Se connecter</a>
+            <a href="/registration/login.php" class="text-white">Se connecter</a>
           </li>
           
         </ul>

@@ -10,12 +10,12 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Bebas+Neue&family=Oswald:wght@300;400&family=Vidaloka&display=swap" rel="stylesheet">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../public/scss/custom.css">
-
      <!-- Favicon -->
     <link rel="shortcut icon" href="../public/images/logo.svg">
+    <!-- FontAwesome -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
 
 </head>
 

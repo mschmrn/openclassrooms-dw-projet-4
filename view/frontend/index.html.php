@@ -51,7 +51,7 @@
                 <em class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat dictum purus cursus nibh pellentesque quam. Quis nibh faucibus in iaculis. Quis etiam et quis varius volutpat enim. Dolor, non tristique elementum sed dolor, risus, habitasse fermentum nulla. Id dolor suspendisse mauris, tincidunt velit viverra in. Convallis facilisi laoreet sit ut amet.</em>
                 <p class="text-white text-uppercase pt-4"> Acheter sur </p>
                 <button type="button" class="btn btn-outline-primary py-2 text-uppercase">Amazon</button>
-                <button type="button" class="btn btn-outline-primary py-2 text-uppercase">Fnac</button>
+                <button type="button" class="btn btn-outline-primary py-2 mx-2 text-uppercase">Fnac</button>
                 <button type="button" class="btn btn-outline-primary py-2 text-uppercase">Librairie.com</button>
             </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
