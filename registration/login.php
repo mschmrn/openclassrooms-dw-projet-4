@@ -42,10 +42,11 @@ if (isset($_POST['username']))
 <input type="text" class="box-input" name="username" placeholder="Nom d'utilisateur">
 <input type="password" class="box-input" name="password" placeholder="Mot de passe">
 <input type="submit" value="Connexion " name="submit" class="box-button">
-<p class="box-register">Vous êtes nouveau ici? <a href="register.php">S'inscrire</a></p>
+<p class="box-register"><a href="register.php">S'inscrire</a></p>
 <?php if (! empty($message)) { ?>
     <p class="errorMessage"><?php echo $message; ?></p>
 <?php } ?>
+<p class="box-register"><a href="../index.php">Retourner à l'accueil du site</a></p>
 </form>
 </body>
 </html>
