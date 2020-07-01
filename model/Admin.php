@@ -14,7 +14,7 @@ class Admin extends Model
 
     public function find_user(string $username, string $password)
     {
-        $query = $this->pdo->prepare("SELECT * FROM `oc_projet4_users` WHERE username='$username' AND password='$password'");
+        $query = $this->pdo->prepare("SELECT * FROM `oc_projet4_users` WHERE username='$username' AND password=''".hash('sha256', $password)."''");
         return $query;
     }
 

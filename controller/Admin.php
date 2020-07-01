@@ -50,26 +50,26 @@ class Admin extends Controller
         \Renderer::render('backend','login');
 
         /**
-         * ?????
+         * Session begins
+         */
+        $this->session->startSession();
+
+        /**
+         * Vérifier données saisies
          */
         if (isset($_POST['username']))
         {
-            /**
-                 * Session begins
-                 */
-            $this->session->startSession();
-
             $username = $_REQUEST['username'];
 
             // Attention à ce paramètre vérifié dans l'espace administration
             $_SESSION['username'] = $username;
             
-            $request = $_REQUEST['password'];
-            $hash = '$2y$10$FlqjHjHXXrvlsE1sP3D9puYIRlRVzmOaLKkLR2Nl2H71LYNNx8pYK';
-            $password = password_verify($request, $hash);
+            $password = $_REQUEST['password'];
+            //$hash = '$2y$10$FlqjHjHXXrvlsE1sP3D9puYIRlRVzmOaLKkLR2Nl2H71LYNNx8pYK';
+            //$password = password_verify($request, $hash);
 
-            if ($password)
-            {
+            //if ($password)
+            //{
                 echo 'Le mot de passe est bon';
                 $user = $this->model->find_user($username, $password);
 
@@ -81,11 +81,11 @@ class Admin extends Controller
                 {
                     \Http::redirect('index.php');		  
                 }
-            } 
+            /*} 
             else 
             {
                 echo 'Le mot de passe est incorrect';
-            }
+            }*/
         }
 
         /*
