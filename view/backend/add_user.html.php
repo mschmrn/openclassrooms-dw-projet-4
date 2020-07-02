@@ -1,5 +1,5 @@
 ﻿<section id="addUser">
-	<div class="container-fluid py-5">
+	<div class="container-fluid py-5 vh-100">
 		<div class="row mx-auto">
 			<div class="col-12 d-flex justify-content-center">
 				<form action="index.php?controller=admin&task=add" method="POST">

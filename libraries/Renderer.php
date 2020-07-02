@@ -17,7 +17,8 @@ class Renderer
         require('view/' . $folder . '/' . $path . '.html.php');
         $pageContent = ob_get_clean();
         
-        require('view/frontend/layout.html.php');
+    
+        require('view/' . $folder . '/layout.html.php');
     }
 }
 

@@ -10,6 +10,7 @@ abstract class Controller
     public function __construct()
     {
         $this->model = new $this->modelName(); // new \Model\Article()
+        $this->session = \Session::getInstance();
     }
 
 

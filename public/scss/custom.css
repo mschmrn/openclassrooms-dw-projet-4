@@ -30,6 +30,9 @@ input, textarea, select {
   border-left: 0 !important;
   border-right: 0 !important; }
 
+.vh-100 {
+  min-height: 100vh; }
+
 /*** BUTTONS ***/
 .btn {
   -webkit-border-radius: 0 !important;

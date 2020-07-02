@@ -17,7 +17,9 @@ class Http
 
     public static function redirect(string $url) : void
     {
+        ob_start();
         header("Location: $url");
+        ob_get_clean();
         exit();
     }
 }
