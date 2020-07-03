@@ -2,8 +2,11 @@
 
 namespace Controller;
 
-class Contact
+class Contact extends Controller
 {
+
+    protected $modelName = \Model\Contact::class;
+
     public function contact()
     {
         $pageTitle = "Contact";
