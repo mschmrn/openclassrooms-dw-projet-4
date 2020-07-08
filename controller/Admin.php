@@ -5,7 +5,6 @@ namespace Controller;
 class Admin extends Controller
 {
     protected $modelName = \Model\Admin::class;
-    protected $session;
 
     public function __construct()
     {
@@ -16,7 +15,8 @@ class Admin extends Controller
     {
         if (isset($_SESSION["username"]))
         {
-            \Renderer::render('backend','admin/home');
+            $pageTitle = "Bienvenue";
+            \Renderer::render('backend','index', compact('pageTitle'));
         }
         else
         {
@@ -38,12 +38,14 @@ class Admin extends Controller
                 
                 // Ajout de l'utilisateur à la BDD
                 $this->model->insert($username, $email, $type, $password);
-            
-                \Renderer::render('backend','admin/success');
+                
+                $pageTitle = "Création d'un nouvel utilisateur";
+                \Renderer::render('backend','admin/success', compact('pageTitle'));
             }
             else
             {
-                \Renderer::render('backend','add_user');
+                $pageTitle = "Nouvel utilisateur";
+                \Renderer::render('backend','add_user', compact('pageTitle'));
             }
         }
         else
@@ -54,13 +56,14 @@ class Admin extends Controller
 
     public function login()
     {
-        if (isset($_SESSION["username"]))
+        if (!isset($_SESSION["username"]))
         {
-            $this->index();
+            $pageTitle = "Se connecter";
+            \Renderer::render('backend','login', compact('pageTitle'));
         }
         else
         {
-            \Renderer::render('backend','login');
+            $this->index();
         }
     }
 
@@ -80,7 +83,7 @@ class Admin extends Controller
                     if ($user['type'] == 'admin') 
                     {
                         //$this->session->startSession();
-                        $_SESSION['username'] = $username;
+                        $_SESSION["username"] = $username;
                         $this->index();
                     }
                     else
@@ -111,3 +114,5 @@ class Admin extends Controller
         \Http::redirect('index.php');
     }
 }
+
+?>

@@ -4,7 +4,6 @@ namespace Controller;
 
 class Contact extends Controller
 {
-
     protected $modelName = \Model\Contact::class;
 
     public function contact()

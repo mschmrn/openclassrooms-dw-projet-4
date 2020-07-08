@@ -11,7 +11,6 @@ require_once('libraries/autoload.php');
 
 \Application::process();
 
-
 /**
  * Imaginons que l'on souhaite afficher les utilisateurs
  *  

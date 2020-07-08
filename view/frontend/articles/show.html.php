@@ -68,7 +68,11 @@
                     <blockquote>
                         <p><?= $comment['content'] ?></p>
                     </blockquote>
-                    <a href="index.php?controller=comment&task=delete&id=<?= $comment['id'] ?>" onclick="return window.confirm(`Êtes vous sûr de vouloir supprimer ce commentaire ?`)">Supprimer</a> 
+                    
+                    <?php if(isset($_SESSION["username"]))
+                    { ?>
+                        <a href="index.php?controller=comment&task=delete&id=<?= $comment['id'] ?>" onclick="return window.confirm(`Êtes vous sûr de vouloir supprimer ce commentaire ?`)">Supprimer</a> 
+                    <?php } ?>
             </div>
         </div>
         <div class="row mx-auto">

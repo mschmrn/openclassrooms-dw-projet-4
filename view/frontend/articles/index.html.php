@@ -1,5 +1,5 @@
 
-<section id="chapters-welcome " class="bg-primary py-5">
+<section id="chapters-welcome" class="bg-primary py-5">
 
     <div class="container-fluid ">
         <div class="row mx-auto">

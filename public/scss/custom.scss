@@ -52,7 +52,7 @@ input,textarea,select
 
 .vh-100 
 {
-    min-height: 100vh;
+	min-height:100vh;
 }
 
 .vh-0 
@@ -117,7 +117,7 @@ footer h5
 
 #welcome-home
 {
-	min-height:100%;
+	min-height:100%!important;
 }
 
 .img-fluid
@@ -167,43 +167,55 @@ footer h5
 
 /*** CONTACT ***/
 
-    /* remove the original arrow */
-	select
-	{
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        -o-appearance: none;
-        appearance: none; 
-        background-color: none!important;
-    }
+select
+{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+	appearance: none; 
+	background-color: none!important;
+}
 
-	select::-ms-expand 
-	{
-        display: none;
-    }
+select::-ms-expand 
+{
+	display: none;
+}
 
-	select + i.fa 
-	{
-        float: right;
-        margin-top: -26px;
-        margin-right: 10px;
-        /* this is so when you click on the chevron, your click actually goes on the dropdown menu */
-        pointer-events: none;
-        /* everything after this is just to cover up the original arrow */
-        /* (for browsers that don't support the syntax used above) */
-        background-color: transparent;
-        color:black!important;
-        padding-right: 5px;
-    }
+select + i.fa 
+{
+	float: right;
+	margin-top: -26px;
+	margin-right: 10px;
+	/* this is so when you click on the chevron, your click actually goes on the dropdown menu */
+	pointer-events: none;
+	/* everything after this is just to cover up the original arrow */
+	/* (for browsers that don't support the syntax used above) */
+	background-color: transparent;
+	color:black!important;
+	padding-right: 5px;
+}
 
-   select option
-   {
-       padding-right: 21px;
-   }
+select option
+{
+	padding-right: 21px;
+}
 
 /*** ADMIN ***/
 
+.logout
+{
+	font-size:2rem;
+}
 
+.logo 
+{
+	width:2rem;
+}
+
+header em
+{
+	font-size:1.5rem;
+}
 
 /**************************** SASS ****************************/
 
@@ -213,7 +225,7 @@ $theme-colors:
 (
 	"primary":#F00000,
 	"secondary":#1C1C1A,
-	"tertiary":#F7F9FB
+	"info":#F7F9FB
 );
 
 /**************************** IMPORT ****************************/

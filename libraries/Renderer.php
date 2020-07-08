@@ -16,9 +16,9 @@ class Renderer
         ob_start();
         require('view/' . $folder . '/' . $path . '.html.php');
         $pageContent = ob_get_clean();
-    
-        require('view/' . $folder . '/layout.html.php');
-    }
+
+        require_once('view/' . $folder . '/layout.html.php');
+    }    
 }
 
 ?>

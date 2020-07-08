@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Page administrateur - <?= $pageTitle ?></title>
+    <title>Site officiel de Jean Forteroche - <?= $pageTitle ?></title>
     <meta name="description" content="Jean Forteroche, écrivain, travaille sur son prochain roman, Un Billet simple pour l'Alaska et le publie par épisode en ligne" />
 
     <!-- Google Fonts -->
@@ -18,8 +18,10 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
 </head>
 
+
+
 <body>
-    <?php 
+    <?php
         require_once('header.php');
         echo $pageContent;
     ?>
@@ -30,3 +32,4 @@
 </body>
 
 </html>
+
