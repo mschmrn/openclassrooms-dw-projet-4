@@ -1,9 +1,9 @@
-<section id="adduser" class="bg-info vh-100">
+<section id="adduser" class="bg-info vh-100 col-10">
 
 	<div class="container-fluid py-5">
 		<div class="row mx-auto">
 			<div class="col-12 d-flex justify-content-center">
-				<h2 class="display-4">Ajouter un utilisateur</h2>
+				<h2 class="display-4">Créer un utilisateur</h2>
 			</div>
 			<div class="col-12 d-flex justify-content-center">	
 				<form action="index.php?controller=admin&task=add" class="bg-white p-4 bg-form" method="POST">

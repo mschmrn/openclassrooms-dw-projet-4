@@ -83,7 +83,7 @@ h1,h5
 	font-family: Vidaloka;
 }
 
-h2,h3
+h2,h3,aside
 {
 	font-family: Bebas Neue;
 }
@@ -99,6 +99,35 @@ h6
 {
 	font-family: Arimo;
 }
+
+/*** SIDEBAR ***/ 
+
+aside li
+{
+	height:max-content;
+}
+
+aside
+{
+	font-size:1.1rem;
+}
+
+aside img
+{
+	width:1.3rem!important;
+	margin-right: 8%;
+}
+
+.menu-user:hover
+{
+	color:black!important;
+}
+
+.menu-logout:hover
+{
+	color:white!important;
+}
+
 
 /*** FOOTER ***/
 
@@ -215,6 +244,16 @@ select option
 header em
 {
 	font-size:1.5rem;
+}
+
+.last-articles
+{
+	font-size:1.3rem;
+}
+
+.card
+{
+	border-radius:0!important;
 }
 
 /**************************** SASS ****************************/

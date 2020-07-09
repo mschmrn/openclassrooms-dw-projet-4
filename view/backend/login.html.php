@@ -1,4 +1,4 @@
-<section id="login" class="bg-info vh-100">
+<section id="login" class="bg-info vh-100 col-10">
 	
 	<div class="container-fluid py-5">
 		
