@@ -34,19 +34,14 @@
                 <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3 d-flex align-items-stretch">
                     <div class="card mt-4 border-0">
                         <h3 class="text-center text-uppercase text-primary">Chapitre <?= $article['chapters'] ?></h3>
-                        <a class="text-decoration-none" href="index.php?controller=article&task=show&id=<?= $article['id'] ?>"><h4 class="card-title text-center text-secondary"><?= $article['title'] ?></h4></a>
+                        <a class="text-decoration-none" href="index.php?controller=article&task=show&id=<?= $article['id'] ?>"><h4 class="card-title card-height text-center text-secondary"><?= $article['title'] ?></h4></a>
                         <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>"><img class="card-img-top" src="../public/images/example.png" alt="Card image cap"></a>
                         <div class="card-body px-0">
-                            <p class="card-text p-0"><?= $article['introduction'] ?></p>
+                            <p class="card-text p-0"><?= \Text::truncate($article['introduction'], 30, true, true); ?></p>
                             <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">             
                                 <img src="../public/images/arrow.svg" alt="...">
                             </a>
-                            <?php
-                                $timeStamp = $article['created_at'];
-                                setlocale(LC_TIME, "fr_FR");
-                                $timeStamp = strftime("%A %d %B %G", strtotime($timeStamp));
-                            ?>
-                            <p class="date card-text text-muted text-height-3"><?= $timeStamp ?></p>
+                            <p class="date card-text text-muted text-height-3"><?= \Date::display($article['created_at']); ?></p>
                         </div>
                         <div class="card-footer bg-white">
                             <small class="text-muted">Temps de lecture : <?= $article['time'] ?> minutes</small>

@@ -18,7 +18,7 @@ class Comment extends Controller
         $author = null;
         if (!empty($_POST['author'])) 
         {
-            $author = $_POST['author'];
+            $author = htmlspecialchars($_POST['author']);
         }
 
         // Puis le contenu
@@ -32,7 +32,7 @@ class Comment extends Controller
         $email = null;
         if (!empty($_POST['email'])) 
         {
-            $email = $_POST['email'];
+            $email = htmlspecialchars($_POST['email']);
         }
 
         // Enfin l'id de l'article

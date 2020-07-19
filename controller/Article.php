@@ -5,6 +5,14 @@ namespace Controller;
 class Article extends Controller
 {
     protected $modelName = \Model\Article::class;
+    protected $draft;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->adminController = new \Controller\Admin();
+        $this->draft = false;
+    }
 
     public function home()
     {
@@ -64,13 +72,106 @@ class Article extends Controller
          */
         $pageTitle = $article['title'];
 
-        \Renderer::render('frontend','/articles/show', [
+        \Renderer::render('frontend','/articles/show', 
+        [
             'pageTitle'     => $pageTitle, 
             'article'       => $article, 
             'comments'      => $comments, 
             'article_id'    => $article_id
         ]);
         // Possibilité ici d'utiliser la fonction compact en 2eme argument de la fonction render()
+    } 
+
+    public function edit()// Create an article
+    {
+        /**
+         * On vérifie que les données ont bien été envoyées en POST
+         * D'abord, on récupère les informations à partir du POST
+         * Ensuite, on vérifie qu'elles ne sont pas nulles
+         */
+
+        // On commence par le titre
+        $title = null;
+        if (!empty($_POST['title'])) 
+        {
+            $title = htmlspecialchars($_POST['title']);
+        }
+
+        // Puis l'intro
+        $introduction = null;
+        if (!empty($_POST['introduction'])) 
+        {
+            $introduction = htmlspecialchars($_POST['introduction']);
+        }
+
+        // Ensuite le contenu
+        $content = null;
+        if (!empty($_POST['content'])) 
+        {
+            $content = $_POST['content'];
+        }
+        
+        // Vérification finale des infos envoyées dans le formulaire (donc dans le POST)
+        if (!$title || !$introduction || !$content) 
+        {
+          die("Veillez à bien renseigner tous les champs requis.");
+        }
+
+        switch ($_POST['answer']) 
+        {
+            case 'draft':
+                if (!isset($_SESSION['draft_id'])) // Premier brouillon -> insertion dans la BDD
+                {
+                     // Insertion
+                     $this->model->insert($title, $introduction, $content, 1);
+
+                     // Identification de l'article en brouillon
+                     $draft = $this->model->getArticleBy($title);
+ 
+                     // Puis Enregistrement de l'id dans la session
+                     $_SESSION['draft_id'] = $draft['id'];
+                }
+                else // Mise à jour du brouillon
+                {
+                    // Récupération de l'id du brouillon
+                    $id = $_SESSION['draft_id'];
+
+                    // Mise à jour de la BDD
+                    $this->model->update($id, $title, $introduction, $content, 1);
+                }
+
+                // Redirection pour edition de l'article
+                $this->adminController->addArticle();
+                
+                break;
+
+            case 'publish':
+                if (!isset($_SESSION['draft_id'])) // Aucun brouillon enregistré dans la BDD
+                {
+                    $this->model->insert($title, $introduction, $content, 0);
+                }
+                else // Un brouillon est déjà présent dans la BDD
+                {
+                    $id = $_SESSION['draft_id'];
+                    $this->model->update($id, $title, $introduction, $content, 0);
+                    // Suppression de l'id du brouillon
+                     $_SESSION['draft_id'] = null;    
+                }  
+
+                // Identification de l'article pour redirection
+                $article = $this->model->getArticleBy($title);
+
+                // Redirection
+                \Http::redirect("index.php?controller=article&task=show&id=" . $article['id']);
+
+                break;
+
+            case 'preview':
+                echo 'preview';
+                //$article = $this->model->getByTitle($title);
+                //\Http::redirect("index.php?controller=article&task=show&id=" . $article['id']);
+                break;
+        }
     }
 
     public function delete() // Delete an article

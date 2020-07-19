@@ -36,7 +36,7 @@
 		"oA": 0,
 		"oAP": "\/custom.css",
 		"oF": 0,
-		"oS": 0,
+		"oS": 2,
 		"uL": 1
 		},
 	"\/Users\/ismael-perez\/Documents\/Github\/repo\/openclassrooms-dw-projet-4\/public\/node_modules\/bootstrap\/scss\/_alert.scss": {
@@ -1194,7 +1194,7 @@
 	"displayValueWasSetByUser": 0,
 	"iconImageName": "brackets_gray",
 	"iconImageWasSetByUser": 0,
-	"lastBuiltDate": 615401947
+	"lastBuiltDate": 616607770
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,

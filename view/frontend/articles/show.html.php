@@ -59,12 +59,7 @@
             <div class="col-8 offset-2">
                 <?php foreach ($comments as $comment) : ?>
                     <div class="author">@<?= $comment['author'] ?></div>
-                    <?php
-                        $comment_time = $comment['created_at'];
-                        setlocale(LC_TIME, "fr_FR");
-                        $comment_time = strftime("%A %d %B %G", strtotime($comment_time));
-                    ?>
-                    <small class="text-primary"><?= $comment_time ?></small>
+                    <small class="text-primary"><?= \Date::display($comment['created_at']); ?></small>
                     <blockquote>
                         <p><?= $comment['content'] ?></p>
                     </blockquote>

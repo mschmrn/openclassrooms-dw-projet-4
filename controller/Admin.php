@@ -9,6 +9,30 @@ class Admin extends Controller
     public function __construct()
     {
         parent::__construct();
+        $this->articleModel = new \Model\Article();
+        $this->commentModel = new \Model\Comment();
+    }
+
+    public function addArticle()
+    {
+        if (isset($_SESSION["username"]))
+        {
+            if (!isset($_SESSION['draft_id'])) // Il n'y a pas d'id enregistré
+            {
+                $pageTitle = "Ajouter un article";
+                \Renderer::render('backend','articles/add', compact('pageTitle'));
+            }
+            else
+            {
+                $draft_id = $_SESSION['draft_id'];
+                $draft = $this->articleModel->find($draft_id);
+                \Renderer::render('backend','articles/add', compact('draft'));
+            }
+        }
+        else 
+        {
+            $this->index();
+        }
     }
 
     public function index()
@@ -16,7 +40,11 @@ class Admin extends Controller
         if (isset($_SESSION["username"]))
         {
             $pageTitle = "Bienvenue";
-            \Renderer::render('backend','index', compact('pageTitle'));
+
+            $articles = $this->articleModel->findAll("chapters DESC LIMIT 4");
+            $comments = $this->commentModel->findAll("created_at DESC LIMIT 3");
+
+            \Renderer::render('backend','index', compact('pageTitle','articles','comments'));
         }
         else
         {

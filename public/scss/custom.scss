@@ -52,7 +52,7 @@ input,textarea,select
 
 .vh-100 
 {
-	min-height:100vh;
+	min-height:100%;
 }
 
 .vh-0 
@@ -83,9 +83,10 @@ h1,h5
 	font-family: Vidaloka;
 }
 
-h2,h3,aside
+h2,h3,h4,aside
 {
 	font-family: Bebas Neue;
+	
 }
 
 h6
@@ -109,7 +110,7 @@ aside li
 
 aside
 {
-	font-size:1.1rem;
+	font-size:1.3rem;
 }
 
 aside img
@@ -126,6 +127,11 @@ aside img
 .menu-logout:hover
 {
 	color:white!important;
+}
+
+aside .sidebar-btn
+{
+	font-size:1.2rem;
 }
 
 
@@ -171,12 +177,12 @@ footer h5
 	font-family:Vidaloka;
 }
 
-.card-title
+.card-height
 {
 	height:3.5rem;
 }
 
-.card .date 
+#chapters-deck .card .date 
 {
 	line-height:2;
 }
@@ -254,6 +260,25 @@ header em
 .card
 {
 	border-radius:0!important;
+}
+
+.card-chapter
+{
+	font-size:1.5rem;
+}
+
+.card-username
+{
+	font-size:1.4rem;
+}
+
+/*** TINYMCE ***/ 
+
+.tiny_mce
+{
+	padding:1.1rem;
+	font-size:1.2rem;
+	font-family:Arimo;
 }
 
 /**************************** SASS ****************************/

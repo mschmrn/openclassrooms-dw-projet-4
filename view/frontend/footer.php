@@ -23,7 +23,7 @@
         <p class="text-uppercase pt-4">Site officiel de Jean Forteroche</p>
       </div>
 
-      <div class="col-md-3 mb-md-0 mb-3">
+      <div class="col-md-2 offset-1 mb-md-0 mb-3">
         <h5 class="text-uppercase">Espace Administrateur</h5>
         <ul class="list-unstyled">
           <!-- Alternative header -->
