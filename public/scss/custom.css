@@ -14,9 +14,12 @@ em { font-family: Vidaloka; font-style: normal; font-size: 1.8rem; }
 
 input, textarea, select { -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0 !important; border-top: 0 !important; border-left: 0 !important; border-right: 0 !important; }
 
-.vh-100 { min-height: 100%; }
+.vh-100 { min-height: 100vh; }
 
 .vh-0 { height: 0; }
+
+/*** ABSOLUTE ELTS ***/
+.absolute-wrapper { position: absolute; right: 3%; bottom: 25%; z-index: 3; }
 
 /*** COLORS ***/
 .lightgrey { color: #E3E3E2; }

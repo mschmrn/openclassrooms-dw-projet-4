@@ -1,5 +1,6 @@
 <section id="chapter-title" class="py-5">
 
+<!-- TITLE -->
     <div class="container-fluid ">
         <div class="row mx-auto">
             <div class="col-12">
@@ -8,33 +9,33 @@
         </div>
     </div>
 
+<!-- SEPARATOR -->
     <div class="row mx-auto">
             <div class="col-12">
                 <hr class="bg-secondary">
             </div>
     </div>
 
+<!-- CHAPTER -->
     <div class="row mx-auto">
         <div class="col-8">
             <h3 class="text-uppercase text-primary">Chapitre <?= $article['chapters'] ?></h3>
         </div>
 
+<!-- DATE -->
         <div class="col-2">
-        <?php
-            $timeStamp = $article['created_at'];
-            setlocale(LC_TIME, "fr_FR");
-            $timeStamp = strftime("%A %d %B %G", strtotime($timeStamp));
-        ?>
-        <p class="text-muted"><?= $timeStamp ?></p>
+            <p class="text-muted"><?= \Date::display($article['created_at']); ?></p>
         </div>
 
+<!-- READING TIME -->
         <div class="col-2">
-            <p class="text-muted">Temps de lecture : <?= $article['time'] ?> minutes</p>
+            <p class="text-muted">Temps de lecture : <?= \Text::read_time($article['content']) ?> minutes</p>
         </div>
     </div>
 
 </section>
 
+<!-- CONTENT -->
 <section id="chapter-content">
     <div class="container-fluid">
         <div class="row mx-auto">
@@ -45,6 +46,7 @@
     </div>
 </section>
 
+<!-- COMMENTS -->
 <section id="chapter-comments" class="py-5">
     <div class="container-fluid">
         <div class="row mx-auto">
@@ -78,6 +80,7 @@
                 
     </div>
     
+<!-- ADD A COMMENT FORM -->
     <div class="container-fluid">
         <div class="row mx-auto">
             <h3 class="text-center text-uppercase text-primary py-3">Vous souhaitez réagir ?</h3>

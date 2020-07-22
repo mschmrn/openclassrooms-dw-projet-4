@@ -3,13 +3,13 @@
 	<div class="container-fluid py-5">
 
 		<!-- FORM -->
-		<form action="index.php?controller=article&task=edit" method="POST">
+		<form action="index.php?controller=article&task=edit&id=<?php if(isset($draft)){ echo $draft['id']; } ?>" method="POST">
 
 			<div class="row mx-auto">
 				<div class="col-12 d-inline-flex justify-content-between align-items-center">
 					<div class="">
 						<h1 class="text-secondary">
-							<?php if(isset($_SESSION['draft_id'])) 
+							<?php if(isset($draft))
 							{ ?>
 								Editer Article 
 							<?php }
@@ -18,6 +18,8 @@
 								Nouvel Article
 							<?php } ?></h1>
 					</div>
+
+		<!-- BUTTONS -->
 					<div class="">
 						<button type="submit" name="answer" class="btn btn-outline-primary text-uppercase" value="preview" id="preview">Visualiser</button>
 						<button type="submit" name="answer" class="btn btn-outline-primary text-uppercase ml-4" id="draft" value="draft">Brouillon</button>
@@ -26,36 +28,36 @@
 				</div>
 			</div>
 
+		<!-- SEPARATOR -->
 			<div class="row mx-auto mb-2">
 				<div class="col-12">
 					<hr class="bg-secondary">
 				</div>
 			</div>
 
-			<!-- TITLE -->
+		<!-- TITLE -->
 			<div class="row mx-auto form-group">
 				<div class="col-12">
 					<label for="title"><h3 class="m-0">Titre</h3></label>
-					<input type="text" class="form-control bg-form border-0" name="title" id="title" placeholder="Inscrivez un titre pour votre chapitre" value='<?php if(isset($_SESSION['draft_id'])) { echo $draft['title']; } ?>'>
+					<input type="text" class="form-control bg-form border-0" name="title" id="title" placeholder="Inscrivez un titre pour votre chapitre" value='<?php if(isset($draft)){ echo htmlspecialchars($draft['title'], ENT_QUOTES); } ?>'>
 				</div>
 			</div>
 
-			<!-- INTRODUCTION -->
+		<!-- INTRODUCTION -->
 			<div class="row mx-auto form-group">
 				<div class="col-12">
 					<label for="introduction"><h3 class="m-0">Description</h3></label>
-					<input type="text" class="form-control bg-form border-0" name="introduction" id="introduction" placeholder="Décrivez le chapitre en quelques mots" value='<?php if(isset($_SESSION['draft_id'])) { echo $draft['introduction']; } ?>'>
-
+					<input type="text" class="form-control bg-form border-0" name="introduction" id="introduction" placeholder="Décrivez le chapitre en quelques mots" value='<?php if(isset($draft)){ echo htmlspecialchars($draft['introduction'], ENT_QUOTES);} ?>'>
 					<small id="emailHelp" class="form-text text-muted">Vous êtes limités à 20 mots minimum et 50 mots maximum.</small>
 				</div>
 			</div>
 
-			<!-- CONTENT -->
+		<!-- CONTENT -->
 			<div class="row mx-auto mt-2">
 				<div class="col-12">
 					<label for="content"><h3 class="m-0">Contenu</h3></label>
 					<textarea class="bg-form tinymce" name="content" id="content">
-						<?php if(isset($_SESSION['draft_id'])) { echo $draft['content']; } ?>
+						<?php if(isset($draft)){ echo $draft['content']; } ?>
 					</textarea>
 					<script>
 						tinymce.init(

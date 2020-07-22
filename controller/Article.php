@@ -5,7 +5,7 @@ namespace Controller;
 class Article extends Controller
 {
     protected $modelName = \Model\Article::class;
-    protected $draft;
+    protected $trash;
 
     public function __construct()
     {
@@ -111,51 +111,50 @@ class Article extends Controller
             $content = $_POST['content'];
         }
         
-        // Vérification finale des infos envoyées dans le formulaire (donc dans le POST)
+        //Vérification finale des infos envoyées dans le formulaire (donc dans le POST)
         if (!$title || !$introduction || !$content) 
         {
           die("Veillez à bien renseigner tous les champs requis.");
         }
 
-        switch ($_POST['answer']) 
+        switch($_POST['answer']) 
         {
             case 'draft':
-                if (!isset($_SESSION['draft_id'])) // Premier brouillon -> insertion dans la BDD
+                if(empty($_GET['id'])) // Pas d'id dans l'url -> Premier brouillon -> insertion dans la BDD
                 {
-                     // Insertion
-                     $this->model->insert($title, $introduction, $content, 1);
+                    // Insertion
+                    $this->model->insert($title, $introduction, $content, 1); 
 
-                     // Identification de l'article en brouillon
-                     $draft = $this->model->getArticleBy($title);
- 
-                     // Puis Enregistrement de l'id dans la session
-                     $_SESSION['draft_id'] = $draft['id'];
+                    // Trouver l'article publié par son titre
+                    $draft = $this->model->getArticleBy($title);
+
+                    // ID de l'article publié
+                    $id = $draft['id'];
                 }
                 else // Mise à jour du brouillon
                 {
                     // Récupération de l'id du brouillon
-                    $id = $_SESSION['draft_id'];
+                    $id = $_GET['id'];
 
                     // Mise à jour de la BDD
                     $this->model->update($id, $title, $introduction, $content, 1);
                 }
 
                 // Redirection pour edition de l'article
-                $this->adminController->addArticle();
+                \Http::redirect("index.php?controller=admin&task=edit&id=" . $id);
                 
                 break;
 
             case 'publish':
-                if (!isset($_SESSION['draft_id'])) // Aucun brouillon enregistré dans la BDD
+                if(empty($_GET['id'])) // Si pas d'id dans l'url
                 {
                     $this->model->insert($title, $introduction, $content, 0);
                 }
-                else // Un brouillon est déjà présent dans la BDD
+                else // ID dans l'url -> update
                 {
-                    $id = $_SESSION['draft_id'];
-                    $this->model->update($id, $title, $introduction, $content, 0);
-                    // Suppression de l'id du brouillon
-                     $_SESSION['draft_id'] = null;    
+                    $id = $_GET['id'];
+
+                    $this->model->update($id, $title, $introduction, $content, 0);  
                 }  
 
                 // Identification de l'article pour redirection
@@ -193,16 +192,68 @@ class Article extends Controller
         {
             die("L'article $id n'existe pas, vous ne pouvez donc pas le supprimer !");
         }
-        
+
         /**
          * Réelle suppression de l'article
          */
-        $this->model->delete($id);
-        
+        if($article['trash'] != 0) // Déjà dans corbeille
+        {
+            $this->model->delete($id);
+        }
+       
+        else // Envoi dans corbeille
+        {
+            $this->trash = true;
+            $this->model->trash($id);
+        }
+    
         /**
          * Redirection vers la page d'accueil
          */
-        \Http::redirect('index.php');
+        if($this->trash)
+        {
+            //\Http::redirect('index.php?controller=admin&task=trash'); Article en corbeille
+        }
+        else
+        {
+            \Http::redirect('index.php?controller=admin&task=index'); // Article supprimé
+        }
+    }
+
+    public function restore() // Delete an article
+    {            
+        /**
+         * On vérifie que le GET possède bien un paramètre "id" (delete.php?id=202) et que c'est bien un nombre
+         */
+        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) 
+        {
+            die("Vous n'avez pas précisé l'id de l'article !");
+        }
+        $id = $_GET['id'];
+        
+        /**
+         * Vérification que l'article existe bel et bien
+         */
+        $article = $this->model->find($id);
+        if (!$article) 
+        {
+            die("L'article $id n'existe pas, vous ne pouvez donc pas le restaurer !");
+        }
+
+        /**
+         * Si article dans corbeille on restore
+         */
+        if($article['trash'] != 0)
+        {
+            $this->model->restore($id);
+        }
+       
+        else
+        {
+            die('pas possible');
+        }
+     
+        \Http::redirect('index.php?controller=admin&task=viewTrash'); // Article supprimé
     }
 }
 

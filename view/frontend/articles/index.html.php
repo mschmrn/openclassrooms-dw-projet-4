@@ -44,7 +44,7 @@
                             <p class="date card-text text-muted text-height-3"><?= \Date::display($article['created_at']); ?></p>
                         </div>
                         <div class="card-footer bg-white">
-                            <small class="text-muted">Temps de lecture : <?= $article['time'] ?> minutes</small>
+                            <small class="text-muted">Temps de lecture : <?= \Text::read_time($article['content']) ?> minutes</small>
                         </div>
                     </div>
                 </div>

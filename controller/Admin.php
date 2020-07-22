@@ -13,25 +13,63 @@ class Admin extends Controller
         $this->commentModel = new \Model\Comment();
     }
 
-    public function addArticle()
+    public function edit()
     {
-        if (isset($_SESSION["username"]))
+        if (isset($_SESSION["username"])) // Admin only
         {
-            if (!isset($_SESSION['draft_id'])) // Il n'y a pas d'id enregistré
+            if (empty($_GET['id'])) // Il n'y a pas d'id enregistré dans la session ni dans l'url
             {
                 $pageTitle = "Ajouter un article";
-                \Renderer::render('backend','articles/add', compact('pageTitle'));
+                // Recherche d'un id dans l'url
+                \Renderer::render('backend','articles/edit', compact('pageTitle'));
             }
-            else
+            else // Il y a un id dans l'url
             {
-                $draft_id = $_SESSION['draft_id'];
-                $draft = $this->articleModel->find($draft_id);
-                \Renderer::render('backend','articles/add', compact('draft'));
+                $pageTitle = "Editer un article";
+                $id = $_GET['id'];
+                $draft = $this->articleModel->find($id);
+                \Renderer::render('backend','articles/edit', compact('pageTitle','draft'));
             }
         }
         else 
         {
             $this->index();
+        }
+    }
+
+    public function viewArticles()
+    {
+        if (isset($_SESSION["username"]))
+        {
+            $pageTitle = "Liste des articles";
+            $articles = $this->articleModel->findAll("chapters DESC");
+            \Renderer::render('backend','articles/index', compact('pageTitle', 'articles'));
+        }
+    }
+
+    public function viewDrafts()
+    {
+        if (isset($_SESSION["username"]))
+        {
+            $pageTitle = "Liste des brouillons";
+            $drafts = $this->articleModel->getDrafts(1);
+
+            //$drafts = $this->articleModel->findAll("draft");
+
+            \Renderer::render('backend','articles/drafts', compact('pageTitle', 'drafts'));
+        }
+    }
+
+    public function viewTrash()
+    {
+        if (isset($_SESSION["username"]))
+        {
+            $pageTitle = "Corbeille";
+            $articles = $this->articleModel->getTrash(1);
+
+            //$drafts = $this->articleModel->findAll("draft");
+
+            \Renderer::render('backend','trash', compact('pageTitle', 'articles'));
         }
     }
 

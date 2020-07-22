@@ -47,16 +47,20 @@ abstract class Model
      * @return array
      */
 
-    public function findAll(?string $order = "") : array
+    public function findAll(?string $param = "") : array
     {
         $sql = "SELECT * FROM {$this->table}";
-        if ($order)
+        if ($param == ('chapters DESC' || 'chapters ASC'))
         {
-            $sql .= " ORDER BY " . $order;
+            $sql .= " ORDER BY " . $param;
+        }
+        else if ($param == 'draft')
+        {
+            $sql .= " WHERE draft='1' ";
         }
         $results = $this->pdo->query($sql);
         $items = $results->fetchAll();
-        
+    
         return $items;
     }
 
