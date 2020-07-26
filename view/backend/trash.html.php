@@ -1,8 +1,17 @@
-<section id="trash" class="bg-info col-10">
+<?php 
+    if(isset($_POST['trash']))
+    {
+        $param = $_POST['trash'];
+    }
+    else
+    {
+        $param = "articles";
+    }
+?>
 
+<section id="trash" class="bg-info ">
 	<div class="container-fluid py-5">
-
-    <!-- TITLE -->
+        <!-- TITLE -->
         <div class="row mx-auto">
             <div class="col-12 d-inline-flex justify-content-between align-items-center">
                 <div class="">
@@ -10,51 +19,44 @@
                 </div>
             </div>
         </div>
-
-    <!-- SEPARATOR -->
+        <!-- SEPARATOR -->
         <div class="row mx-auto mb-2">
             <div class="col-12">
                 <hr class="bg-secondary">
             </div>
         </div>
-
-    <!-- TITLE -->
-    <div class="row mx-auto">
-        <div class="col-12 d-flex">
-            <button class="btn" type="submit" name="articles"><h4>Articles</h4></button>
-            <button class="btn mx-3" type="submit" name="drafts"><h4>Brouillons</h4></button>
-            <button class="btn" type="submit" name="comments"><h4>Commentaires</h4></button>
-        </div>
-    </div>
-
-    <!-- ARTICLES LIST -->
+        <!-- NAV -->
         <div class="row mx-auto mt-2">
-			<div class="col-12 bg-form bg-white py-4">						
-                <?php foreach ($articles as $article) : if($article['draft'] != 1) { ?>	
-					<div class="row mx-auto pt-2 pl-2 pr-2">
-							<img src="../public/images/example-admin.jpg" class="logo col-3" alt="">
-							<div class="card col-9 border-0 bg-white ">
-								<div class="card-body">
-									<h2 class="card-title card-chapter text-primary">CHAPITRE <?= $article['chapters'] ?></h2>
-									<h5 class="card-title"><?= $article['title'] ?></h5>
-                                    <?php if(isset($article['modified_at'])) { ?><p class="card-text text-muted">Dernière modification le <p><?php } ?>
-                                </div>
-                                 <!-- BUTTONS -->
-                                 <div class="d-flex justify-content-end px-2">
-                                    <a href="index.php?controller=article&task=restore&id=<?= $article['id'] ?>"><img src="../public/images/edit.svg" alt=""></a>
-                                </div>
-							</div>
-                    </div>
-   
-    <!-- SEPARATOR -->
-                    <div class="row mx-auto">
-                        <div class="col-12 bg-white">
-                            <hr class="bg-grey">
+            <div class="col-12">
+                <form action="index.php?controller=admin&task=viewTrash" method="POST">
+                    <div class="card border-0">
+                        <div class="card-header px-xl-0 bg-info border-0">
+                            <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                    <button class="btn" type="submit" name="trash" value="articles" active>
+                                        <h4 class="color-hover<?php if($param == 'articles'){ ?> text-primary border border-top-0 border-right-0 border-left-0 border-primary border-bottom <?php } ?> ">Articles</h4>
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button class="btn mx-3" type="submit" name="trash" id="drafts" value="drafts">
+                                        <h4 class="color-hover<?php if($param == 'drafts'){ ?> text-primary border border-top-0 border-right-0 border-left-0 border-primary border-bottom<?php } ?> "> Brouillons</h4>
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button class="btn" type="submit" name="trash" value=""><h4>Commentaires</h4></button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body bg-info p-0">
+                        <!-- ARTICLES LIST -->
+                            <?php 
+                                require_once("view/backend/templates/". $param . ".php");
+                            ?>
                         </div>
                     </div>
-                <?php } endforeach ?>
+                </form>
             </div>
-        </div>
+        </div> 
     </div>
 </section>
     

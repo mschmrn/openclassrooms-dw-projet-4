@@ -18,6 +18,10 @@ input, textarea, select { -webkit-border-radius: 0; -moz-border-radius: 0; borde
 
 .vh-0 { height: 0; }
 
+.test { border-bottom: 1px solid transparent; }
+
+.color-hover:hover { color: #F00000; }
+
 /*** ABSOLUTE ELTS ***/
 .absolute-wrapper { position: absolute; right: 3%; bottom: 25%; z-index: 3; }
 
@@ -42,7 +46,9 @@ aside li { height: max-content; }
 
 aside { font-size: 1.3rem; }
 
-aside img { width: 1.3rem !important; margin-right: 8%; }
+.logonav img { width: 1.7rem; }
+
+.menu img { width: 1.3rem !important; margin-right: 8%; }
 
 .menu-user:hover { color: black !important; }
 
@@ -85,13 +91,14 @@ select + i.fa { float: right; margin-top: -26px; margin-right: 10px; /* this is 
 
 select option { padding-right: 21px; }
 
-/*** ADMIN ***/
+/*** ADMIN HEADER ***/
 .logout { font-size: 2rem; }
 
 .logo { width: 2rem; }
 
 header em { font-size: 1.5rem; }
 
+/*** ADMIN CARDS ***/
 .last-articles { font-size: 1.3rem; }
 
 .card { border-radius: 0 !important; }
@@ -99,6 +106,8 @@ header em { font-size: 1.5rem; }
 .card-chapter { font-size: 1.5rem; }
 
 .card-username { font-size: 1.4rem; }
+
+.btn-active { color: #F00000 !important; }
 
 /*** TINYMCE ***/
 .tiny_mce { padding: 1.1rem; font-size: 1.2rem; font-family: Arimo; }

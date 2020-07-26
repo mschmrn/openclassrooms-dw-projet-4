@@ -15,15 +15,15 @@ class Article extends Model
      * @return void
      */
 
-    public function insert(string $title, string $introduction, string $content, int $draft) : void
+    public function insert(string $title, string $introduction, string $content, int $draft, int $published) : void
     {
-        $query = $this->pdo->prepare('INSERT INTO oc_projet4_articles SET title = :title, introduction = :introduction, content = :content, draft = :draft, created_at = NOW(), modified_at = NOW()');
-        $query->execute(compact('title', 'introduction', 'content', 'draft'));
+        $query = $this->pdo->prepare('INSERT INTO oc_projet4_articles SET title = :title, introduction = :introduction, content = :content, draft = :draft, published = :published created_at = NOW()');
+        $query->execute(compact('title', 'introduction', 'content', 'draft', 'published'));
     }
 
-    public function update(int $id, string $title, string $introduction, string $content, int $draft) : void
+    public function update(int $id, string $title, string $introduction, string $content, int $draft, int $published) : void
     {
-        $query = $this->pdo->prepare('UPDATE oc_projet4_articles SET title = :title, introduction = :introduction, content = :content, draft = :draft, modified_at = NOW() WHERE id = :id');
+        $query = $this->pdo->prepare('UPDATE oc_projet4_articles SET title = :title, introduction = :introduction, content = :content, draft = :draft, published = :published modified_at = NOW() WHERE id = :id');
         $query->execute(compact('title', 'introduction', 'content', 'draft', 'id'));
     }
 
@@ -44,29 +44,6 @@ class Article extends Model
 
         return $items;
     }
-
-    public function getTrash(int $trash) : array
-    {
-        $query = $this->pdo->prepare("SELECT * FROM oc_projet4_articles WHERE trash = :trash");
-        $query->execute(['trash' => $trash]);
-        $items = $query->fetchAll();
-
-        return $items;
-    }
-
-    public function trash(int $id) : void
-    {
-        $query = $this->pdo->prepare('UPDATE oc_projet4_articles SET trash = "1", modified_at = NOW() WHERE id = :id');
-        $query->execute(compact('id'));
-    }
-
-    public function restore(int $id) : void
-    {
-        $query = $this->pdo->prepare('UPDATE oc_projet4_articles SET trash = "0", modified_at = NOW() WHERE id = :id');
-        $query->execute(compact('id'));
-    }
-
-
 }
 
 

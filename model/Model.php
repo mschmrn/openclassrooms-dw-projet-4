@@ -28,6 +28,18 @@ abstract class Model
         return $item;
     }
 
+    public function trash(int $id) : void
+    {
+        $query = $this->pdo->prepare("UPDATE {$this->table} SET trash = '1', modified_at = NOW() WHERE id = :id");
+        $query->execute(compact('id'));
+    }
+
+    public function restore(int $id) : void
+    {
+        $query = $this->pdo->prepare("UPDATE {$this->table} SET trash = '0', modified_at = NOW() WHERE id = :id");
+        $query->execute(compact('id'));
+    }
+
     /**
      * Supprime un article ou un commentaire grâce à son identifiant
      * 
@@ -63,6 +75,37 @@ abstract class Model
     
         return $items;
     }
+
+    public function getAll(?string $order = "") : array
+    {
+        if($order == ('chapters DESC') || $order == ('chapters ASC'))
+        {
+            $sql = "SELECT * FROM {$this->table} WHERE published = '1'";
+            $sql .= " ORDER BY " . $order;
+            $results = $this->pdo->query($sql);
+        }
+        else if($order == 'drafts')
+        {
+            $results = $this->pdo->query("SELECT * FROM {$this->table} WHERE (draft = '1' AND trash = '0')");
+        }
+        else if($order == 'drafts_trash')
+        {
+            $results = $this->pdo->query("SELECT * FROM {$this->table} WHERE (trash AND draft) = '1'");
+        }
+        else if($order == 'articles_trash')
+        {
+            $results = $this->pdo->query("SELECT * FROM {$this->table} WHERE (trash = '1' AND draft = '0')");
+        }
+        else
+        {
+            $results = $this->pdo->query("SELECT * FROM {$this->table}");
+        }
+        $items = $results->fetchAll();
+        return $items;
+    }
+
+    
+
 
 }
 ?>

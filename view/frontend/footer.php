@@ -39,7 +39,7 @@
             </li>         
           <?php } else { ?>
             <li>
-              <a href="index.php?controller=admin&task=login" class="text-white">Se connecter</a>
+              <a href="index.php?controller=admin&task=login" target="_blank" class="text-white">Se connecter</a>
             </li>  
           <?php } ?>  
         </ul>

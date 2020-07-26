@@ -21,19 +21,23 @@
 </head>
 
 <body> 
-    <?php include 'header.php'; ?>
-        <div class="container-fluid">
-            <div class="row">
-                <?php
-                    if(isset($_SESSION["username"]))
-                    { 
-                        include_once 'sidebar.php'; 
-                    }
-                    echo $pageContent;
-                ?>
+    <div class="container-fluid col-12"> 
+        <div class="row">
+            <div class="col-2 p-0 bg-secondary">
+                <aside id="sidebar" class="col-12 sidebar p-0 vh-100">
+                    <?php if(isset($_SESSION["username"])) { include_once 'sidebar.php'; } ?>
+                </aside>
+            </div>
+            <div class="col-10 bg-info p-0">
+                <header class="header col-12 p-0">
+                    <?php if(isset($_SESSION["username"])) { include 'header.php'; } ?>
+                </header>
+                <main class="main col-12">
+                    <?= $pageContent; ?>
+                </main>
+            </div>
         </div>
     </div>
-
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

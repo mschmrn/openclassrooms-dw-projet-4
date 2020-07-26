@@ -1,4 +1,4 @@
-<section id="login" class="bg-info vh-100 col-12">
+<section id="login" class="bg-info vh-100 d-flex align-items-center justify-content-center col-12">
 	
 	<div class="container-fluid py-5">
 		

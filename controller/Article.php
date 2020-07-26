@@ -5,7 +5,6 @@ namespace Controller;
 class Article extends Controller
 {
     protected $modelName = \Model\Article::class;
-    protected $trash;
 
     public function __construct()
     {
@@ -123,7 +122,7 @@ class Article extends Controller
                 if(empty($_GET['id'])) // Pas d'id dans l'url -> Premier brouillon -> insertion dans la BDD
                 {
                     // Insertion
-                    $this->model->insert($title, $introduction, $content, 1); 
+                    $this->model->insert($title, $introduction, $content, 1, 0); 
 
                     // Trouver l'article publié par son titre
                     $draft = $this->model->getArticleBy($title);
@@ -137,7 +136,7 @@ class Article extends Controller
                     $id = $_GET['id'];
 
                     // Mise à jour de la BDD
-                    $this->model->update($id, $title, $introduction, $content, 1);
+                    $this->model->update($id, $title, $introduction, $content, 1, 0);
                 }
 
                 // Redirection pour edition de l'article
@@ -148,13 +147,13 @@ class Article extends Controller
             case 'publish':
                 if(empty($_GET['id'])) // Si pas d'id dans l'url
                 {
-                    $this->model->insert($title, $introduction, $content, 0);
+                    $this->model->insert($title, $introduction, $content, 0, 1);
                 }
                 else // ID dans l'url -> update
                 {
                     $id = $_GET['id'];
 
-                    $this->model->update($id, $title, $introduction, $content, 0);  
+                    $this->model->update($id, $title, $introduction, $content, 0, 1);  
                 }  
 
                 // Identification de l'article pour redirection
@@ -194,34 +193,29 @@ class Article extends Controller
         }
 
         /**
-         * Réelle suppression de l'article
+         * Suppression de l'article
          */
+
         if($article['trash'] != 0) // Déjà dans corbeille
         {
             $this->model->delete($id);
         }
-       
-        else // Envoi dans corbeille
+        else // Ou envoi dans la corbeille
         {
-            $this->trash = true;
             $this->model->trash($id);
         }
     
         /**
          * Redirection vers la page d'accueil
          */
-        if($this->trash)
-        {
-            //\Http::redirect('index.php?controller=admin&task=trash'); Article en corbeille
-        }
-        else
-        {
-            \Http::redirect('index.php?controller=admin&task=index'); // Article supprimé
-        }
+        
+        
+            \Http::redirect('index.php?controller=admin&task=viewTrash'); // Article supprimé
+        
     }
 
     public function restore() // Delete an article
-    {            
+    {   
         /**
          * On vérifie que le GET possède bien un paramètre "id" (delete.php?id=202) et que c'est bien un nombre
          */
@@ -247,13 +241,21 @@ class Article extends Controller
         {
             $this->model->restore($id);
         }
-       
         else
         {
-            die('pas possible');
+            die('déjà restoré');
         }
-     
-        \Http::redirect('index.php?controller=admin&task=viewTrash'); // Article supprimé
+        
+        if($article['draft'] == '1')
+        {
+            $param = 'drafts';
+        }
+       
+        \Http::redirect("index.php?controller=admin&task=viewTrash");
+
+
+
+        
     }
 }
 

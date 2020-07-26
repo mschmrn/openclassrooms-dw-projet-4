@@ -1,6 +1,7 @@
 
 /**************************** CSS ****************************/
 
+
 /*** ALL ELEMENTS ***/
 
 *
@@ -58,6 +59,16 @@ input,textarea,select
 .vh-0 
 {
     height: 0;
+}
+
+.test
+{
+	border-bottom: 1px solid transparent;
+}
+
+.color-hover:hover
+{
+	color:#F00000; 
 }
 
 /*** ABSOLUTE ELTS ***/ 
@@ -123,7 +134,12 @@ aside
 	font-size:1.3rem;
 }
 
-aside img
+.logonav img
+{
+	width:1.7rem;
+}
+
+.menu img
 {
 	width:1.3rem!important;
 	margin-right: 8%;
@@ -245,7 +261,7 @@ select option
 	padding-right: 21px;
 }
 
-/*** ADMIN ***/
+/*** ADMIN HEADER ***/
 
 .logout
 {
@@ -261,6 +277,8 @@ header em
 {
 	font-size:1.5rem;
 }
+
+/*** ADMIN CARDS ***/
 
 .last-articles
 {
@@ -281,6 +299,13 @@ header em
 {
 	font-size:1.4rem;
 }
+
+.btn-active
+{
+	color:#F00000!important;
+}
+
+
 
 /*** TINYMCE ***/ 
 

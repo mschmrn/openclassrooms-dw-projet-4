@@ -5,6 +5,7 @@ namespace Controller;
 class Admin extends Controller
 {
     protected $modelName = \Model\Admin::class;
+    protected $select;
 
     public function __construct()
     {
@@ -42,7 +43,9 @@ class Admin extends Controller
         if (isset($_SESSION["username"]))
         {
             $pageTitle = "Liste des articles";
-            $articles = $this->articleModel->findAll("chapters DESC");
+            //$articles = $this->articleModel->findAll("chapters DESC");
+            $articles = $this->articleModel->getAll("chapters DESC");
+
             \Renderer::render('backend','articles/index', compact('pageTitle', 'articles'));
         }
     }
@@ -52,7 +55,7 @@ class Admin extends Controller
         if (isset($_SESSION["username"]))
         {
             $pageTitle = "Liste des brouillons";
-            $drafts = $this->articleModel->getDrafts(1);
+            $drafts = $this->articleModel->getAll('drafts');
 
             //$drafts = $this->articleModel->findAll("draft");
 
@@ -61,18 +64,26 @@ class Admin extends Controller
     }
 
     public function viewTrash()
-    {
-        if (isset($_SESSION["username"]))
-        {
-            $pageTitle = "Corbeille";
-            $articles = $this->articleModel->getTrash(1);
+    {            
+        $pageTitle = "Corbeille";
 
-            //$drafts = $this->articleModel->findAll("draft");
+        $articles = $this->articleModel->getAll("articles_trash");
+        $drafts = $this->articleModel->getAll("drafts_trash");
 
-            \Renderer::render('backend','trash', compact('pageTitle', 'articles'));
-        }
+        \Renderer::render('backend','trash', compact('pageTitle', 'articles','drafts'));
     }
 
+    public function preview()
+    {
+        $pageTitle = "Preview";
+        $articles = $this->articleModel->getAll("articles_trash");
+        \Renderer::render('frontend','show', compact('pageTitle','articles'));
+
+
+    }
+
+
+  
     public function index()
     {
         if (isset($_SESSION["username"]))
