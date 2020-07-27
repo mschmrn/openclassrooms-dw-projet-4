@@ -1,6 +1,6 @@
-<!-- NAV -->
+<!-- LOGO NAV -->
 <div class="logonav p-4 border-bottom border-grey">
-        <a href="index.php?controller=admin&task=index"><img src="../public/images/logo.svg" class="" alt=""></a>
+    <a href="index.php?controller=admin&task=index"><img src="../public/images/logo.svg" class="" alt=""></a>
 </div>
 <!-- MENU -->
 <div class="menu my-5 px-2">

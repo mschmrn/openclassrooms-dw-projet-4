@@ -1,10 +1,12 @@
+
+
 <section id="trash" class="bg-info ">
 	<div class="container-fluid py-5">
         <!-- TITLE -->
         <div class="row mx-auto">
             <div class="col-12 d-inline-flex justify-content-between align-items-center">
                 <div class="">
-                    <h1 class="text-secondary">Corbeille</h1>
+                    <h1 class="text-secondary">Commentaires</h1>
                 </div>
             </div>
         </div>
@@ -17,32 +19,31 @@
         <!-- NAV -->
         <div class="row mx-auto mt-2">
             <div class="col-12">
-                <form action="index.php?controller=admin&task=viewTrash" method="POST">
+                <form action="index.php?controller=admin&task=viewComments" method="POST">
                     <div class="card border-0">
                         <div class="card-header px-xl-0 bg-info border-0">
                             <ul class="nav nav-tabs card-header-tabs">
                                 <li class="nav-item">
-                                    <button class="btn" type="submit" name="trash" value="articles" active>
-                                        <h4 class="color-hover<?php if($param == 'articles'){ ?> text-primary border border-top-0 border-right-0 border-left-0 border-primary border-bottom <?php } ?> ">Articles <sup class="border-bottom-0">(<?= count($articles) ?>)</sup></h4>
+                                    <button class="btn" type="submit" name="comment" value="comments" id="comments" active>
+                                        <h4 class="color-hover<?php if($param == 'comments'){ $condition = 'published'; ?> text-primary border border-top-0 border-right-0 border-left-0 border-primary border-bottom <?php } ?> ">Publiés <sup>(<?= count($comments) ?>)</sup></h4>
                                     </button>
                                 </li>
                                 <li class="nav-item">
-                                    <button class="btn mx-3" type="submit" name="trash" id="drafts" value="drafts">
-                                        <h4 class="color-hover<?php if($param == 'drafts'){ ?> text-primary border border-top-0 border-right-0 border-left-0 border-primary border-bottom<?php } ?> ">Brouillons <sup class="border-bottom-0">(<?= count($drafts) ?>)</sup></h4>
+                                    <button class="btn mx-3" type="submit" name="comment" id="pending" value="pending">
+                                        <h4 class="color-hover<?php if($param == 'pending'){ $condition = 'pending'; ?> text-primary border border-top-0 border-right-0 border-left-0 border-primary border-bottom<?php } ?> ">En attente <sup>(<?= count($pending) ?>)</sup></h4>
                                     </button>
                                 </li>
                                 <li class="nav-item">
-                                    <button class="btn" type="submit" name="trash" id="comments" value="comments"> 
-                                        <h4 class="color-hover<?php if($param == 'comments'){ ?> text-primary border border-top-0 border-right-0 border-left-0 border-primary border-bottom<?php } ?> ">Commentaires <sup class="border-bottom-0">(<?= count($comments_in_trash) ?>)</sup></h4>
+                                    <button class="btn" type="submit" name="comment" value="reported" id="reported">
+                                        <h4 class="color-hover<?php if($param == 'reported'){ $condition = 'reported';?> text-primary border border-top-0 border-right-0 border-left-0 border-primary border-bottom<?php } ?> ">Signalés <sup>(<?= count($reported) ?>)</sup></h4>
                                     </button>
                                 </li>
                             </ul>
                         </div>
                         <div class="card-body bg-info p-0">
                         <!-- ARTICLES LIST -->
-                            <?php 
-                                $condition = "trash";
-                                require_once("view/backend/list/". $param . ".php");
+                            <?php
+                                require_once("view/backend/list/comments.php");
                             ?>
                         </div>
                     </div>

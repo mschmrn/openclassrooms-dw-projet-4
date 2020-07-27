@@ -30,13 +30,13 @@ abstract class Model
 
     public function trash(int $id) : void
     {
-        $query = $this->pdo->prepare("UPDATE {$this->table} SET trash = '1', modified_at = NOW() WHERE id = :id");
+        $query = $this->pdo->prepare("UPDATE {$this->table} SET trash = '1', published = '0' WHERE id = :id");
         $query->execute(compact('id'));
     }
 
     public function restore(int $id) : void
     {
-        $query = $this->pdo->prepare("UPDATE {$this->table} SET trash = '0', modified_at = NOW() WHERE id = :id");
+        $query = $this->pdo->prepare("UPDATE {$this->table} SET trash = '0', published  = '1' WHERE id = :id");
         $query->execute(compact('id'));
     }
 
@@ -96,6 +96,11 @@ abstract class Model
         {
             $results = $this->pdo->query("SELECT * FROM {$this->table} WHERE (trash = '1' AND draft = '0')");
         }
+        else if($order == 'reported')
+        {
+            $results = $this->pdo->query("SELECT * FROM {$this->table} WHERE reported = '1'");
+        }
+        
         else
         {
             $results = $this->pdo->query("SELECT * FROM {$this->table}");
@@ -104,8 +109,16 @@ abstract class Model
         return $items;
     }
 
-    
-
-
+    public function get(?string $order = "") : array
+    {
+        if($order)
+        {
+            $sql = "SELECT * FROM {$this->table}";
+            $sql .= " WHERE " . $order .= "='1'";
+            $results = $this->pdo->query($sql);
+            $items = $results->fetchAll();
+            return $items;
+        }
+    }
 }
 ?>

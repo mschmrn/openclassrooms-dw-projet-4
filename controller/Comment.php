@@ -5,6 +5,27 @@ namespace Controller;
 class Comment extends Controller
 {
     protected $modelName = \Model\Comment::class;
+    protected $item = 'comment';
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->articleModel = new \Model\Article();
+    }
+
+    public function preview()
+    {
+        if (!empty($_GET['id']) && isset($_SESSION["username"]))
+        {
+            $pageTitle = "Aperçu du commentaire";
+            $id = $_GET['id'];
+            $comment = $this->model->find($id);
+            $article_id = $comment['article_id'];
+            $article = $this->articleModel->find($article_id);
+
+            \Renderer::render('frontend','preview', compact('pageTitle','article','comment'));
+        } 
+    }
 
     public function insert() // Insert a comment
     {
@@ -67,41 +88,7 @@ class Comment extends Controller
         \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
     }
 
-    public function delete() // Delete a comment
-    {
-        /**
-         * Récupération du paramètre "id" en GET
-         */
-        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
-            die("Ho ! Fallait préciser le paramètre id en GET !");
-        }
 
-        $id = $_GET['id'];
-
-        /**
-         * 3. Vérification de l'existence du commentaire
-         */
-
-        $comment = $this->model->find($id);
-        if (!$comment)
-        {
-            die("Aucun commentaire n'a l'identifiant $id !");
-        }
-
-        /**
-         * 4. Suppression réelle du commentaire
-         * On récupère l'identifiant de l'article avant de supprimer le commentaire
-         */
-
-        $article_id = $comment['article_id'];
-        $this->model->delete($id);
-
-        /**
-         * 5. Redirection vers l'article en question
-         */
-        \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
-
-    }
    
 }
 

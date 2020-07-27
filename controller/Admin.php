@@ -5,11 +5,11 @@ namespace Controller;
 class Admin extends Controller
 {
     protected $modelName = \Model\Admin::class;
-    protected $select;
 
     public function __construct()
     {
         parent::__construct();
+        $this->userModel = new \Model\User();
         $this->articleModel = new \Model\Article();
         $this->commentModel = new \Model\Comment();
     }
@@ -43,10 +43,10 @@ class Admin extends Controller
         if (isset($_SESSION["username"]))
         {
             $pageTitle = "Liste des articles";
-            //$articles = $this->articleModel->findAll("chapters DESC");
             $articles = $this->articleModel->getAll("chapters DESC");
 
             \Renderer::render('backend','articles/index', compact('pageTitle', 'articles'));
+            $_SESSION['last_view'] = 'articles';
         }
     }
 
@@ -57,43 +57,73 @@ class Admin extends Controller
             $pageTitle = "Liste des brouillons";
             $drafts = $this->articleModel->getAll('drafts');
 
-            //$drafts = $this->articleModel->findAll("draft");
-
             \Renderer::render('backend','articles/drafts', compact('pageTitle', 'drafts'));
+            $_SESSION['last_view'] = 'drafts';
         }
     }
 
     public function viewTrash()
-    {            
+    {           
+        if(isset($_POST['trash']))
+        {
+            $param = $_POST['trash'];
+        }
+        else if(isset($_SESSION['last_view']))
+        {
+            $param = $_SESSION['last_view'];
+        }
+        else
+        {
+            $param = "articles";
+        }
+
         $pageTitle = "Corbeille";
 
         $articles = $this->articleModel->getAll("articles_trash");
         $drafts = $this->articleModel->getAll("drafts_trash");
 
-        \Renderer::render('backend','trash', compact('pageTitle', 'articles','drafts'));
+        $comments = $this->commentModel->getAll();
+        $comments_in_trash = $this->commentModel->get('trash');
+
+        \Renderer::render('backend','trash', compact('pageTitle', 'articles','drafts', 'comments', 'param','comments_in_trash'));
     }
 
-    public function preview()
-    {
-        $pageTitle = "Preview";
-        $articles = $this->articleModel->getAll("articles_trash");
-        \Renderer::render('frontend','show', compact('pageTitle','articles'));
+    public function viewComments()
+    {            
+        if(isset($_POST['comment']))
+        {
+            $param = $_POST['comment'];
+        }
+        else
+        {
+            $param = "comments";
+        }
 
+        $pageTitle = "Commentaires";
+        $_SESSION['last_view'] = 'comments';
 
+        $comments = $this->commentModel->getAll();
+        $reported = $this->commentModel->get('reported');
+        $pending = $this->commentModel->get('pending');
+
+        \Renderer::render('backend','comments', compact('pageTitle', 'comments','reported','pending','param'));
     }
 
-
-  
     public function index()
     {
         if (isset($_SESSION["username"]))
         {
             $pageTitle = "Bienvenue";
+            $_SESSION['last_view'] = null;
 
-            $articles = $this->articleModel->findAll("chapters DESC LIMIT 4");
+            $user = $this->model->find_user($_SESSION['username']);
+            $_SESSION['name'] = $user['name'] ;
+            $_SESSION['surname'] = $user['surname'];
+
+            $articles = $this->articleModel->findAll("chapters DESC LIMIT 5");
             $comments = $this->commentModel->findAll("created_at DESC LIMIT 3");
 
-            \Renderer::render('backend','index', compact('pageTitle','articles','comments'));
+            \Renderer::render('backend','index', compact('pageTitle','articles','comments','user'));
         }
         else
         {
@@ -136,7 +166,8 @@ class Admin extends Controller
         if (!isset($_SESSION["username"]))
         {
             $pageTitle = "Se connecter";
-            \Renderer::render('backend','login', compact('pageTitle'));
+            $admin = false;
+            \Renderer::render('backend','login', compact('pageTitle', 'admin'));
         }
         else
         {

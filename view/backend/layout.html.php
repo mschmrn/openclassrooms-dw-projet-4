@@ -22,20 +22,28 @@
 
 <body> 
     <div class="container-fluid col-12"> 
-        <div class="row">
-            <div class="col-2 p-0 bg-secondary">
-                <aside id="sidebar" class="col-12 sidebar p-0 vh-100">
-                    <?php if(isset($_SESSION["username"])) { include_once 'sidebar.php'; } ?>
-                </aside>
-            </div>
-            <div class="col-10 bg-info p-0">
-                <header class="header col-12 p-0">
-                    <?php if(isset($_SESSION["username"])) { include 'header.php'; } ?>
-                </header>
-                <main class="main col-12">
-                    <?= $pageContent; ?>
-                </main>
-            </div>
+        <div class="row">                  
+            <?php if(isset($_SESSION["username"])){ ?>
+                <div class="col-2 p-0 bg-secondary">
+                    <aside id="sidebar" class="col-12 sidebar p-0 vh-100">
+                        <?php include 'sidebar.php'; ?>
+                    </aside>
+                </div>
+                <div class="col-10 bg-info p-0">
+                    <header class="header col-12 p-0 border-bottom border-grey">
+                        <?php include 'header.php'; ?>
+                    </header>
+                    <main class="main col-12">
+                        <?= $pageContent; ?>
+                    </main>
+                </div>    
+            <?php } else { ?>
+                <div class="col-12 bg-info p-0">
+                    <main class="main">
+                        <?= $pageContent; ?>
+                    </main>
+                </div> 
+            <?php } ?>
         </div>
     </div>
 
@@ -47,7 +55,7 @@
     <!-- Scripts JS -->
     <script src="public/js/tinymce.js"></script>
     <script src="public/js/app.js"></script>
-</body>
 
+</body>
 </html>
 

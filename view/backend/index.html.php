@@ -3,7 +3,7 @@
 	<div class="container-fluid py-5">
 		<div class="row mx-auto">
 			<div class="col-12">
-				<h1 class="text-secondary">Bienvenue Jean !</h1>
+				<h1 class="text-secondary">Bienvenue <?= $user['name'] ?> !</h1>
 				<!--<p>Vous êtes actuellement connecté comme <i><?php //echo $_SESSION['username']; ?></i> à votre espace administrateur.</p>-->
 				<p>Votre page d’accueil centralise toutes vos publications, les modifications et le développement de votre site.</p>
 			</div>
@@ -41,7 +41,7 @@
 								</div>
 								<!-- BUTTON -->
 								<div class="d-flex pr-2">							
-									<a href="index.php?controller=article&task=delete&id=<?= $article['id'] ?>"><img src="../public/images/arrow.svg" style="height:10px;" alt=""></a>
+									<a href="index.php?controller=article&task=preview&id=<?= $article['id'] ?>"><img src="../public/images/arrow.svg" style="height:10px;" alt=""></a>
 								</div>
 							</div>
 						</div>
@@ -72,7 +72,7 @@
 						<p class="card-text"><?= \Text::truncate($comment['content'], 20, true, true) ?></p>
 						<div class="d-flex justify-content-between pr-2">									
 							<p class="card-text text-muted"><?= \Date::display($comment['created_at']); ?></p>
-							<a href="index.php?controller=article&task=delete&id=<?= $article['id'] ?>"><img src="../public/images/arrow.svg" style="height:10px;" alt=""></a>
+							<a href="index.php?controller=comment&task=preview&id=<?= $comment['id'] ?>"><img src="../public/images/arrow.svg" style="height:10px;" alt=""></a>
 						</div>
 					</div>
 				</div>

@@ -26,7 +26,7 @@
         <!-- ARTICLES LIST -->
         <div class="row mx-auto mt-2">
         <div class="col-12">
-            <?php include 'view/backend/templates/articles.php' ?>
+            <?php include 'view/backend/list/articles.php' ?>
         </div>
         </div>
     </div>

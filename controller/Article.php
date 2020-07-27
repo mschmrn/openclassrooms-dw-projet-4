@@ -5,12 +5,12 @@ namespace Controller;
 class Article extends Controller
 {
     protected $modelName = \Model\Article::class;
+    protected $item = 'article';
 
     public function __construct()
     {
         parent::__construct();
         $this->adminController = new \Controller\Admin();
-        $this->draft = false;
     }
 
     public function home()
@@ -31,6 +31,19 @@ class Article extends Controller
          */
         $pageTitle = "Articles";
         \Renderer::render('frontend','articles/index', compact('pageTitle', 'articles'));
+    }
+
+    public function preview()
+    {
+        if (!empty($_GET['id']) && isset($_SESSION["username"]))
+        {
+            $pageTitle = "Aperçu de l'article";
+            $id = $_GET['id'];
+
+            $article = $this->model->find($id);    
+    
+            \Renderer::render('frontend','preview', compact('pageTitle','article'));
+        }
     }
 
     public function show() // Show an article
@@ -138,7 +151,6 @@ class Article extends Controller
                     // Mise à jour de la BDD
                     $this->model->update($id, $title, $introduction, $content, 1, 0);
                 }
-
                 // Redirection pour edition de l'article
                 \Http::redirect("index.php?controller=admin&task=edit&id=" . $id);
                 
@@ -155,10 +167,8 @@ class Article extends Controller
 
                     $this->model->update($id, $title, $introduction, $content, 0, 1);  
                 }  
-
                 // Identification de l'article pour redirection
                 $article = $this->model->getArticleBy($title);
-
                 // Redirection
                 \Http::redirect("index.php?controller=article&task=show&id=" . $article['id']);
 
@@ -166,96 +176,9 @@ class Article extends Controller
 
             case 'preview':
                 echo 'preview';
-                //$article = $this->model->getByTitle($title);
-                //\Http::redirect("index.php?controller=article&task=show&id=" . $article['id']);
+                $this->preview();
                 break;
         }
-    }
-
-    public function delete() // Delete an article
-    {            
-        /**
-         * On vérifie que le GET possède bien un paramètre "id" (delete.php?id=202) et que c'est bien un nombre
-         */
-        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) 
-        {
-            die("Vous n'avez pas précisé l'id de l'article !");
-        }
-        $id = $_GET['id'];
-        
-        /**
-         * Vérification que l'article existe bel et bien
-         */
-        $article = $this->model->find($id);
-        if (!$article) 
-        {
-            die("L'article $id n'existe pas, vous ne pouvez donc pas le supprimer !");
-        }
-
-        /**
-         * Suppression de l'article
-         */
-
-        if($article['trash'] != 0) // Déjà dans corbeille
-        {
-            $this->model->delete($id);
-        }
-        else // Ou envoi dans la corbeille
-        {
-            $this->model->trash($id);
-        }
-    
-        /**
-         * Redirection vers la page d'accueil
-         */
-        
-        
-            \Http::redirect('index.php?controller=admin&task=viewTrash'); // Article supprimé
-        
-    }
-
-    public function restore() // Delete an article
-    {   
-        /**
-         * On vérifie que le GET possède bien un paramètre "id" (delete.php?id=202) et que c'est bien un nombre
-         */
-        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) 
-        {
-            die("Vous n'avez pas précisé l'id de l'article !");
-        }
-        $id = $_GET['id'];
-        
-        /**
-         * Vérification que l'article existe bel et bien
-         */
-        $article = $this->model->find($id);
-        if (!$article) 
-        {
-            die("L'article $id n'existe pas, vous ne pouvez donc pas le restaurer !");
-        }
-
-        /**
-         * Si article dans corbeille on restore
-         */
-        if($article['trash'] != 0)
-        {
-            $this->model->restore($id);
-        }
-        else
-        {
-            die('déjà restoré');
-        }
-        
-        if($article['draft'] == '1')
-        {
-            $param = 'drafts';
-        }
-       
-        \Http::redirect("index.php?controller=admin&task=viewTrash");
-
-
-
-        
     }
 }
 

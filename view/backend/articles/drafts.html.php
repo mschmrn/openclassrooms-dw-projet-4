@@ -27,7 +27,7 @@
         <!-- DRAFTS LIST -->
         <div class="row mx-auto mt-2">
             <div class="col-12">
-                 <?php include 'view/backend/templates/drafts.php' ?>
+                 <?php include 'view/backend/list/drafts.php' ?>
             </div>
         </div>
     </div>

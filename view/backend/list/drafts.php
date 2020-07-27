@@ -1,5 +1,5 @@
-<!-- DRAFTS LIST -->						
-    <?php foreach ($drafts as $draft) : ?>	
+<!-- DRAFT LIST -->						
+<?php foreach ($drafts as $draft) : ?>	
     <!-- CONTAINER -->
     <div class="container p-0 border-bottom border-grey border-top-0 bg-form">
         <!-- CARD -->
@@ -25,10 +25,12 @@
                     <!-- BUTTONS -->
                     <?php if($draft['trash'] == '0'){ ?>
                     <div class="d-flex flex-nowrap pr-2">
-                        <a href="index.php?controller=admin&task=edit&id=<?= $draft['id'] ?>"><img src="../public/images/edit.svg" alt=""></a>
-                        <a href="index.php?controller=admin&task=view&id=<?= $draft['id'] ?>"><img src="../public/images/view.svg" alt="" class="px-2"></a>
+                        <a href="index.php?controller=admin&task=edit&id=<?= $draft['id'] ?>"><img src="../public/images/edit.svg" alt=""></a>                        
+                        <a href="index.php?controller=article&task=preview&id=<?= $draft['id'] ?>"><img src="../public/images/view.svg" alt="" class="px-2"></a>                    
+
                         <a href="index.php?controller=article&task=delete&id=<?= $draft['id'] ?>"><img src="../public/images/delete.svg" alt="" onclick="return window.confirm(`Êtes vous sûr de vouloir mettre cet article à la corbeille ?`)"></a>
-                    </div>
+                    </div> 
+
                     <?php } else { ?>	
                         <div class="d-flex flex-nowrap pr-2">
                         <a href="index.php?controller=article&task=restore&id=<?= $draft['id'] ?>"><img src="../public/images/restore.svg" alt="" class="px-2"></a>
@@ -39,12 +41,12 @@
             </div>
         </div>
     </div>				
-    <?php endforeach ?>			
-    <!-- NO DRAFT SAVED -->
-    <?php if($drafts == null){ ?>
+<?php endforeach ?>			
+<!-- NO DRAFT SAVED -->
+<?php if($drafts == null){ ?>
     <div class="col-12 py-4" >						
-        <p class="text-left">Aucun brouillon enregistré.</p>
+        <p class="text-left">Aucun brouillon dans la corbeille.</p>
     </div>
-    <?php } ?>
+<?php } ?>
 </div>
 

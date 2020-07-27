@@ -38,6 +38,14 @@ class Comment extends Model
         $query = $this->pdo->prepare('INSERT INTO oc_projet4_comments SET author = :author, email = :email, content = :content, article_id = :article_id, created_at = NOW()');
         $query->execute(compact('author', 'email', 'content', 'article_id'));
     }
+
+    public function check(int $id) : void
+    {
+        $query = $this->pdo->prepare("UPDATE oc_projet4_comments SET pending = '0' WHERE id = :id");
+        $query->execute(compact('id'));
+    }
 }
+
+
 
 ?>

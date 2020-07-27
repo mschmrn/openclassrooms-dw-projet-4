@@ -17,7 +17,7 @@ class Article extends Model
 
     public function insert(string $title, string $introduction, string $content, int $draft, int $published) : void
     {
-        $query = $this->pdo->prepare('INSERT INTO oc_projet4_articles SET title = :title, introduction = :introduction, content = :content, draft = :draft, published = :published created_at = NOW()');
+        $query = $this->pdo->prepare("INSERT INTO oc_projet4_articles SET title = :title, introduction = :introduction, content = :content, draft = :draft, published = :published, created_at = NOW()");
         $query->execute(compact('title', 'introduction', 'content', 'draft', 'published'));
     }
 
@@ -35,18 +35,6 @@ class Article extends Model
 
         return $item;  
     }
-
-    public function getDrafts(int $draft) : array
-    {
-        $query = $this->pdo->prepare("SELECT * FROM oc_projet4_articles WHERE draft = :draft");
-        $query->execute(['draft' => $draft]);
-        $items = $query->fetchAll();
-
-        return $items;
-    }
 }
-
-
-
 
 ?>
