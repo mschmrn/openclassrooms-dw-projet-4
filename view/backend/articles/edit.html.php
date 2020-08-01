@@ -6,14 +6,7 @@
 				<div class="col-12 d-flex flex-wrap justify-content-between align-items-center">
 					<div class="">
 						<h1 class="text-secondary">
-							<?php if(isset($draft))
-							{ ?>
-								Editer Article 
-							<?php }
-							else 
-							{ ?>
-								Nouvel Article
-							<?php } ?></h1>
+							<?= $pageTitle ?></h1>
 					</div>
 					<!-- BUTTONS -->
 					<div class="d-flex flex-wrap">
@@ -33,21 +26,30 @@
 			<div class="row mx-auto form-group">
 				<div class="col-12">
 					<label for="title"><h3 class="m-0">Titre</h3></label>
-					<input type="text" class="form-control bg-form border-0" name="title" id="title" placeholder="Inscrivez un titre pour votre chapitre" value='<?php if(isset($draft)){ echo htmlspecialchars($draft['title'], ENT_QUOTES); } ?>'>
+					<input type="text" class="form-control bg-form border-0" name="title" id="title" placeholder="Inscrivez un titre pour votre chapitre" value='<?php if(isset($draft)){ echo htmlspecialchars($draft['title'], ENT_QUOTES); } ?>' required>
 				</div>
 			</div>
-			<!-- INTRODUCTION -->
+			<!-- DESCRIPTION -->
 			<div class="row mx-auto form-group">
 				<div class="col-12">
 					<label for="introduction"><h3 class="m-0">Description</h3></label>
-					<input type="text" class="form-control bg-form border-0" name="introduction" id="introduction" placeholder="Décrivez le chapitre en quelques mots" value='<?php if(isset($draft)){ echo htmlspecialchars($draft['introduction'], ENT_QUOTES);} ?>'>
-					<small id="emailHelp" class="form-text text-muted">Vous êtes limités à 20 mots minimum et 50 mots maximum.</small>
+					<input type="text" class="form-control bg-form border-0" minlength="20" maxlength="140" name="introduction" id="introduction" placeholder="Décrivez le chapitre en quelques mots" value='<?php if(isset($draft)){ echo htmlspecialchars($draft['introduction'], ENT_QUOTES);} ?>' required>
+					<small id="emailHelp" class="form-text text-muted">Vous êtes limités à 20 mots minimum et 140 mots maximum.</small>
+				</div>
+			</div>
+			<!-- CHAPTER -->
+			<div class="row mx-auto form-group">
+				<div class="col-12">
+					<label for="chapter"><h3 class="m-0">Chapitre</h3></label>
+					<input type="text" class="form-control bg-form border-0" minlength="1" maxlength="3" name="chapter" id="chapter" placeholder="Entrez le numéro de chapitre" value='<?php if(isset($draft)){ echo $draft['chapters']; } else { echo $new; } ?>' required <?php if(isset($draft)){ ?> readonly <?php } ?>>
 				</div>
 			</div>
 			<!-- CONTENT -->
 			<div class="row mx-auto mt-2">
 				<div class="col-12">
-					<label for="content"><h3 class="m-0">Contenu</h3></label>
+					<label for="content">
+						<h3 class="m-0">Contenu</h3>
+					</label>
 					<textarea class="bg-form tinymce" name="content" id="content">
 						<?php if(isset($draft)){ echo $draft['content']; } ?>
 					</textarea>
@@ -57,7 +59,8 @@
 							language: 'fr_FR',
 							selector: 'textarea#content',
 							height: 500,
-							plugins: 'table wordcount',
+							plugins: 'table wordcount autosave',
+							toolbar: 'restoredraft',
 							skin:'naked',
 							content_css: '//www.tiny.cloud/css/codepen.min.css',
 							content_style: '.left { text-align: left; } ' +

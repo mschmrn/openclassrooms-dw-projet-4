@@ -1,7 +1,9 @@
-    <div class="d-flex inline-flex justify-content-center align-items-center bg-info py-4">
-Cette page présente un aperçu <?php if(!isset($comment)){ ?> de l'article. <?php } else { ?> du commentaire.<?php } ?>&nbsp;<a href="index.php?controller=admin&task=index">Revenir à la page d'administration.</a>
-    </div>
+<!-- PREVIEW AD -->
+<div class="d-flex inline-flex justify-content-center align-items-center bg-info py-4">
+    Cette page présente un aperçu <?php if(!isset($comment)){ ?> de l'article. <?php } else { ?> du commentaire.<?php } ?>&nbsp;<a href="index.php?controller=admin&task=index">Revenir à la page d'administration.</a>
+</div>
 
+<!-- BEGIN SECTION -->
 <section id="preview-article" class="py-5">
     <!-- TITLE -->
     <div class="container-fluid ">

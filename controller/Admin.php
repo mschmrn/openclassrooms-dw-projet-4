@@ -12,19 +12,117 @@ class Admin extends Controller
         $this->userModel = new \Model\User();
         $this->articleModel = new \Model\Article();
         $this->commentModel = new \Model\Comment();
+        $this->userModel = new \Model\User();
     }
 
-    public function edit()
+    public function login()
     {
-        if (isset($_SESSION["username"])) // Admin only
+        if (!isset($_SESSION["username"]))
         {
-            if (empty($_GET['id'])) // Il n'y a pas d'id enregistré dans la session ni dans l'url
+            $pageTitle = "Se connecter";
+            \Renderer::render('backend','login', compact('pageTitle'));
+        }
+        else
+        {
+            $this->index();
+        }
+    }
+
+    public function verify()
+    {
+        if (!isset($_SESSION["username"]))
+        {
+            // Vérifier le username entré
+            $username = htmlspecialchars($_POST['username']);
+            // Chercher l'utilisateur dans la BDD
+            $user = $this->model->find_user($username);
+
+            if ($user)
             {
+                if (password_verify($_POST['password'], $user['password']))
+                {
+                    if ($user['type'] == 'admin') 
+                    {
+                        $_SESSION["username"] = $username;
+
+                        $this->admin = true;
+                        $this->index();
+                    }
+                    else if ($user['type'] == 'user')
+                    {
+                        \Http::redirect('index.php');
+                    }                           
+                }
+                else
+                {
+                    die('Login ou mot de passe incorrect');
+                }
+            }
+            else
+            {
+                die("Aucun utilisateur enregistré comme" . $_POST['username'] . "n'a été trouvé");
+            }
+        }
+        else
+        {
+            $this->index();
+        }     
+    }
+
+    public function index()
+    {
+        if ($this->admin)
+        {
+            $user = $this->model->find_user($_SESSION['username']);
+            $_SESSION['name'] = $user['name'] ;
+            $_SESSION['surname'] = $user['surname'];
+
+            $pageTitle = "Bienvenue";
+            $articles = $this->articleModel->findAll("chapters DESC LIMIT 5");
+            $comments = $this->commentModel->findAll("created_at DESC LIMIT 3");
+            $_SESSION['last_view'] = null;
+
+            \Renderer::render('backend','index', compact('pageTitle','articles','comments','user'));
+        }
+        else
+        {
+          $this->login();
+        }
+    }
+
+    public function index_options()
+    {
+        if($this->admin)
+        {
+            switch($_POST['index'])
+            {
+                case 'back':
+                    \Http::redirect('index.php');
+                break;
+
+                case 'user':
+                    $this->add();
+                break;
+                
+                case 'logout':
+                    $this->logout();
+                break;
+            }
+        }
+    }
+
+    public function editArticle()
+    {
+        if ($this->admin) // Admin protection
+        {
+            if (empty($_GET['id'])) // No ID
+            {            
+                $new = $this->articleModel->newChapter();
                 $pageTitle = "Ajouter un article";
                 // Recherche d'un id dans l'url
-                \Renderer::render('backend','articles/edit', compact('pageTitle'));
+                \Renderer::render('backend','articles/edit', compact('pageTitle','new'));
             }
-            else // Il y a un id dans l'url
+            else // ID
             {
                 $pageTitle = "Editer un article";
                 $id = $_GET['id'];
@@ -40,7 +138,7 @@ class Admin extends Controller
 
     public function viewArticles()
     {
-        if (isset($_SESSION["username"]))
+        if ($this->admin)
         {
             $pageTitle = "Liste des articles";
             $articles = $this->articleModel->getAll("chapters DESC");
@@ -52,7 +150,7 @@ class Admin extends Controller
 
     public function viewDrafts()
     {
-        if (isset($_SESSION["username"]))
+        if ($this->admin)
         {
             $pageTitle = "Liste des brouillons";
             $drafts = $this->articleModel->getAll('drafts');
@@ -62,75 +160,79 @@ class Admin extends Controller
         }
     }
 
-    public function viewTrash()
-    {           
-        if(isset($_POST['trash']))
-        {
-            $param = $_POST['trash'];
-        }
-        else if(isset($_SESSION['last_view']))
-        {
-            $param = $_SESSION['last_view'];
-        }
-        else
-        {
-            $param = "articles";
-        }
-
-        $pageTitle = "Corbeille";
-
-        $articles = $this->articleModel->getAll("articles_trash");
-        $drafts = $this->articleModel->getAll("drafts_trash");
-
-        $comments = $this->commentModel->getAll();
-        $comments_in_trash = $this->commentModel->get('trash');
-
-        \Renderer::render('backend','trash', compact('pageTitle', 'articles','drafts', 'comments', 'param','comments_in_trash'));
-    }
-
     public function viewComments()
-    {            
-        if(isset($_POST['comment']))
+    {       
+        if ($this->admin)
         {
-            $param = $_POST['comment'];
-        }
-        else
-        {
-            $param = "comments";
-        }
+            if(isset($_POST['comment']))
+            {
+                $param = $_POST['comment'];
+            }
+            else
+            {
+                $param = "comments";
+            }
 
-        $pageTitle = "Commentaires";
-        $_SESSION['last_view'] = 'comments';
+            $pageTitle = "Commentaires";
+            $_SESSION['last_view'] = 'comments';
 
-        $comments = $this->commentModel->getAll();
-        $reported = $this->commentModel->get('reported');
-        $pending = $this->commentModel->get('pending');
+            $comments = $this->commentModel->getAll();
+            $reported = $this->commentModel->get('reported');
+            $pending = $this->commentModel->get('pending');
 
-        \Renderer::render('backend','comments', compact('pageTitle', 'comments','reported','pending','param'));
-    }
-
-    public function index()
-    {
-        if (isset($_SESSION["username"]))
-        {
-            $pageTitle = "Bienvenue";
-            $_SESSION['last_view'] = null;
-
-            $user = $this->model->find_user($_SESSION['username']);
-            $_SESSION['name'] = $user['name'] ;
-            $_SESSION['surname'] = $user['surname'];
-
-            $articles = $this->articleModel->findAll("chapters DESC LIMIT 5");
-            $comments = $this->commentModel->findAll("created_at DESC LIMIT 3");
-
-            \Renderer::render('backend','index', compact('pageTitle','articles','comments','user'));
-        }
-        else
-        {
-            $this->login();
+            \Renderer::render('backend','comments', compact('pageTitle', 'comments', 'reported', 'pending', 'param'));
         }
     }
+ 
+    public function viewUsers()
+    {  
+        if ($this->admin)
+        {
+            if(isset($_POST['user_type']))
+            {
+                $type = $_POST['user_type'];
+            }
+            else
+            {
+                $type = "admin";
+            }
 
+            $pageTitle = "Liste des utilisateurs";
+            $users = $this->userModel->getAll();
+
+            \Renderer::render('backend','users', compact('pageTitle', 'users', 'type'));
+        }
+    }
+
+    public function viewTrash()
+    {      
+        if ($this->admin)
+        {
+            if(isset($_POST['trash']))
+            {
+                $param = $_POST['trash'];
+            }
+            else if(isset($_SESSION['last_view']))
+            {
+                $param = $_SESSION['last_view'];
+            }
+            else
+            {
+                $param = "articles";
+            }
+
+            $pageTitle = "Corbeille";
+
+            $articles = $this->articleModel->getAll("articles_trash");
+            $drafts = $this->articleModel->getAll("drafts_trash");
+
+            $comments = $this->commentModel->getAll();
+            $comments_in_trash = $this->commentModel->get('trash');
+
+            \Renderer::render('backend','trash', compact('pageTitle', 'articles','drafts', 'comments', 'param','comments_in_trash'));
+        }
+    }
+   
     public function add()
     {
         if (isset($_SESSION["username"]))
@@ -159,61 +261,6 @@ class Admin extends Controller
         {
             $this->index();
         }
-    }
-
-    public function login()
-    {
-        if (!isset($_SESSION["username"]))
-        {
-            $pageTitle = "Se connecter";
-            $admin = false;
-            \Renderer::render('backend','login', compact('pageTitle', 'admin'));
-        }
-        else
-        {
-            $this->index();
-        }
-    }
-
-    public function verify()
-    {
-        if (!isset($_SESSION["username"]))
-        {
-            // Vérifier le username entré
-            $username = htmlspecialchars($_POST['username']);
-            // Chercher l'utilisateur dans la BDD
-            $user = $this->model->find_user($username);
-
-            if ($user)
-            {
-                if (password_verify($_POST['password'], $user['password']))
-                {
-                    if ($user['type'] == 'admin') 
-                    {
-                        //$this->session->startSession();
-                        $_SESSION["username"] = $username;
-                        $this->index();
-                    }
-                    else
-                    {
-                        die('Vous n\'êtes pas admin');
-                        \Http::redirect('index.php');
-                    }        
-                }
-                else
-                {
-                    die('Login ou mot de passe incorrect');
-                }
-            }
-            else
-            {
-                die("Aucun utilisateur enregistré comme" . $_POST['username'] . "n'a été trouvé");
-            }
-        }
-        else
-        {
-            $this->index();
-        }     
     }
 
     public function logout()

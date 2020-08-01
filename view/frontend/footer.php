@@ -29,7 +29,8 @@
           <!-- Alternative header -->
           <?php if (isset($_SESSION["username"])) { ?>      
             <li>
-              <a href="index.php?controller=admin&task=logout" class="text-white">Se déconnecter</a>
+              <a href="index.php?controller=admin&task=logout" class="text-white" data-toggle="modal" data-target="#exampleModalCenter">Se déconnecter</a>
+              <?php include 'view/backend/logout-modal.php' ?>
             </li>
             <li>
               <a href="index.php?controller=admin&task=add" class="text-white">Ajouter un utilisateur</a>

@@ -1,2 +1,3 @@
 // Init Tiny MCE
-const tinyMCE = new TinyMCE;
+const modal = new Modal;
+const nav = new Nav;

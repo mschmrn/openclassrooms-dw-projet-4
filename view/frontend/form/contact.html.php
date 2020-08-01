@@ -1,6 +1,6 @@
 
 
-<section id="author-introduction " class="bg-primary py-5">
+<section id="author-introduction" class="bg-primary py-5">
 
 <div class="container-fluid ">
     <div class="d-flex flex-row-reverse">
@@ -8,10 +8,10 @@
     </div>
     <div class="row mx-auto">
         <div class="col-8">
-            <h1 class="m-0 text-left text-secondary display-3">Jean Forteroche</h1>
+            <h1 class="m-0 text-left text-secondary display-3 color-invert">Jean Forteroche</h1>
         </div>
         <div class="col-4 align-self-end">
-            <h4 class="text-right text-white text-uppercase">Écrivain et conteur</h4>
+            <h4 class="text-right text-white text-uppercase color-invert">Écrivain et conteur</h4>
         </div>
     </div>
     <div class="row mx-auto">
@@ -55,8 +55,6 @@
 
 </section>
 
-
-
 <section id="author-contact" class="bg-white py-5">
     <div class="container-fluid">
 
@@ -73,7 +71,7 @@
 
         <div class="row mx-auto">
             <div class="col-6 offset-1 py-4">
-                <form action="index.php?controller=***&task=***" method="POST">
+                <form action="index.php?controller=contact&task=mail" method="POST">
                     <div class="form-group">
                         <label for="content">Nom</label>
                         <input type="name" class="form-control" name="name" id="name" placeholder="Jean Dumont">
@@ -84,7 +82,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Sujet du message</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
+                        <select name="topic" class="form-control" id="exampleFormControlSelect1">
                             <option>Contact personnel</option>
                             <option>Contact professionnel</option>
                             <option>Demande d'information</option>
@@ -98,15 +96,12 @@
                     <div class="form-group">
                         <input type="hidden" name="article_id" value="<?= $article_id ?>">
                     </div>
-                    <button type="submit" class="btn btn-outline-primary">Envoyer</button>
+                    <button type="submit" name="send" class="btn btn-outline-primary">Envoyer</button>
                 </form>
             </div>
             <div class="col-3 offset-1 align-self-center">
                 <p>Romancier et acteur, lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit amet,dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit amet, Romancier et acteur, lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
         </div>
-
-
-</div>
 
 </section>

@@ -3,17 +3,17 @@
         <div class="row mx-2">
             <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 pt-5">
                 <div class="row mx-auto">
-                    <h1 class="display-1 text-left">Jean Forteroche</h1>
+                    <h1 class="text-focus-in display-1 text-left color-invert">Jean Forteroche</h1>
                 </div>
                 <div class="row mx-auto">
                     <h4 class="text-left">Passionné de lettres depuis plus de 20 ans, je vous partage ici les chapitres de mon nouveau livre à paraître à la rentrée <i>Un billet pour L'Alaska.</i></h2>
                 </div>
                 <div class="row mx-auto text-center py-4">
-                    <button type="button" class="btn btn-light mr-2 py-2">Mon nouveau livre</button>
+                    <a href="index.php?controller=article&task=index"><button type="button" class="btn btn-light mr-2 py-2">Mon nouveau livre</button></a>
                     <a href="#welcome-book"><button type="button" class="btn btn-outline-secondary py-2">Mon dernier livre</button></a>
                 </div>
                 <div class="row mx-auto pt-5">
-                    <h2 class="display-4 text-left text-white text-uppercase mb-0">Écrivain et conteur.</h2>
+                    <h2 class="text-focus-in display-4 text-left text-white text-uppercase mb-0 color-invert">Écrivain et conteur.</h2>
                 </div>
             </div>
             <div class="col-8 m-0 text-center">

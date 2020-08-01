@@ -39,7 +39,7 @@
 										<p class="card-text text-muted">Publié le <?= \Date::display($article['created_at']); ?></p>
 									<?php } ?>
 								</div>
-								<!-- BUTTON -->
+								<!-- ARROW -->
 								<div class="d-flex pr-2">							
 									<a href="index.php?controller=article&task=preview&id=<?= $article['id'] ?>"><img src="../public/images/arrow.svg" style="height:10px;" alt=""></a>
 								</div>
@@ -58,7 +58,7 @@
 		<!-- SECOND COLUMN -->
 		<div class="col-4">	
 			<!-- BUTTON -->
-			<a href="index.php?controller=admin&task=edit"><button class="btn btn-primary py-3 col-12 text-uppercase"><img src="../public/images/+.svg" alt=""> Écrire un article</button></a>	
+			<a href="index.php?controller=admin&task=editArticle"><button class="btn btn-primary py-3 col-12 text-uppercase"><img src="../public/images/+.svg" alt=""> Écrire un article</button></a>	
 			<!-- COMMENTS LIST -->
 			<div class="row mx-auto">
 				<h4 class="mt-3 mb-2">Les derniers commentaires</h4>

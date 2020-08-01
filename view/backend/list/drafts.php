@@ -25,7 +25,7 @@
                     <!-- BUTTONS -->
                     <?php if($draft['trash'] == '0'){ ?>
                     <div class="d-flex flex-nowrap pr-2">
-                        <a href="index.php?controller=admin&task=edit&id=<?= $draft['id'] ?>"><img src="../public/images/edit.svg" alt=""></a>                        
+                        <a href="index.php?controller=admin&task=editArticle&id=<?= $draft['id'] ?>"><img src="../public/images/edit.svg" alt=""></a>                        
                         <a href="index.php?controller=article&task=preview&id=<?= $draft['id'] ?>"><img src="../public/images/view.svg" alt="" class="px-2"></a>                    
 
                         <a href="index.php?controller=article&task=delete&id=<?= $draft['id'] ?>"><img src="../public/images/delete.svg" alt="" onclick="return window.confirm(`Êtes vous sûr de vouloir mettre cet article à la corbeille ?`)"></a>

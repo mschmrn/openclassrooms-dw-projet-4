@@ -1,6 +1,22 @@
-<div class="bg-info text-right py-xl-3 pr-xl-5 p-4">
+<div class="col-12 d-flex justify-content-end align-items-center bg-info text-right">
   <?php if (isset($_SESSION["username"])) { ?>
-      <a class="mx-2"><em><?= $_SESSION['name'] ?> <?= $_SESSION['surname'] ?> </em></a>
-      <a class="ml-2 logout" href="index.php?controller=admin&task=logout" onclick="return window.confirm(`Êtes vous sûr d'en vouloir plus ?`)"><img src="../public/images/more.svg" alt=""></a>
-  <?php } ?>
-</div>
+    <em>
+      <?= $_SESSION['name'] ?> <?= $_SESSION['surname'] ?> 
+    </em>
+ 
+  <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <img src="../public/images/more.svg" alt="">
+  </button>
+  <div class="dropdown-menu bg-form border-0" aria-labelledby="dropdownMenu2">
+      <form action="index.php?controller=admin&task=index_options" method="POST">
+        <button type="submit" name="index" value="back" class="dropdown-item " type="button">Retour au site</button>
+        <button type="submit" name="index" value="user" class="dropdown-item" type="button">Créer un utilisateur</button>
+        <div class="dropdown-divider"></div>
+        <button type="submit" name="index" value="logout" class="dropdown-item " type="button">Se déconnecter</button>
+      </form>
+  </div> <?php } ?>
+</div> 
+
+
+
+

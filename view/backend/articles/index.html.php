@@ -7,7 +7,7 @@
                     <h1 class="text-secondary">Tous les articles publiés</h1>
                 </div>
                 <div class="">
-                    <a href="index.php?controller=admin&task=addArticle"><button name="write-article" class="btn btn-primary text-uppercase" value="write" id="write">Écrire un article</button></a>
+                    <a href="index.php?controller=admin&task=editArticle"><button name="write-article" class="btn btn-primary text-uppercase" value="write" id="write">Écrire un article</button></a>
                 </div>
             </div>
         </div>

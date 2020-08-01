@@ -12,7 +12,7 @@ class Admin extends Model
         $query->execute(compact('username', 'email', 'type', 'password'));
     }
 
-    public function find_user(string $username)
+    public function find_user(string $username) : array
     {
         $query = $this->pdo->prepare("SELECT * FROM `oc_projet4_users` WHERE username='$username'");
         $query->execute(['username' => $username]);

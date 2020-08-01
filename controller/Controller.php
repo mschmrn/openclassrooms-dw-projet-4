@@ -11,9 +11,9 @@ abstract class Controller
 
     public function __construct()
     {
-
         $this->model = new $this->modelName(); // new \Model\Article()
         $this->session = \Session::getInstance();    
+        $this->admin = \Admin::checkAdmin(); // 
     }
 
     public function restore() // Delete an article
@@ -41,36 +41,30 @@ abstract class Controller
          */
         if($item['trash'] != 0)
         {
-            $this->model->restore($id);
+            if($item == 'article' || $item == 'comment')
+            {
+                $this->model->restore($id, true);
+            }
+            else
+            {
+                $this->model->restore($id);
+            }
         }
         else
         {
             die('déjà restoré');
         }
         
-        /*if($article['draft'] == '1')
-        {
-            $param = 'drafts';
-        }*/
-        
         \Http::redirect("index.php?controller=admin&task=viewTrash"); 
     }
 
-
     public function delete() // Delete a comment
     {
-        /**
-         * Récupération du paramètre "id" en GET
-         */
         if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
-            die("Ho ! Fallait préciser le paramètre id en GET !");
+            die("Veillez à préciser le paramètre id en GET !");
         }
 
         $id = $_GET['id'];
-
-        /**
-         * 3. Vérification de l'existence du commentaire
-         */
 
         $item = $this->model->find($id);
         if (!$item)
@@ -78,18 +72,6 @@ abstract class Controller
             die("Aucun commentaire n'a l'identifiant $id !");
         }
 
-        /**
-         * 4. Suppression réelle du commentaire
-         * On récupère l'identifiant de l'article avant de supprimer le commentaire
-         */
-
-        //$article_id = $comment['article_id'];
-
-        /**
-         * 5. Redirection vers l'article en question
-         */
-        //\Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
-        
         if($item['trash'] != 0)
         {
             $this->model->delete($id);

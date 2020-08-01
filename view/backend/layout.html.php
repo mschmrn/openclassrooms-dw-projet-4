@@ -26,14 +26,14 @@
             <?php if(isset($_SESSION["username"])){ ?>
                 <div class="col-2 p-0 bg-secondary">
                     <aside id="sidebar" class="col-12 sidebar p-0 vh-100">
-                        <?php include 'sidebar.php'; ?>
+                        <?php include_once 'sidebar.php'; ?>
                     </aside>
                 </div>
                 <div class="col-10 bg-info p-0">
-                    <header class="header col-12 p-0 border-bottom border-grey">
+                    <header class="col-12 header d-flex backend p-0 border-bottom border-grey">
                         <?php include 'header.php'; ?>
                     </header>
-                    <main class="main col-12">
+                    <main class="col-12 main ">
                         <?= $pageContent; ?>
                     </main>
                 </div>    

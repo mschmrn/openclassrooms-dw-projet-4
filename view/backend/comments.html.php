@@ -1,6 +1,4 @@
-
-
-<section id="trash" class="bg-info ">
+<section id="comments" class="bg-info ">
 	<div class="container-fluid py-5">
         <!-- TITLE -->
         <div class="row mx-auto">

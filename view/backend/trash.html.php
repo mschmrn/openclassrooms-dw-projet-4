@@ -23,17 +23,17 @@
                             <ul class="nav nav-tabs card-header-tabs">
                                 <li class="nav-item">
                                     <button class="btn" type="submit" name="trash" value="articles" active>
-                                        <h4 class="color-hover<?php if($param == 'articles'){ ?> text-primary border border-top-0 border-right-0 border-left-0 border-primary border-bottom <?php } ?> ">Articles <sup class="border-bottom-0">(<?= count($articles) ?>)</sup></h4>
+                                        <h4 class="color-hover<?php if($param == 'articles'){ ?> text-primary selected <?php } ?> ">Articles <sup class="border-bottom-0">(<?= count($articles) ?>)</sup></h4>
                                     </button>
                                 </li>
                                 <li class="nav-item">
                                     <button class="btn mx-3" type="submit" name="trash" id="drafts" value="drafts">
-                                        <h4 class="color-hover<?php if($param == 'drafts'){ ?> text-primary border border-top-0 border-right-0 border-left-0 border-primary border-bottom<?php } ?> ">Brouillons <sup class="border-bottom-0">(<?= count($drafts) ?>)</sup></h4>
+                                        <h4 class="color-hover<?php if($param == 'drafts'){ ?> text-primary selected<?php } ?> ">Brouillons <sup class="border-bottom-0">(<?= count($drafts) ?>)</sup></h4>
                                     </button>
                                 </li>
                                 <li class="nav-item">
                                     <button class="btn" type="submit" name="trash" id="comments" value="comments"> 
-                                        <h4 class="color-hover<?php if($param == 'comments'){ ?> text-primary border border-top-0 border-right-0 border-left-0 border-primary border-bottom<?php } ?> ">Commentaires <sup class="border-bottom-0">(<?= count($comments_in_trash) ?>)</sup></h4>
+                                        <h4 class="color-hover<?php if($param == 'comments'){ ?> text-primary selected<?php } ?> ">Commentaires <sup class="border-bottom-0">(<?= count($comments_in_trash) ?>)</sup></h4>
                                     </button>
                                 </li>
                             </ul>

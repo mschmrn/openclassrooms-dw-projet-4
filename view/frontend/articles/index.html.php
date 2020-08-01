@@ -35,11 +35,11 @@
                     <div class="card mt-4 border-0">
                         <h3 class="text-center text-uppercase text-primary">Chapitre <?= $article['chapters'] ?></h3>
                         <a class="text-decoration-none" href="index.php?controller=article&task=show&id=<?= $article['id'] ?>"><h4 class="card-title card-height text-center text-secondary"><?= $article['title'] ?></h4></a>
-                        <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>"><img class="card-img-top" src="../public/images/example.png" alt="Card image cap"></a>
+                        <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>"><img class="card-img-top preview" src="../public/images/example.png" alt="Card image cap"></a>
                         <div class="card-body px-0">
-                            <p class="card-text p-0"><?= \Text::truncate($article['introduction'], 30, true, true); ?></p>
+                            <p class="card-text p-0"><?= \Text::truncate($article['introduction'], 30, true, true); ?><p>                                
                             <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">             
-                                <img src="../public/images/arrow.svg" alt="...">
+                                <img src="../public/images/arrow.svg" class="slide-right" alt="...">
                             </a>
                             <p class="date card-text text-muted text-height-3"><?= \Date::display($article['created_at']); ?></p>
                         </div>

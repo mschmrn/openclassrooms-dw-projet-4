@@ -19,7 +19,7 @@ abstract class Model
      * @return array|bool l'article ou le commentaire si on le trouve, false si on ne le trouve pas
      */
 
-    public function find(int $id)
+    public function find(int $id) : array
     {
         $query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE id = :id");
         $query->execute(['id' => $id]);
@@ -34,9 +34,16 @@ abstract class Model
         $query->execute(compact('id'));
     }
 
-    public function restore(int $id) : void
+    public function restore(int $id, bool $published = false) : void
     {
-        $query = $this->pdo->prepare("UPDATE {$this->table} SET trash = '0', published  = '1' WHERE id = :id");
+        if($published || $this->table == "oc_projet4_comments")
+        {
+            $query = $this->pdo->prepare("UPDATE {$this->table} SET trash = '0', published  = '1' WHERE id = :id");
+        }
+        else
+        {
+            $query = $this->pdo->prepare("UPDATE {$this->table} SET trash = '0', published  = '0' WHERE id = :id");
+        }
         $query->execute(compact('id'));
     }
 
@@ -96,11 +103,6 @@ abstract class Model
         {
             $results = $this->pdo->query("SELECT * FROM {$this->table} WHERE (trash = '1' AND draft = '0')");
         }
-        else if($order == 'reported')
-        {
-            $results = $this->pdo->query("SELECT * FROM {$this->table} WHERE reported = '1'");
-        }
-        
         else
         {
             $results = $this->pdo->query("SELECT * FROM {$this->table}");
@@ -109,16 +111,17 @@ abstract class Model
         return $items;
     }
 
-    public function get(?string $order = "") : array
+    public function get(?string $column = "") : array
     {
-        if($order)
+        if($column)
         {
             $sql = "SELECT * FROM {$this->table}";
-            $sql .= " WHERE " . $order .= "='1'";
+            $sql .= " WHERE " . $column .= "='1'";
             $results = $this->pdo->query($sql);
             $items = $results->fetchAll();
             return $items;
         }
     }
 }
+
 ?>

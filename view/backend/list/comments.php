@@ -30,7 +30,7 @@
 <!-- NO DRAFT SAVED -->
 <?php if($comment[$condition] = '0'){ ?>
     <div class="col-12 py-4" >						
-        <p class="text-left">Aucun commentaire dans la corbeille.</p>
+        <p class="text-left">Aucun commentaire.</p>
     </div>
 <?php } ?>
   
