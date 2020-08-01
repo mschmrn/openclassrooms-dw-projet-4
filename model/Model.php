@@ -10,6 +10,7 @@ abstract class Model
     public function __construct()
     {
         $this->pdo = \Database::getPdo(); // L'antislash signifie que Database n'est dans aucun namespace
+        $this->search = Unsplash\Search::class;
     }
 
     /**
@@ -102,6 +103,10 @@ abstract class Model
         else if($order == 'articles_trash')
         {
             $results = $this->pdo->query("SELECT * FROM {$this->table} WHERE (trash = '1' AND draft = '0')");
+        }
+        else if($order == 'admin')
+        {
+            $results = $this->pdo->query("SELECT * FROM {$this->table} WHERE type = 'admin' ");
         }
         else
         {

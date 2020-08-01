@@ -13,7 +13,9 @@ abstract class Controller
     {
         $this->model = new $this->modelName(); // new \Model\Article()
         $this->session = \Session::getInstance();    
-        $this->admin = \Admin::checkAdmin(); // 
+        $this->admin = \Admin::checkAdmin(); //
+
+        $this->unsplash = \Database::initUnsplash(); //
     }
 
     public function restore() // Delete an article
@@ -41,13 +43,13 @@ abstract class Controller
          */
         if($item['trash'] != 0)
         {
-            if($item == 'article' || $item == 'comment')
+            if($item == 'draft')
             {
-                $this->model->restore($id, true);
+                $this->model->restore($id);
             }
             else
             {
-                $this->model->restore($id);
+                $this->model->restore($id, true);
             }
         }
         else

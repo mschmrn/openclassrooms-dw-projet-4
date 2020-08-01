@@ -7,7 +7,8 @@
  * puis on va boucler dessus pour afficher chacun d'entre eux
  */
 
-require_once('libraries/autoload.php');
+require_once 'libraries/autoload.php';
+require_once 'vendor/autoload.php';
 
 \Application::process();
 

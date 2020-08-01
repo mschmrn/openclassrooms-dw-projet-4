@@ -1,4 +1,3 @@
-
 <section id="chapters-welcome" class="bg-primary py-5">
 
     <div class="container-fluid ">
@@ -27,6 +26,7 @@
     </div>
 </section>
 
+
 <section id="chapters-deck" class="py-5">
     <div class="card-deck m-0">
         <div class="row mx-auto">
@@ -35,7 +35,8 @@
                     <div class="card mt-4 border-0">
                         <h3 class="text-center text-uppercase text-primary">Chapitre <?= $article['chapters'] ?></h3>
                         <a class="text-decoration-none" href="index.php?controller=article&task=show&id=<?= $article['id'] ?>"><h4 class="card-title card-height text-center text-secondary"><?= $article['title'] ?></h4></a>
-                        <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>"><img class="card-img-top preview" src="../public/images/example.png" alt="Card image cap"></a>
+                        <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">
+                        <img class="card-img-top preview" src="<?= $cardimg[$id++]["urls"]["regular"]; ?>" alt="Card image cap" height='200px' width='auto'></a>
                         <div class="card-body px-0">
                             <p class="card-text p-0"><?= \Text::truncate($article['introduction'], 30, true, true); ?><p>                                
                             <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">             
@@ -44,11 +45,13 @@
                             <p class="date card-text text-muted text-height-3"><?= \Date::display($article['created_at']); ?></p>
                         </div>
                         <div class="card-footer bg-white">
-                            <small class="text-muted">Temps de lecture : <?= \Text::read_time($article['content']) ?> minutes</small>
+                        <small class="text-muted">Temps de lecture : <?= $reading_time = \Text::read_time($article['content']) ?> <?php if ($reading_time <= 1) { ?>minute<?php } else { ?>minutes<?php } ?></small>
                         </div>
                     </div>
                 </div>
-            <?php endforeach ?>
+            <?php endforeach ?>          
+
         </div>
     </div>
 </section>
+

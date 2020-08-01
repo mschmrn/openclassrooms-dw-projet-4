@@ -12,6 +12,7 @@ class Article extends Controller
         parent::__construct();
         $this->adminController = new \Controller\Admin();
         $this->preview = false;
+
     }
 
     public function home()
@@ -22,10 +23,23 @@ class Article extends Controller
 
     public function index()
     {
+        $cardimg = $this->displayPictures();
         $articles = $this->model->findAll("chapters DESC");
         $pageTitle = "Articles";
+        $id = 0;
 
-        \Renderer::render('frontend','articles/index', compact('pageTitle', 'articles'));
+        \Renderer::render('frontend','articles/index', compact('pageTitle', 'articles', 'cardimg', 'id'));
+    }
+
+    public function displayPictures()
+    {
+        $search = 'alaska';
+        $page = 1;
+        $per_page = 30;
+        $orientation = 'landscape';
+
+        $images = \Crew\Unsplash\Search::photos($search, $page, $per_page, $orientation);
+        return $images;
     }
 
     public function preview()

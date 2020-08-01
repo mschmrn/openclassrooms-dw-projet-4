@@ -199,8 +199,9 @@ class Admin extends Controller
 
             $pageTitle = "Liste des utilisateurs";
             $users = $this->userModel->getAll();
+            $admin = $this->userModel->getAll('admin');
 
-            \Renderer::render('backend','users', compact('pageTitle', 'users', 'type'));
+            \Renderer::render('backend','users', compact('pageTitle', 'users', 'admin', 'type'));
         }
     }
 

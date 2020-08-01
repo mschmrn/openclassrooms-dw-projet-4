@@ -15,6 +15,11 @@ class Article extends Model
      * @return void
      */
 
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     public function insert(string $title, string $introduction, string $content, int $draft, int $published, int $chapters) : void
     {
         $query = $this->pdo->prepare("INSERT INTO oc_projet4_articles SET title = :title, introduction = :introduction, content = :content, draft = :draft, published = :published, chapters = :chapters, created_at = NOW()");
@@ -42,6 +47,7 @@ class Article extends Model
         $row = $query->fetch();
         return intval($row["maxchapter"],10)+1;
     }
+
 }
 
 ?>
