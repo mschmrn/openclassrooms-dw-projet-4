@@ -6,11 +6,11 @@
         <div class="card flex-row flex-wrap border-top-0 border-left-0 border-right-0 border-bottom border-grey py-2">
             <!-- IMAGE -->
             <div class="card-header col-xl-3 border-0 bg-white">
-                <img src="../public/images/example-admin.jpg" class="w-100" alt="">
+                <img src="<?= $cardimg[$img_id++]["urls"]["regular"]; ?>" class="w-100" alt="">
             </div>
             <!-- CONTENT -->
             <div class="card-block col-xl-9 p-xl-2 p-4 bg-white">
-                <a href="index.php?controller=admin&task=editArticle&id=<?= $article['id'] ?>"><h2 class="card-title card-chapter text-primary">CHAPITRE <?= $article['chapters'] ?></h2></a>
+                <a href="index.php?controller=admin&task=editArticle&id=<?= $article['id'] ?>"><h2 class="card-title card-chapter text-primary">Chapitre <?= $article['chapters'] ?></h2></a>
                 <h5 class="card-title"><?= $article['title'] ?></h5>
                 <p class="card-text text-muted"><?= \Text::truncate($article['content'], 40, true, true); ?></p>
                 <div class="d-flex flex-row justify-content-between justify-content-center text-muted border-0 bg-white w-100">

@@ -85,5 +85,18 @@ abstract class Controller
             \Http::redirect("index.php?controller=admin&task=viewTrash");
         }
     }
+
+    public function displayPictures(string $search, $page="")
+    {
+        if(!isset($page))
+        {
+            $page = 1;
+        }
+        $per_page = 30;
+        $orientation = 'landscape';
+
+        $images = \Crew\Unsplash\Search::photos($search, $page, $per_page, $orientation);
+        return $images;
+    }
 }
 ?>

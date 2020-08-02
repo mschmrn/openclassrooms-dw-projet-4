@@ -23,23 +23,12 @@ class Article extends Controller
 
     public function index()
     {
-        $cardimg = $this->displayPictures();
+        $cardimg = $this->displayPictures('alaska');
         $articles = $this->model->findAll("chapters DESC");
         $pageTitle = "Articles";
         $id = 0;
 
         \Renderer::render('frontend','articles/index', compact('pageTitle', 'articles', 'cardimg', 'id'));
-    }
-
-    public function displayPictures()
-    {
-        $search = 'alaska';
-        $page = 1;
-        $per_page = 30;
-        $orientation = 'landscape';
-
-        $images = \Crew\Unsplash\Search::photos($search, $page, $per_page, $orientation);
-        return $images;
     }
 
     public function preview()

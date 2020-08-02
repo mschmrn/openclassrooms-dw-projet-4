@@ -69,7 +69,7 @@ abstract class Model
 
     public function findAll(?string $param = "") : array
     {
-        $sql = "SELECT * FROM {$this->table}";
+        $sql = "SELECT * FROM {$this->table} WHERE published = '1'";
         if ($param == ('chapters DESC' || 'chapters ASC'))
         {
             $sql .= " ORDER BY " . $param;

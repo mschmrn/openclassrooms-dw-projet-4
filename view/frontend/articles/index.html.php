@@ -36,7 +36,7 @@
                         <h3 class="text-center text-uppercase text-primary">Chapitre <?= $article['chapters'] ?></h3>
                         <a class="text-decoration-none" href="index.php?controller=article&task=show&id=<?= $article['id'] ?>"><h4 class="card-title card-height text-center text-secondary"><?= $article['title'] ?></h4></a>
                         <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">
-                        <img class="card-img-top preview" src="<?= $cardimg[$id++]["urls"]["regular"]; ?>" alt="Card image cap" height='200px' width='auto'></a>
+                        <img class="card-img-top preview" src="<?= $cardimg[$id++]["urls"]["regular"]; ?>" alt="Card image cap" height='220px' width='auto'></a>
                         <div class="card-body px-0">
                             <p class="card-text p-0"><?= \Text::truncate($article['introduction'], 30, true, true); ?><p>                                
                             <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">             

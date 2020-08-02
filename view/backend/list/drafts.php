@@ -6,11 +6,11 @@
         <div class="card flex-row flex-wrap border-0 py-2">
             <!-- IMAGE -->
             <div class="card-header col-xl-3 border-0 bg-white">
-                <img src="../public/images/example-admin.jpg" class="w-100" alt="">
+                <img src="<?= $cardimg[$img_id++]["urls"]["regular"]; ?>" class="w-100" alt="">
             </div>
             <!-- CONTENT -->
             <div class="card-block col-xl-9 p-xl-2 p-4 bg-white">
-                <h2 class="card-title card-chapter text-primary">CHAPITRE <?= $draft['chapters'] ?></h2>
+                <h2 class="card-title card-chapter text-primary">Chapitre <?= $draft['chapters'] ?></h2>
                 <h5 class="card-title"><?= $draft['title'] ?></h5>
                 <p class="card-text text-muted"><?= \Text::truncate($draft['content'], 40, true, true); ?></p>
                 <div class="d-flex flex-row justify-content-between justify-content-center text-muted border-0 bg-white w-100">
@@ -19,7 +19,7 @@
                         <?php if(isset($article['modified_at'])) { ?>
                             <i class="card-text text-muted">Modifié le <?= \Date::display($draft['modified_at']); ?></i>
                         <?php } else { ?>
-                            <p class="card-text text-muted">Publié le <?= \Date::display($draft['created_at']); ?></p>
+                            <p class="card-text text-muted">Créé le <?= \Date::display($draft['created_at']); ?></p>
                         <?php } ?>
                     </div>
                     <!-- BUTTONS -->

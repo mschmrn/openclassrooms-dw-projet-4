@@ -81,8 +81,10 @@ class Admin extends Controller
             $articles = $this->articleModel->findAll("chapters DESC LIMIT 5");
             $comments = $this->commentModel->findAll("created_at DESC LIMIT 3");
             $_SESSION['last_view'] = null;
+            $cardimg = $this->displayPictures('alaska');
+            $img_id = 0;
 
-            \Renderer::render('backend','index', compact('pageTitle','articles','comments','user'));
+            \Renderer::render('backend','index', compact('pageTitle','articles','comments','user', 'cardimg', 'img_id'));
         }
         else
         {
@@ -141,9 +143,12 @@ class Admin extends Controller
         if ($this->admin)
         {
             $pageTitle = "Liste des articles";
-            $articles = $this->articleModel->getAll("chapters DESC");
+            $articles = $this->articleModel->getAll("chapters DESC");   
+            $cardimg = $this->displayPictures('alaska');
+            $img_id = 0;
 
-            \Renderer::render('backend','articles/index', compact('pageTitle', 'articles'));
+
+            \Renderer::render('backend','articles/index', compact('pageTitle', 'articles', 'cardimg', 'img_id'));
             $_SESSION['last_view'] = 'articles';
         }
     }
@@ -154,8 +159,10 @@ class Admin extends Controller
         {
             $pageTitle = "Liste des brouillons";
             $drafts = $this->articleModel->getAll('drafts');
+            $cardimg = $this->displayPictures('alaska', 2);
+            $img_id = 0;
 
-            \Renderer::render('backend','articles/drafts', compact('pageTitle', 'drafts'));
+            \Renderer::render('backend','articles/drafts', compact('pageTitle', 'drafts', 'cardimg', 'img_id'));
             $_SESSION['last_view'] = 'drafts';
         }
     }
