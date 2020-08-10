@@ -1,5 +1,6 @@
+<!-- INTRODUCTION -->
 <section id="chapters-welcome" class="bg-primary py-5">
-
+    <!-- CHAPTERS -->
     <div class="container-fluid ">
         <div class="row mx-auto">
             <div class="col-12">
@@ -7,13 +8,13 @@
             </div>
         </div>
     </div>
-
+    <!-- SEPARATOR -->
     <div class="row mx-auto">
             <div class="col-12">
                 <hr class="text-white bg-white">
             </div>
     </div>
-
+    <!-- BOOK COVER -->
     <div class="container-fluid">
         <div class="row mx-auto">
             <div class="col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5 offset-1 pt-4">
@@ -25,8 +26,7 @@
         </div>
     </div>
 </section>
-
-
+<!-- ARTICLES -->
 <section id="chapters-deck" class="py-5">
     <div class="card-deck m-0">
         <div class="row mx-auto">
@@ -36,7 +36,7 @@
                         <h3 class="text-center text-uppercase text-primary">Chapitre <?= $article['chapters'] ?></h3>
                         <a class="text-decoration-none" href="index.php?controller=article&task=show&id=<?= $article['id'] ?>"><h4 class="card-title card-height text-center text-secondary"><?= $article['title'] ?></h4></a>
                         <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">
-                        <img class="card-img-top preview" src="<?= $cardimg[$id++]["urls"]["regular"]; ?>" alt="Card image cap" height='220px' width='auto'></a>
+                        <img class="card-img-top preview" src="<?= $article['img_url'] ?>" alt="Vignette d'illustration de l'article" height='220px' width='auto'></a>
                         <div class="card-body px-0">
                             <p class="card-text p-0"><?= \Text::truncate($article['introduction'], 30, true, true); ?><p>                                
                             <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">             
@@ -50,7 +50,6 @@
                     </div>
                 </div>
             <?php endforeach ?>          
-
         </div>
     </div>
 </section>

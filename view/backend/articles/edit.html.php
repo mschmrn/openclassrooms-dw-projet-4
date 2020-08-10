@@ -34,7 +34,7 @@
 				<div class="col-12">
 					<label for="introduction"><h3 class="m-0">Description</h3></label>
 					<input type="text" class="form-control bg-form border-0" minlength="20" maxlength="140" name="introduction" id="introduction" placeholder="Décrivez le chapitre en quelques mots" value='<?php if(isset($draft)){ echo htmlspecialchars($draft['introduction'], ENT_QUOTES);} ?>' required>
-					<small id="emailHelp" class="form-text text-muted">Vous êtes limités à 20 mots minimum et 140 mots maximum.</small>
+					<small id="descriptionHelp" class="form-text text-muted">Vous êtes limités à 20 mots minimum et 140 mots maximum.</small>
 				</div>
 			</div>
 			<!-- CHAPTER -->
@@ -42,6 +42,32 @@
 				<div class="col-12">
 					<label for="chapter"><h3 class="m-0">Chapitre</h3></label>
 					<input type="text" class="form-control bg-form border-0" minlength="1" maxlength="3" name="chapter" id="chapter" placeholder="Entrez le numéro de chapitre" value='<?php if(isset($draft)){ echo $draft['chapters']; } else { echo $new; } ?>' required <?php if(isset($draft)){ ?> readonly <?php } ?>>
+				</div>
+			</div>
+			<!-- TEST -->
+			<div class="row mx-auto form-group">
+				<div class="col-12">
+					<label for="chapter">
+						<h3 class="m-0">Image de l'article</h3>
+					</label>
+					<?php if(isset($draft)){ ?>
+						<small id="imageHelp" class="form-text text-muted">Image d'illustration pour votre article.</small>
+						<figure id='cardimg'>
+							<img class="cardimg" src="<?= $draft['img_url'] ?>"
+						></figure>
+						<input type="hidden" id="photo" name="photo" value="<?= $draft['img_url'] ?>">
+					<?php } else { ?>					
+						<small id="imagesHelp" class="form-text text-muted">Veuillez sélectionner une vignette d'illustration pour votre chapitre.</small>
+						<figure id='cardimages' class="d-flex flex-row flex-wrap justify-content-around align-items-center w-75"></figure>
+						<small id="imagesHelp" class="form-text text-muted">Autres mots-clés disponibles :</small>
+						<div class="d-flex">
+							<span class="btn btn-secondary testJS">Dark</span>
+							<span class="btn btn-secondary testJS mx-2">Northern Lights</span>
+							<span class="btn btn-secondary testJS ">Alaska</span>
+							<span class="btn btn-secondary testJS mx-2">Forest</span>
+						</div>
+						<input type="hidden" id="photo" name="photo" value="<?php if(isset($draft)){ echo $draft['img_url']; } ?>">
+					<?php } ?>
 				</div>
 			</div>
 			<!-- CONTENT -->
@@ -62,7 +88,6 @@
 							plugins: 'table wordcount autosave',
 							toolbar: 'restoredraft',
 							skin:'naked',
-							content_css: '//www.tiny.cloud/css/codepen.min.css',
 							content_style: '.left { text-align: left; } ' +
 								'img.left { float: left; } ' +
 								'table.left { float: left; } ' +

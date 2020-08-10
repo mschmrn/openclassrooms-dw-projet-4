@@ -2,12 +2,11 @@
 
 class Database
 {
-    // Un singleton permet de limiter le nombre de connexions à la base de données :
+    // Singleton which limits connection attempts to the Database
     private static $instance = null;
 
     /**
-     * Retourne une connection à la base de données
-     * 
+     * @method getPdo Returns Database connection
      * @return PDO
      */
 
@@ -23,16 +22,6 @@ class Database
         }
 
         return self::$instance;
-    }
-
-    public static function initUnsplash()
-    {
-        Crew\Unsplash\HttpClient::init([
-            'applicationId'	=> 'LWTE7Qs3-PXo38YWLlKnXoypsn6xGLK7Vr2HR93jua0',
-            'secret'	=> 'YaI6w_i50jj395LoAzaZrHpx5LzvYcZieyuh07qxqnZA',
-            'callbackUrl'	=> 'https://projet-4-oc.ismaeljouhari.com/oauth/callback',
-            'utmSource' => 'projet-4-oc'
-        ]);
     }
 }
 

@@ -1,3 +1,3 @@
-// Init Tiny MCE
+const ajax = new Ajax;
+const test = new Images;
 const modal = new Modal;
-const nav = new Nav;

@@ -24,7 +24,7 @@
 					<div class="card flex-row flex-wrap border-0 py-2">
 						<!-- IMAGE -->
 						<div class="card-header col-xl-3 border-0 bg-white">
-							<img src="<?= $cardimg[$img_id++]["urls"]["regular"]; ?>" class="w-100" alt="">
+							<img src="<?= $article['img_url'] ?>" class="w-100" alt="">
 						</div>
 						<!-- CONTENT -->
 						<div class="card-block col-xl-9 p-2 bg-white">

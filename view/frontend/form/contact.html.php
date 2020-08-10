@@ -1,26 +1,24 @@
-
-
+<!-- WRITER'S BIO -->
 <section id="author-introduction" class="bg-primary py-5">
-
-<div class="container-fluid ">
-    <div class="d-flex flex-row-reverse">
-        <div class="p-2"><img src="../public/images/author.jpg"></div>
-    </div>
-    <div class="row mx-auto">
-        <div class="col-8">
-            <h1 class="m-0 text-left text-secondary display-3 color-invert">Jean Forteroche</h1>
+    <div class="container-fluid ">
+        <div class="d-flex flex-row-reverse">
+            <div class="p-2"><img src="../public/images/author.jpg"></div>
         </div>
-        <div class="col-4 align-self-end">
-            <h4 class="text-right text-white text-uppercase color-invert">Écrivain et conteur</h4>
+        <div class="row mx-auto">
+            <div class="col-8">
+                <h1 class="m-0 text-left text-secondary display-3 color-invert">Jean Forteroche</h1>
+            </div>
+            <div class="col-4 align-self-end">
+                <h4 class="text-right text-white text-uppercase color-invert">Écrivain et conteur</h4>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-12">
+                <hr class="bg-secondary">
+            </div>
         </div>
     </div>
-    <div class="row mx-auto">
-        <div class="col-12">
-            <hr class="bg-secondary">
-        </div>
-    </div>
-</div>
-
+<!-- BOOKS PUBLISHED -->
 <div class="container-fluid py-5">
     <div class="row mx-auto">
         <div class="d-flex flex-column col-3 offset-1">
@@ -45,19 +43,18 @@
                 <i>Lointaines écritures (2020)</i>            
             </div>
         </div>
+        <!-- AUTHOR'S PRESENTATION -->
         <div class="d-flex flex-column col-6 offset-1">
             <div class="p-2">
                 <em>Romancier et acteur, lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit amet,dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit amet, Romancier et acteur, lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit amet,dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit ame.</em>
-                </div>
+            </div>
         </div>
     </div>
 </div>
-
 </section>
-
+<!-- CONTACT -->
 <section id="author-contact" class="bg-white py-5">
     <div class="container-fluid">
-
         <div class="row mx-auto">
             <div class="col-12">
                 <h1 class="text-left text-secondary display-4">Me contacter</h1>
@@ -68,9 +65,9 @@
                 <hr class="bg-secondary">
             </div>
         </div>
-
         <div class="row mx-auto">
             <div class="col-6 offset-1 py-4">
+                <!-- FORM -->
                 <form action="index.php?controller=contact&task=mail" method="POST">
                     <div class="form-group">
                         <label for="content">Nom</label>
@@ -103,5 +100,4 @@
                 <p>Romancier et acteur, lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit amet,dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit amet, Romancier et acteur, lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
         </div>
-
 </section>

@@ -1,9 +1,24 @@
 <?php
 
 namespace Controller;
-
+      
 class Admin extends Controller
 {
+    /**
+     * @method login Logs in the user on the admin interface
+     * @method verify Check user's information to login
+     * @method index Shows admin's interface index
+     * @method index_options Button option on admin header
+     * @method editArticle Write or edit an article
+     * @method view Articles View and manage all the articles previously published
+     * @method viewDrafts View and manage all drafts
+     * @method viewComments View and manage comments
+     * @method viewUsers View users
+     * @method viewTrash View and manage trash
+     * @method add Adds an admin or user
+     * @method logout Logout user from admin interface
+     */
+
     protected $modelName = \Model\Admin::class;
 
     public function __construct()
@@ -78,13 +93,11 @@ class Admin extends Controller
             $_SESSION['surname'] = $user['surname'];
 
             $pageTitle = "Bienvenue";
-            $articles = $this->articleModel->findAll("chapters DESC LIMIT 5");
-            $comments = $this->commentModel->findAll("created_at DESC LIMIT 3");
+            $articles = $this->articleModel->getAll("chapters DESC LIMIT 5");
+            $comments = $this->commentModel->getAll("created_at DESC LIMIT 3");
             $_SESSION['last_view'] = null;
-            $cardimg = $this->displayPictures('alaska');
-            $img_id = 0;
 
-            \Renderer::render('backend','index', compact('pageTitle','articles','comments','user', 'cardimg', 'img_id'));
+            \Renderer::render('backend','index', compact('pageTitle','articles','comments','user'));
         }
         else
         {
@@ -92,24 +105,28 @@ class Admin extends Controller
         }
     }
 
+    /**
+     * @method index_options
+     *  # Option 1 : Redirects user to index
+     *  # Option 2 : Adds user
+     *  # Option 3 : Logout from admin interface
+     */
+  
     public function index_options()
     {
-        if($this->admin)
+        switch($_POST['index'])
         {
-            switch($_POST['index'])
-            {
-                case 'back':
-                    \Http::redirect('index.php');
-                break;
+            case 'back':
+                \Http::redirect('index.php');
+            break;
 
-                case 'user':
-                    $this->add();
-                break;
-                
-                case 'logout':
-                    $this->logout();
-                break;
-            }
+            case 'user':
+                $this->add();
+            break;
+            
+            case 'logout':
+                $this->logout();
+            break;
         }
     }
 
@@ -122,19 +139,19 @@ class Admin extends Controller
                 $new = $this->articleModel->newChapter();
                 $pageTitle = "Ajouter un article";
                 // Recherche d'un id dans l'url
-                \Renderer::render('backend','articles/edit', compact('pageTitle','new'));
+                \Renderer::render('backend','articles/edit', compact('pageTitle', 'new'));
             }
             else // ID
             {
                 $pageTitle = "Editer un article";
                 $id = $_GET['id'];
                 $draft = $this->articleModel->find($id);
-                \Renderer::render('backend','articles/edit', compact('pageTitle','draft'));
+                \Renderer::render('backend','articles/edit', compact('pageTitle', 'draft'));
             }
         }
         else 
         {
-            $this->index();
+            $this->login();
         }
     }
 
@@ -144,12 +161,12 @@ class Admin extends Controller
         {
             $pageTitle = "Liste des articles";
             $articles = $this->articleModel->getAll("chapters DESC");   
-            $cardimg = $this->displayPictures('alaska');
-            $img_id = 0;
-
-
-            \Renderer::render('backend','articles/index', compact('pageTitle', 'articles', 'cardimg', 'img_id'));
+            \Renderer::render('backend','articles/index', compact('pageTitle', 'articles'));
             $_SESSION['last_view'] = 'articles';
+        }
+        else
+        {
+            $this->login();
         }
     }
 
@@ -159,11 +176,12 @@ class Admin extends Controller
         {
             $pageTitle = "Liste des brouillons";
             $drafts = $this->articleModel->getAll('drafts');
-            $cardimg = $this->displayPictures('alaska', 2);
-            $img_id = 0;
-
-            \Renderer::render('backend','articles/drafts', compact('pageTitle', 'drafts', 'cardimg', 'img_id'));
+            \Renderer::render('backend','articles/drafts', compact('pageTitle', 'drafts'));
             $_SESSION['last_view'] = 'drafts';
+        }
+        else
+        {
+            $this->login();
         }
     }
 
@@ -179,15 +197,19 @@ class Admin extends Controller
             {
                 $param = "comments";
             }
-
             $pageTitle = "Commentaires";
             $_SESSION['last_view'] = 'comments';
 
             $comments = $this->commentModel->getAll();
-            $reported = $this->commentModel->get('reported');
-            $pending = $this->commentModel->get('pending');
+            $published = $this->commentModel->get('published');
+            $reported = $this->commentModel->get('reported', true);
+            $pending = $this->commentModel->get('pending', true);
 
-            \Renderer::render('backend','comments', compact('pageTitle', 'comments', 'reported', 'pending', 'param'));
+            \Renderer::render('backend','comments', compact('pageTitle', 'comments', 'published', 'reported', 'pending', 'param'));
+        }
+        else
+        {
+            $this->login();
         }
     }
  
@@ -203,12 +225,15 @@ class Admin extends Controller
             {
                 $type = "admin";
             }
-
             $pageTitle = "Liste des utilisateurs";
             $users = $this->userModel->getAll();
             $admin = $this->userModel->getAll('admin');
 
             \Renderer::render('backend','users', compact('pageTitle', 'users', 'admin', 'type'));
+        }
+        else
+        {
+            $this->login();
         }
     }
 
@@ -239,6 +264,10 @@ class Admin extends Controller
 
             \Renderer::render('backend','trash', compact('pageTitle', 'articles','drafts', 'comments', 'param','comments_in_trash'));
         }
+        else
+        {
+            $this->login();
+        }
     }
    
     public function add()
@@ -267,7 +296,7 @@ class Admin extends Controller
         }
         else
         {
-            $this->index();
+            $this->login();
         }
     }
 

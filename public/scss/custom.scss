@@ -1,7 +1,6 @@
 
 /**************************** CSS ****************************/
 
-
 /*** ALL ELEMENTS ***/
 
 *
@@ -49,6 +48,11 @@ input,textarea,select
 	border-top:0!important;
 	border-left:0!important;
 	border-right:0!important;
+}
+
+img
+{
+	outline-style:none;
 }
 
 .vh-100 
@@ -309,6 +313,18 @@ footer h5
 
 /*** ALL ARTICLES FRONT ***/
 
+figure#article-image
+{
+	width:100vw;
+	height:auto;
+}
+
+#article-image img
+{
+	width:100%;
+	height:auto;
+}
+
 #chapters-deck h3
 {
 	font-size:1.4rem;
@@ -444,6 +460,31 @@ sup
 {
 	font-size:0.2rem;
 }
+
+/*** ADMIN SELECT PHOTO ***/ 
+
+.img-opacity
+{
+	opacity:0.2;
+	transition:ease-in 0.3s;
+}
+
+.select-image
+{
+	width:200px;
+	height:auto;
+	cursor:pointer;
+}
+
+.cardimg
+{
+	width:300px;
+	height:auto;
+}
+
+
+
+
 
 /*** TINYMCE ***/ 
 

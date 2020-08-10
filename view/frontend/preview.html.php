@@ -2,7 +2,6 @@
 <div class="d-flex inline-flex justify-content-center align-items-center bg-info py-4">
     Cette page présente un aperçu <?php if(!isset($comment)){ ?> de l'article. <?php } else { ?> du commentaire.<?php } ?>&nbsp;<a href="index.php?controller=admin&task=index">Revenir à la page d'administration.</a>
 </div>
-
 <!-- BEGIN SECTION -->
 <section id="preview-article" class="py-5">
     <!-- TITLE -->
@@ -34,7 +33,6 @@
         </div>
     </div>
 </section>
-
 <!-- CONTENT -->
 <section id="chapter-content" class="pb-4">
     <div class="container-fluid">
@@ -45,7 +43,6 @@
         </div>
     </div>
 </section>
-
 <?php if(isset($comment)) { ?>
     <!-- COMMENTS -->
 <section id="preview-comment" class="py-5">
@@ -60,12 +57,6 @@
                     <blockquote>
                         <p><?= $comment['content'] ?></p>
                     </blockquote>
-                    <div class="d-flex justify-content-between">
-                        <?php if(isset($_SESSION["username"])){ ?>
-                            <a href="index.php?controller=comment&task=delete&id=<?= $comment['id'] ?>" onclick="return window.confirm(`Êtes vous sûr de vouloir supprimer ce commentaire ?`)">Supprimer</a>
-                        <?php } ?>
-                            <a href="index.php?controller=comment&task=report&id=<?= $comment['id'] ?>" onclick="return window.confirm(`Êtes vous sûr de vouloir signaler ce commentaire ?`)">Signaler</a> 
-                    </div>
                 </div>
         </div>
         <div class="row mx-auto">

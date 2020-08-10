@@ -4,6 +4,11 @@ namespace Controller;
 
 class Contact extends Controller
 {
+    /**
+     * @method isInjected Prevent user from injecting data
+     * @method mail Process mail sending
+     */
+
     protected $modelName = \Model\Contact::class;
 
     public function contact()

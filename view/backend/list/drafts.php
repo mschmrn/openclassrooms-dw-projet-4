@@ -6,7 +6,7 @@
         <div class="card flex-row flex-wrap border-0 py-2">
             <!-- IMAGE -->
             <div class="card-header col-xl-3 border-0 bg-white">
-                <img src="<?= $cardimg[$img_id++]["urls"]["regular"]; ?>" class="w-100" alt="">
+                <img src="<?= $draft['img_url'] ?>" class="w-100" alt="">
             </div>
             <!-- CONTENT -->
             <div class="card-block col-xl-9 p-xl-2 p-4 bg-white">
@@ -16,8 +16,8 @@
                 <div class="d-flex flex-row justify-content-between justify-content-center text-muted border-0 bg-white w-100">
                     <!-- DATE -->
                     <div class="d-flex flex-nowrap ">							
-                        <?php if(isset($article['modified_at'])) { ?>
-                            <i class="card-text text-muted">Modifié le <?= \Date::display($draft['modified_at']); ?></i>
+                        <?php if(isset($draft['modified_at'])) { ?>
+                            <i class="card-text text-muted">Modifié le <?= \Date::display($draft['modified_at'], true); ?></i>
                         <?php } else { ?>
                             <p class="card-text text-muted">Créé le <?= \Date::display($draft['created_at']); ?></p>
                         <?php } ?>

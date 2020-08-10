@@ -1,11 +1,12 @@
 <!-- COMMENT LIST -->						
-<?php foreach ($comments as $comment) : if ($comment[$condition] != 0){ ?>	
+<?php foreach ($comments as $comment) : if ($comment[$condition] != 0) { ?>	
     <!-- CONTAINER -->
     <div class="container p-0 border-bottom border-grey border-top-0">
         <!-- CARD -->
         <div class="card flex-row flex-wrap border-0">
             <div class="card-body">
                 <h2 class="card-title card-username">@<?= $comment['author'] ?></h2>
+                <?php if($condition == 'reported') { ?> <p class="text-primary"><i class="fas fa-flag text-primary"></i> Signalé <?= $comment['reported'] ?> fois. </p><?php } ?>
                 <p class="card-text"><?= \Text::truncate($comment['content'], 80, true, true); ?></p>
                 <div class="d-flex justify-content-between pr-2">
                     <!-- DATE -->								

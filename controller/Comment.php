@@ -4,6 +4,13 @@ namespace Controller;
 
 class Comment extends Controller
 {
+    /**
+     * @method valid Confirm a pending comment 
+     * @method report Report a comment
+     * @method preview Previews the comment and the associated article
+     * @method insert Insert a new comment
+     */
+
     protected $modelName = \Model\Comment::class;
     protected $item = 'comment';
 
@@ -11,6 +18,30 @@ class Comment extends Controller
     {
         parent::__construct();
         $this->articleModel = new \Model\Article();
+    }
+
+    public function valid()
+    {
+        if (!empty($_GET['id']) && isset($_SESSION["username"]))
+        {
+            $id = $_GET['id'];
+            $this->model->check($id);
+            \Http::redirect("index.php?controller=admin&task=viewComments");
+        } 
+    }
+
+    public function report()
+    {
+        if (!empty($_GET['id']))
+        {
+            $id = $_GET['id'];
+            $this->model->report($id);
+            die('Votre commentaire a bien été signalé');
+        }
+        else
+        {
+            die('Veuillez sélectionner un commentaire à signaler');
+        }
     }
 
     public function preview()
@@ -87,9 +118,6 @@ class Comment extends Controller
         // Redirection vers l'article en question :
         \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
     }
-
-
-   
 }
 
 ?>

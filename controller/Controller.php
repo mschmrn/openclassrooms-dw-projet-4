@@ -4,9 +4,17 @@ namespace Controller;
 
 abstract class Controller
 {
+    /**
+     * @property model Creates a new model 
+     * @property modelName Name of the model
+     * @property item Item condition for restore @method
+     
+     * @method restore Restores an item from SQL Database
+     * @method delete Delete an item from SQL Database
+     */
+
     protected $model;
     protected $modelName;
-
     protected $item;
 
     public function __construct()
@@ -14,8 +22,6 @@ abstract class Controller
         $this->model = new $this->modelName(); // new \Model\Article()
         $this->session = \Session::getInstance();    
         $this->admin = \Admin::checkAdmin(); //
-
-        $this->unsplash = \Database::initUnsplash(); //
     }
 
     public function restore() // Delete an article
@@ -43,11 +49,11 @@ abstract class Controller
          */
         if($item['trash'] != 0)
         {
-            if($item == 'draft')
+            if($item == ('draft' || 'comment'))
             {
-                $this->model->restore($id);
+                $this->model->restore($id, false);
             }
-            else
+            else 
             {
                 $this->model->restore($id, true);
             }
@@ -62,7 +68,8 @@ abstract class Controller
 
     public function delete() // Delete a comment
     {
-        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
+        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) 
+        {
             die("Veillez à préciser le paramètre id en GET !");
         }
 
@@ -84,19 +91,6 @@ abstract class Controller
             $this->model->trash($id);
             \Http::redirect("index.php?controller=admin&task=viewTrash");
         }
-    }
-
-    public function displayPictures(string $search, $page="")
-    {
-        if(!isset($page))
-        {
-            $page = 1;
-        }
-        $per_page = 30;
-        $orientation = 'landscape';
-
-        $images = \Crew\Unsplash\Search::photos($search, $page, $per_page, $orientation);
-        return $images;
     }
 }
 ?>

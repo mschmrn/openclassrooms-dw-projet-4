@@ -40,6 +40,10 @@ input, textarea, select {
   border-right: 0 !important;
 }
 
+img {
+  outline-style: none;
+}
+
 .vh-100 {
   min-height: 100vh;
 }
@@ -245,6 +249,16 @@ footer h5 {
 }
 
 /*** ALL ARTICLES FRONT ***/
+figure#article-image {
+  width: 100vw;
+  height: auto;
+}
+
+#article-image img {
+  width: 100%;
+  height: auto;
+}
+
 #chapters-deck h3 {
   font-size: 1.4rem;
 }
@@ -352,6 +366,23 @@ header em {
 /*** ADMIN TRASH ***/
 sup {
   font-size: 0.2rem;
+}
+
+/*** ADMIN SELECT PHOTO ***/
+.img-opacity {
+  opacity: 0.2;
+  transition: ease-in 0.3s;
+}
+
+.select-image {
+  width: 200px;
+  height: auto;
+  cursor: pointer;
+}
+
+.cardimg {
+  width: 300px;
+  height: auto;
 }
 
 /*** TINYMCE ***/

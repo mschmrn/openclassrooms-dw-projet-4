@@ -4,6 +4,11 @@ namespace Model;
 
 class Admin extends Model
 {
+    /**
+     * @method insert Insert a new admin in the SQL Database
+     * @method find_user Find a presaved user in the Database
+     */
+
     protected $table = "oc_projet4_users";
 
     public function insert(string $username, string $email, string $type, string $password) : void

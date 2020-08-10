@@ -23,7 +23,7 @@
                             <ul class="nav nav-tabs card-header-tabs">
                                 <li class="nav-item">
                                     <button class="btn" type="submit" name="comment" value="comments" id="comments" active>
-                                        <h4 class="color-hover<?php if($param == 'comments'){ $condition = 'published'; ?> text-primary border border-top-0 border-right-0 border-left-0 border-primary border-bottom <?php } ?> ">Publiés <sup>(<?= count($comments) ?>)</sup></h4>
+                                        <h4 class="color-hover<?php if($param == 'comments'){ $condition = 'published'; ?> text-primary border border-top-0 border-right-0 border-left-0 border-primary border-bottom <?php } ?> ">Publiés <sup>(<?= count($published) ?>)</sup></h4>
                                     </button>
                                 </li>
                                 <li class="nav-item">

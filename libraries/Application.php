@@ -2,6 +2,12 @@
 
 class Application
 {
+    /**
+     * @method process 
+     * Checks url options
+     * Executes Class and method based on url information
+     */
+
     public static function process()
     { 
         $controllerName = "Article";

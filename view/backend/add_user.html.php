@@ -1,11 +1,12 @@
 <section id="adduser" class="bg-info vh-100 col-10">
-
+	<!-- TITLE -->
 	<div class="container-fluid py-5">
 		<div class="row mx-auto">
 			<div class="col-12 d-flex justify-content-center">
 				<h2 class="display-4">Créer un utilisateur</h2>
 			</div>
 			<div class="col-12 d-flex justify-content-center">	
+				<!-- FORM -->
 				<form action="index.php?controller=admin&task=add" class="bg-white p-4 bg-form" method="POST">
 					<div class="form-group">
 						<label for="username">Pseudo</label>

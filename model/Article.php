@@ -4,6 +4,14 @@ namespace Model;
 
 class Article extends Model
 {
+    /**
+     * Displays an HTML template and insert data
+     * @method insert Insert an article in the Database
+     * @method update Update an article or a draft in the Database
+     * @method getArticleBy Finds an article by its title
+     * @method newChapter Returns the number of the last article published
+     */
+
     protected $table = "oc_projet4_articles";
     
      /**
@@ -20,16 +28,16 @@ class Article extends Model
         parent::__construct();
     }
 
-    public function insert(string $title, string $introduction, string $content, int $draft, int $published, int $chapters) : void
+    public function insert(string $title, string $introduction, string $content, int $draft, int $published, int $chapters, string $img_url) : void
     {
-        $query = $this->pdo->prepare("INSERT INTO oc_projet4_articles SET title = :title, introduction = :introduction, content = :content, draft = :draft, published = :published, chapters = :chapters, created_at = NOW()");
-        $query->execute(compact('title', 'introduction', 'content', 'draft', 'published', 'chapters'));
+        $query = $this->pdo->prepare("INSERT INTO oc_projet4_articles SET title = :title, introduction = :introduction, content = :content, draft = :draft, published = :published, chapters = :chapters, img_url = :img_url, created_at = NOW()");
+        $query->execute(compact('title', 'introduction', 'content', 'draft', 'published', 'chapters', 'img_url'));
     }
 
-    public function update(int $id, string $title, string $introduction, string $content, int $draft, int $published) : void
+    public function update(int $id, string $title, string $introduction, string $content, int $draft, int $published, string $img_url) : void
     {
-        $query = $this->pdo->prepare("UPDATE oc_projet4_articles SET title = :title, introduction = :introduction, content = :content, draft = :draft, published = :published, modified_at = NOW() WHERE id = :id");
-        $query->execute(compact('title', 'introduction', 'content', 'draft', 'published','id'));
+        $query = $this->pdo->prepare("UPDATE oc_projet4_articles SET title = :title, introduction = :introduction, content = :content, draft = :draft, published = :published, img_url = :img_url, modified_at = NOW() WHERE id = :id");
+        $query->execute(compact('title', 'introduction', 'content', 'draft', 'published', 'img_url', 'id'));
     }
 
     public function getArticleBy($title) : array

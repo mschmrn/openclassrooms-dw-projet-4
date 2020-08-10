@@ -4,6 +4,16 @@ namespace Controller;
 
 class Article extends Controller
 {
+    /**
+     * @method home Displays home website
+     * @method index Displays articles index
+     * @method preview Previews an article in a new tab
+     * @method show Display selected article
+     * @method draft Save an article as draft
+     * @method publish Publish an article
+     * @method edit Edit article or draft
+     */
+
     protected $modelName = \Model\Article::class;
     protected $item = 'article';
 
@@ -12,7 +22,6 @@ class Article extends Controller
         parent::__construct();
         $this->adminController = new \Controller\Admin();
         $this->preview = false;
-
     }
 
     public function home()
@@ -23,12 +32,9 @@ class Article extends Controller
 
     public function index()
     {
-        $cardimg = $this->displayPictures('alaska');
-        $articles = $this->model->findAll("chapters DESC");
+        $articles = $this->model->getAll("chapters DESC");
         $pageTitle = "Articles";
-        $id = 0;
-
-        \Renderer::render('frontend','articles/index', compact('pageTitle', 'articles', 'cardimg', 'id'));
+        \Renderer::render('frontend','articles/index', compact('pageTitle', 'articles'));
     }
 
     public function preview()
@@ -94,12 +100,12 @@ class Article extends Controller
         // Possibilité ici d'utiliser la fonction compact en 2eme argument de la fonction render()
     } 
 
-    public function draft($title, $introduction, $content, $chapter)
+    public function draft($title, $introduction, $content, $chapter, $img_url)
     {
         if(empty($_GET['id'])) // Pas d'id dans l'url -> Premier brouillon -> insertion dans la BDD
         {
             // Insertion
-            $this->model->insert($title, $introduction, $content, 1, 0, $chapter); 
+            $this->model->insert($title, $introduction, $content, 1, 0, $chapter, $img_url); 
 
             // Trouver l'article publié par son titre
             $draft = $this->model->getArticleBy($title);
@@ -114,26 +120,27 @@ class Article extends Controller
             $id = $_GET['id'];
 
             // Mise à jour de la BDD
-            $this->model->update($id, $title, $introduction, $content, 1, 0);
+            $this->model->update($id, $title, $introduction, $content, 1, 0, $img_url);
         }
+
         // Redirection pour edition de l'article
-        if($this->preview == false)
+        if($this->preview === false)
         { 
             \Http::redirect("index.php?controller=admin&task=editArticle&id=" . $id);
         }
     }
 
-    public function publish($title, $introduction, $content, $chapter)
+    public function publish($title, $introduction, $content, $chapter, $img_url)
     {
         if(empty($_GET['id'])) // Si pas d'id dans l'url
         {
-            $this->model->insert($title, $introduction, $content, 0, 1, $chapter);
+            $this->model->insert($title, $introduction, $content, 0, 1, $chapter, $img_url);
         }
         else // ID dans l'url -> update
         {
             $id = $_GET['id'];
 
-            $this->model->update($id, $title, $introduction, $content, 0, 1, $chapter);  
+            $this->model->update($id, $title, $introduction, $content, 0, 1, $chapter, $img_url);  
         }  
         // Identification de l'article pour redirection
         $article = $this->model->getArticleBy($title);
@@ -170,34 +177,41 @@ class Article extends Controller
             $content = $_POST['content'];
         }
 
-        // Ensuite le contenu
+        // Ensuite le chapitre
         $chapter = null;
         if (!empty($_POST['chapter'])) 
         {
             $chapter = $_POST['chapter'];
         }
+
+        // Et la photp
+        $img_url = null;
+        if (!empty($_POST['photo'])) 
+        {
+            $img_url = $_POST['photo'];
+        }
     
         //Vérification finale des infos envoyées dans le formulaire (donc dans le POST)
-        if (!$title || !$introduction || !$content) 
+        if (!$title || !$introduction || !$content || !$chapter || !$img_url) 
         {
-          die("Veillez à bien renseigner tous les champs requis.");
+          die("Veillez à bien renseigner tous les champs requis et à sélectionner une image d'illustration.");
         }
 
         switch($_POST['answer']) 
         {
             case 'draft':
-                $this->draft($title, $introduction, $content, $chapter);
+                $this->draft($title, $introduction, $content, $chapter, $img_url);
             break;
 
             case 'publish':
-                $this->publish($title, $introduction, $content, $chapter);
+                $this->publish($title, $introduction, $content, $chapter, $img_url);
             break;
 
             case 'preview':
                 if(empty($_GET['id']))
                 {
                     $this->preview = true;
-                    $this->draft($title, $introduction, $content, $chapter);
+                    $this->draft($title, $introduction, $content, $chapter, $img_url);
                 }
                 $this->preview();
             break;

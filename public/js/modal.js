@@ -1,28 +1,19 @@
 class Modal
 {
     /**
-     * @method eraseSignature Allows user to erase its signature
+     * @method logout Logout window animation
      */
 
      constructor()
      {
         this.logout();
-        this.test();
      }
 
     logout()
     {
-        $('#myModal').on('shown.bs.modal', function () 
+        $('#myModal').on('click', 'shown.bs.modal', function () 
         {
             $('#myInput').trigger('focus');
-        })
-    }
-
-    test()
-    {
-        document.getElementById('test').addEventListener('click', () =>
-        {
-            document.getElementById('chapter').removeAttribute('readonly');
         })
     }
     

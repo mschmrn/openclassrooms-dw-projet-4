@@ -1,40 +1,37 @@
 <section id="chapter-title" class="py-5">
-
-<!-- TITLE -->
+    <!-- TITLE -->
     <div class="container-fluid ">
         <div class="row mx-auto">
             <div class="col-12">
-                <h1 class="text-left text-secondary display-3"><?= $article['title'] ?>.</h1>
+                <h1 class="text-left text-secondary display-3"><?= $article['title'] ?></h1>
             </div>
         </div>
     </div>
-
-<!-- SEPARATOR -->
+    <!-- SEPARATOR -->
     <div class="row mx-auto">
             <div class="col-12">
                 <hr class="bg-secondary">
             </div>
     </div>
-
-<!-- CHAPTER -->
+    <!-- CHAPTER -->
     <div class="row mx-auto">
         <div class="col-8">
             <h3 class="text-uppercase text-primary">Chapitre <?= $article['chapters'] ?></h3>
-        </div>
-
-<!-- DATE -->
+        </div>  
+        <!-- DATE -->
         <div class="col-2">
             <p class="text-muted"><?= \Date::display($article['created_at']); ?></p>
         </div>
-
-<!-- READING TIME -->
+        <!-- READING TIME -->
         <div class="col-2">
             <p class="text-muted">Temps de lecture : <?= \Text::read_time($article['content']) ?> minutes</p>
         </div>
     </div>
-
+    <!-- IMAGE -->
+    <figure id="article-image" class="d-flex flex-row justify-content-center">
+        <img src="<?= $article['img_url'] ?>" />
+    </figure>
 </section>
-
 <!-- CONTENT -->
 <section id="chapter-content">
     <div class="container-fluid">
@@ -45,7 +42,6 @@
         </div>
     </div>
 </section>
-
 <!-- COMMENTS -->
 <section id="chapter-comments" class="py-5">
     <div class="container-fluid">
@@ -59,7 +55,7 @@
 
         <div class="row mx-auto">
             <div class="col-8 offset-2">
-                <?php foreach ($comments as $comment) : ?>
+                <?php foreach ($comments as $comment) : if($comment['pending'] == '0') {  ?>
                     <div class="author">@<?= $comment['author'] ?></div>
                     <small class="text-primary"><?= \Date::display($comment['created_at']); ?></small>
                     <blockquote>
@@ -71,22 +67,20 @@
                         <?php } ?>
                             <a href="index.php?controller=comment&task=report&id=<?= $comment['id'] ?>" onclick="return window.confirm(`Êtes vous sûr de vouloir signaler ce commentaire ?`)">Signaler</a> 
                     </div>
-                </div>
+            </div>
         </div>
         <div class="row mx-auto">
             <div class="col-8 offset-2">
                 <hr class="bg-secondary">
-                <?php endforeach ?> 
+                <?php } endforeach ?> 
             </div>   
         </div>        
     </div>
-    
-<!-- ADD A COMMENT FORM -->
+    <!-- ADD A COMMENT FORM -->
     <div class="container-fluid">
         <div class="row mx-auto">
             <h3 class="text-center text-uppercase text-primary py-3">Vous souhaitez réagir ?</h3>
         </div>
-
         <div class="row mx-auto">
             <div class="col-8 offset-2">
                 <form action="index.php?controller=comment&task=insert" method="POST">

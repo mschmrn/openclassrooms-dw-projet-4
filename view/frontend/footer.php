@@ -1,7 +1,9 @@
+<!-- FOOTER -->
 <footer class="page-footer text-white bg-secondary pt-4 border-top border-white">
   <div class="container-fluid text-center text-md-left">
     <div class="row mx-auto">
       <div class="col-md-3 mt-md-0 mt-3">
+        <!-- PAGES -->
         <h5 class="text-uppercase text-light">Plan du site</h5>
         <ul class="list-unstyled">
           <li>
@@ -15,18 +17,18 @@
           </li>
         </ul>
       </div>
-
+      <!-- SEPARATOR -->
       <hr class="w-100 d-md-none pb-3">
-
+      <!-- TITLE -->
       <div class="col-md-6 mb-md-0 mb-3 text-center">
         <img src="../public/images/logo.svg" alt="">        
         <p class="text-uppercase pt-4">Site officiel de Jean Forteroche</p>
       </div>
-
+      <!-- ADMIN -->
       <div class="col-md-2 offset-1 mb-md-0 mb-3">
         <h5 class="text-uppercase">Espace Administrateur</h5>
         <ul class="list-unstyled">
-          <!-- Alternative header -->
+          <!-- ADMIN OPTIONS -->
           <?php if (isset($_SESSION["username"])) { ?>      
             <li>
               <a href="index.php?controller=admin&task=logout" class="text-white" data-toggle="modal" data-target="#exampleModalCenter">Se déconnecter</a>

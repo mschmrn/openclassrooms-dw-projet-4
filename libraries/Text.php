@@ -2,6 +2,12 @@
 
 class Text
 {
+    /**
+     * Displays an HTML template and insert data
+     * @method truncate Limit the number of words in description
+     * @method read_time Gives an estimated reading time
+     */
+
     static public function truncate($content = false, $limit = false, $stripTags = false, $ellipsis = false) 
     {
         if (strlen($content)>30 && $limit) 

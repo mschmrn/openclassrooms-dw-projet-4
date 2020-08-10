@@ -1,8 +1,8 @@
 
 <?php
 
-/*
-    Use the static method getInstance to get the object.
+/**
+ * Use the static method getInstance to get the object.
 */
 
 class Session
@@ -18,10 +18,10 @@ class Session
    
     private function __construct() {}
     /**
-    *    Returns THE instance of 'Session'.
-    *    The session is automatically initialized if it wasn't.
+    *   Returns THE instance of 'Session'.
+    *   The session is automatically initialized if it wasn't.
     *   
-    *    @return object
+    *   @return object
     **/
    
     public static function getInstance()
@@ -37,9 +37,9 @@ class Session
     }
    
     /**
-    *    (Re)starts the session.
+    *   (Re)starts the session.
     *   
-    *    @return bool TRUE if the session has been initialized, else FALSE.
+    *   @return bool TRUE if the session has been initialized, else FALSE.
     **/
    
     public function startSession()
@@ -66,13 +66,12 @@ class Session
         $_SESSION[$name] = $value;
     }
    
-   
     /**
     *    Gets datas from the session.
     *    Example: echo $instance->foo;
-    *   
-    *    @param    name    Name of the datas to get.
-    *    @return    mixed    Datas stored in session.
+
+    *    @param name Name of the datas to get.
+    *    @return mixed Datas stored in session.
     **/
    
     public function __get( $name )
@@ -95,11 +94,10 @@ class Session
         unset( $_SESSION[$name] );
     }
    
-   
     /**
-    *    Destroys the current session.
-    *   
-    *    @return    bool    TRUE is session has been deleted, else FALSE.
+    *   Destroys the current session.
+
+    *   @return bool TRUE is session has been deleted, else FALSE.
     **/
    
     public function destroy()
