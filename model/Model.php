@@ -97,16 +97,6 @@ abstract class Model
         {
             $results = $this->pdo->query("SELECT * FROM {$this->table} WHERE type = 'admin' ");
         }
-        else if($order == ('chapters DESC' || 'chapters ASC'))
-        {
-            $sql = "SELECT * FROM {$this->table} WHERE published = '1'";
-            $sql .= " ORDER BY " . $order;
-            $results = $this->pdo->query($sql);
-        }
-        else if($order == 'drafts')
-        {
-            $results = $this->pdo->query("SELECT * FROM {$this->table} WHERE (draft = '1' AND trash = '0')");
-        }
         else if($order == 'drafts_trash')
         {
             $results = $this->pdo->query("SELECT * FROM {$this->table} WHERE (trash AND draft) = '1'");
@@ -114,6 +104,16 @@ abstract class Model
         else if($order == 'articles_trash')
         {
             $results = $this->pdo->query("SELECT * FROM {$this->table} WHERE (trash = '1' AND draft = '0')");
+        }
+        else if($order == 'drafts')
+        {
+            $results = $this->pdo->query("SELECT * FROM {$this->table} WHERE (draft = '1' AND trash = '0')");
+        }
+        else if($order == ('chapters DESC' || 'chapters ASC'))
+        {
+            $sql = "SELECT * FROM {$this->table} WHERE published = '1'";
+            $sql .= " ORDER BY " . $order;
+            $results = $this->pdo->query($sql);
         }
         else
         {
@@ -132,7 +132,7 @@ abstract class Model
         }
         if($not_in_trash)
         {
-            $sql .= " AND trash='0' ORDER BY id DESC ";
+            $sql .= " AND trash = '0' ORDER BY id DESC ";
         }
         $results = $this->pdo->query($sql);
         $items = $results->fetchAll();

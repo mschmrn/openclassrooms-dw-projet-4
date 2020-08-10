@@ -260,7 +260,7 @@ class Admin extends Controller
             $drafts = $this->articleModel->getAll("drafts_trash");
 
             $comments = $this->commentModel->getAll();
-            $comments_in_trash = $this->commentModel->get('trash');
+            $comments_in_trash = $this->commentModel->get('trash', false);
 
             \Renderer::render('backend','trash', compact('pageTitle', 'articles','drafts', 'comments', 'param','comments_in_trash'));
         }
