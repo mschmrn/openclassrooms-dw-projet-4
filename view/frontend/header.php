@@ -1,9 +1,9 @@
 <header>
   <!-- ALTERNATIVE HEADER COLOR -->
   <?php if ($path == "/articles/show"){?>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary sticky-top border-bottom border-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-secondary sticky-top border-bottom border-dark">
   <?php } else { ?>
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary sticky-top border-bottom border-dark">
+    <nav class="navbar navbar-expand-md navbar-light bg-primary sticky-top border-bottom border-dark">
   <?php } ?>
     <!-- LOGO -->
     <a class="navbar-brand color-invert ml-4" href="index.php">

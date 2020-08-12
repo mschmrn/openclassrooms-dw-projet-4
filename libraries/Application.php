@@ -12,7 +12,7 @@ class Application
     { 
         $controllerName = "Article";
         $task = "home";
-
+    
         if (!empty($_GET['controller']))
         {
             $controllerName = ucfirst($_GET['controller']);
@@ -22,11 +22,12 @@ class Application
         {
             $task = $_GET['task'];
         }
-
+       
         $controllerName = "\Controller\\" . $controllerName;
-
+        // Blocage d'erreur
         $controller = new $controllerName();
         $controller->$task();
+
     }
 }
 

@@ -17,9 +17,9 @@
                     <!-- DATE -->
                     <div class="d-flex flex-nowrap ">							
                         <?php if(isset($draft['modified_at'])) { ?>
-                            <i class="card-text text-muted">Modifié le <?= \Date::display($draft['modified_at'], true); ?></i>
+                            <i class="card-text text-muted">Modifié le <?= \Text::display_date($draft['modified_at'], true); ?></i>
                         <?php } else { ?>
-                            <p class="card-text text-muted">Créé le <?= \Date::display($draft['created_at']); ?></p>
+                            <p class="card-text text-muted">Créé le <?= \Text::display_date($draft['created_at']); ?></p>
                         <?php } ?>
                     </div>
                     <!-- BUTTONS -->

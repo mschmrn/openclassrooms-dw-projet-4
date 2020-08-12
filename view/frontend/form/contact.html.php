@@ -1,16 +1,12 @@
 <!-- WRITER'S BIO -->
 <section id="author-introduction" class="bg-primary py-5">
     <div class="container-fluid ">
-        <div class="d-flex flex-row-reverse">
-            <div class="p-2"><img src="../public/images/author.jpg"></div>
-        </div>
+        <figure class="d-flex flex-row-reverse mobile-author">
+            <img src="../public/images/author.jpg">
+        </figure>
         <div class="row mx-auto">
-            <div class="col-8">
-                <h1 class="m-0 text-left text-secondary display-3 color-invert">Jean Forteroche</h1>
-            </div>
-            <div class="col-4 align-self-end">
-                <h4 class="text-right text-white text-uppercase color-invert">Écrivain et conteur</h4>
-            </div>
+            <h1 class="col-md-9 col-lg-8 col-xl-6 col-sm-1 m-0 text-left text-secondary display-3 color-invert">Jean Forteroche</h1>
+            <h4 class="col-md-3 col-lg-4 col-xl-6 align-self-end text-right text-white text-uppercase color-invert">Écrivain et conteur</h4>
         </div>
         <div class="row mx-auto">
             <div class="col-12">
@@ -19,9 +15,9 @@
         </div>
     </div>
 <!-- BOOKS PUBLISHED -->
-<div class="container-fluid py-5">
+<div class="container-fluid py-xl-5">
     <div class="row mx-auto">
-        <div class="d-flex flex-column col-3 offset-1">
+        <div class="d-flex flex-column col-sm-12 col-md-4 col-lg-3 col-xl-3 offset-xl-1">
             <div class="p-2">
                 <p class="m-0">Le retour de la nuit.<p>
                 <i>Edition des songes (2001)</i>
@@ -44,7 +40,7 @@
             </div>
         </div>
         <!-- AUTHOR'S PRESENTATION -->
-        <div class="d-flex flex-column col-6 offset-1">
+        <div class="d-flex flex-column col-sm-12 col-md-7 col-lg-8 col-xl-7">
             <div class="p-2">
                 <em>Romancier et acteur, lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit amet,dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit amet, Romancier et acteur, lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit amet,dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit ame.</em>
             </div>
@@ -66,7 +62,7 @@
             </div>
         </div>
         <div class="row mx-auto">
-            <div class="col-6 offset-1 py-4">
+            <div class="col-xl-6 offset-xl-1 py-4">
                 <!-- FORM -->
                 <form action="index.php?controller=contact&task=mail" method="POST">
                     <div class="form-group">
@@ -96,7 +92,7 @@
                     <button type="submit" name="send" class="btn btn-outline-primary">Envoyer</button>
                 </form>
             </div>
-            <div class="col-3 offset-1 align-self-center">
+            <div class="col-xl-3 offset-xl-1 align-self-center">
                 <p>Romancier et acteur, lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit amet,dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit amet, Romancier et acteur, lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
         </div>

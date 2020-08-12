@@ -50,10 +50,10 @@ class Contact extends Controller
 
         // Email info
         $recipient = "ismael.jouhari@gmail.com";
-        $subject = $_POST["topic"];
-        $sender = $_POST["name"];
-        $senderEmail = $_POST["email"];
-        $message = $_POST["content"];
+        $subject = htmlspecialchars($_POST["topic"]);
+        $sender = htmlspecialchars($_POST["name"]);
+        $senderEmail = htmlspecialchars($_POST["email"]);
+        $message = htmlspecialchars($_POST["content"]);
 
         //Validate first
         if(empty($sender) || empty($senderEmail))

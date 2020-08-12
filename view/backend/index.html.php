@@ -34,9 +34,9 @@
 							<div class="d-flex justify-content-between text-muted border-0 bg-white w-100">
 								<div class="d-flex">							
 									<?php if(isset($article['modified_at'])) { ?>
-										<p class="card-text text-muted">Dernière modification le <?= \Date::display($article['modified_at']); ?></p>
+										<p class="card-text text-muted">Dernière modification le <?= \Text::display_date($article['modified_at']); ?></p>
 									<?php } else { ?>
-										<p class="card-text text-muted">Publié le <?= \Date::display($article['created_at']); ?></p>
+										<p class="card-text text-muted">Publié le <?= \Text::display_date($article['created_at']); ?></p>
 									<?php } ?>
 								</div>
 								<!-- ARROW -->
@@ -71,7 +71,7 @@
 						<h2 class="card-title card-username">@<?= $comment['author'] ?></h2>
 						<p class="card-text"><?= \Text::truncate($comment['content'], 20, true, true) ?></p>
 						<div class="d-flex justify-content-between pr-2">									
-							<p class="card-text text-muted"><?= \Date::display($comment['created_at']); ?></p>
+							<p class="card-text text-muted"><?= \Text::display_date($comment['created_at']); ?></p>
 							<a href="index.php?controller=comment&task=preview&id=<?= $comment['id'] ?>"><img src="../public/images/arrow.svg" style="height:10px;" alt=""></a>
 						</div>
 					</div>

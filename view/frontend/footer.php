@@ -2,7 +2,7 @@
 <footer class="page-footer text-white bg-secondary pt-4 border-top border-white">
   <div class="container-fluid text-center text-md-left">
     <div class="row mx-auto">
-      <div class="col-md-3 mt-md-0 mt-3">
+      <div class="col-md-4 mt-md-0 mt-3">
         <!-- PAGES -->
         <h5 class="text-uppercase text-light">Plan du site</h5>
         <ul class="list-unstyled">
@@ -17,15 +17,13 @@
           </li>
         </ul>
       </div>
-      <!-- SEPARATOR -->
-      <hr class="w-100 d-md-none pb-3">
       <!-- TITLE -->
-      <div class="col-md-6 mb-md-0 mb-3 text-center">
+      <div class="col-md-4 mb-md-0 mb-3 text-center icon-footer">
         <img src="../public/images/logo.svg" alt="">        
-        <p class="text-uppercase pt-4">Site officiel de Jean Forteroche</p>
+        <p class="text-uppercase pt-4 ">Site officiel de Jean Forteroche</p>
       </div>
       <!-- ADMIN -->
-      <div class="col-md-2 offset-1 mb-md-0 mb-3">
+      <div class="d-flex flex-column col-md-4 mb-md-0 mb-3 align-items-md-end">
         <h5 class="text-uppercase">Espace Administrateur</h5>
         <ul class="list-unstyled">
           <!-- ADMIN OPTIONS -->

@@ -10,7 +10,7 @@
                 <p class="card-text"><?= \Text::truncate($comment['content'], 80, true, true); ?></p>
                 <div class="d-flex justify-content-between pr-2">
                     <!-- DATE -->								
-                    <p class="card-text text-muted"><?= \Date::display($comment['created_at']); ?></p>
+                    <p class="card-text text-muted"><?= \Text::display_date($comment['created_at']); ?></p>
                     <!-- BUTTONS -->
                     <div class="d-flex flex-nowrap pr-2">
                         <?php if($condition == 'published') { ?>

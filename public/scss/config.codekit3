@@ -36,7 +36,7 @@
 		"oA": 0,
 		"oAP": "\/custom.css",
 		"oF": 0,
-		"oS": 1,
+		"oS": 3,
 		"uL": 1
 		},
 	"\/Users\/ismael-perez\/Documents\/Github\/repo\/openclassrooms-dw-projet-4\/public\/node_modules\/bootstrap\/scss\/_alert.scss": {
@@ -516,6 +516,19 @@
 		"ma": 0,
 		"oA": 1,
 		"oAP": "\/Users\/ismael-perez\/Documents\/Github\/repo\/openclassrooms-dw-projet-4\/public\/node_modules\/bootstrap\/scss\/_variables.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/Users\/ismael-perez\/Documents\/Github\/repo\/openclassrooms-dw-projet-4\/public\/node_modules\/bootstrap\/scss\/bootstrap-reboot.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/Users\/ismael-perez\/Documents\/Github\/repo\/openclassrooms-dw-projet-4\/public\/node_modules\/bootstrap\/scss\/bootstrap-reboot.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1

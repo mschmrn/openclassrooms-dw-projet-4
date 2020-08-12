@@ -1,4 +1,21 @@
 
+/**************************** SASS ****************************/
+
+// Variable overrides
+
+$theme-colors:
+(
+	"primary":#F00000,
+	"secondary":#1C1C1A,
+	"info":#F7F9FB
+);
+
+/**************************** IMPORT ****************************/
+
+// Include all of Bootstrap
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
 /**************************** CSS ****************************/
 
 /*** ALL ELEMENTS ***/
@@ -482,10 +499,6 @@ sup
 	height:auto;
 }
 
-
-
-
-
 /*** TINYMCE ***/ 
 
 .tiny_mce
@@ -607,24 +620,67 @@ sup
 	  opacity: 1;
 	}
   }
-  
-  
-  
-  
 
-/**************************** SASS ****************************/
 
-// Your variable overrides
+/*********************************************************************************************
+**************************************** RESPONSIVE ******************************************
+*********************************************************************************************/
 
-$theme-colors:
-(
-	"primary":#F00000,
-	"secondary":#1C1C1A,
-	"info":#F7F9FB
-);
+/* Large == 4K */
 
-/**************************** IMPORT ****************************/
+@media all and (min-width: 2160px)
+{
+	
+}
 
-// Include all of Bootstrap
+/* Desktop */
 
-@import "../node_modules/bootstrap/scss/bootstrap";
+@media all and (max-width: 1024px)
+{
+	
+}
+
+/* Tablet */
+
+@media all and (max-width: 725px)
+{
+
+}
+
+/* Mobile */
+
+@media screen and (max-width: 425px)
+{
+	.mobile-1
+	{
+		font-size:4rem!important;
+	}
+
+	.mobile-3
+	{
+		font-size:3.5rem;
+	}
+
+	.mobile-4
+	{
+		font-size:2.5rem;
+	}
+
+	h4,em
+	{
+		font-size:1.2rem;
+	}
+
+	.mobile-author
+	{
+		display:flex;
+		flex-direction: row!important;
+		overflow:hidden;
+	}
+
+	.icon-footer
+	{
+		display:none;
+	}
+
+}

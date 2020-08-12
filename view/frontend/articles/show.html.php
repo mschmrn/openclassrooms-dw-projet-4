@@ -20,7 +20,7 @@
         </div>  
         <!-- DATE -->
         <div class="col-2">
-            <p class="text-muted"><?= \Date::display($article['created_at']); ?></p>
+            <p class="text-muted"><?= \Text::display_date($article['created_at']); ?></p>
         </div>
         <!-- READING TIME -->
         <div class="col-2">
@@ -57,7 +57,7 @@
             <div class="col-8 offset-2">
                 <?php foreach ($comments as $comment) : if($comment['pending'] == '0') {  ?>
                     <div class="author">@<?= $comment['author'] ?></div>
-                    <small class="text-primary"><?= \Date::display($comment['created_at']); ?></small>
+                    <small class="text-primary"><?= \Text::display_date($comment['created_at']); ?></small>
                     <blockquote>
                         <p><?= $comment['content'] ?></p>
                     </blockquote>
