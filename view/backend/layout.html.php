@@ -24,21 +24,26 @@
     <div class="container-fluid col-12"> 
         <div class="row">                  
             <?php if(isset($_SESSION["username"])){ ?>
-                <div class="col-2 p-0 bg-secondary">
+                <!-- SIDEBAR -->
+                <div class="col-2 col-sm-2 col-md-1 col-lg-3 col-xl-2 p-0 bg-secondary">
                     <aside id="sidebar" class="col-12 sidebar p-0 vh-100">
                         <?php include_once 'sidebar.php'; ?>
                     </aside>
                 </div>
-                <div class="col-10 bg-info p-0">
+                <!-- MAIN PAGE -->
+                <div class="col-10 col-sm-10 col-md-11 col-lg-9 col-xl-10 bg-info p-0">
+                    <!-- HEADER-->
                     <header class="col-12 header d-flex backend p-0 border-bottom border-grey">
                         <?php include 'header.php'; ?>
                     </header>
+                    <!-- PAGE CONTENT-->
                     <main class="col-12 main ">
                         <?= $pageContent; ?>
                     </main>
                 </div>    
             <?php } else { ?>
-                <div class="col-12 bg-info p-0">
+                <div class="col-12 bg-info p-0"><!-- Login.php -->
+                    <!-- PAGE CONTENT-->
                     <main class="main">
                         <?= $pageContent; ?>
                     </main>
@@ -47,8 +52,9 @@
         </div>
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" 
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
         crossorigin="anonymous">
     </script>
     <script 

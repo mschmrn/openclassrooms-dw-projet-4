@@ -1,4 +1,4 @@
-<section id="adduser" class="bg-info vh-100 col-10">
+<section id="adduser" class="bg-info col-12">
 	<!-- TITLE -->
 	<div class="container-fluid py-5">
 		<div class="row mx-auto">

@@ -1,5 +1,5 @@
 <!-- HOME -->
-<section id="welcome-home mb-0" class="bg-primary">
+<section id="welcome-home mb-0" class="responsive-100 bg-primary py-md-5">
     <div class="container-fluid">
         <div class="row mx-2">
             <div class="col-12 col-sm-4 col-md-7 col-lg-5 col-xl-4 m-0 pt-xl-5">
@@ -9,7 +9,7 @@
                 </div>
                 <!-- INTRODUCTION -->
                 <div class="row mx-auto">
-                    <h4 class="text-left">Passionné de lettres depuis plus de 20 ans, je vous partage ici les chapitres de mon nouveau livre à paraître à la rentrée <i>Un billet pour L'Alaska.</i></h2>
+                    <h4 class="text-left py-md-4 line-height-2">Passionné de lettres depuis plus de 20 ans, je vous partage ici les chapitres de mon nouveau livre à paraître à la rentrée <i>Un billet pour L'Alaska.</i></h2>
                 </div>
                 <!-- BUTTONS -->
                 <div class="d-flex py-4">
@@ -17,7 +17,7 @@
                     <a href="#welcome-book"><button type="button" class="btn btn-outline-secondary">Mon dernier livre</button></a>
                 </div>
                 <!-- SUBTITLE -->
-                <div class="row mx-auto pt-xl-5">
+                <div class="row mx-auto pt-xl-5 py-md-4">
                     <h2 class="text-focus-in display-4 mobile-4 text-left text-white text-uppercase mb-0 color-invert">Écrivain et conteur.</h2>
                 </div>
             </div>

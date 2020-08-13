@@ -20,14 +20,14 @@
                 <form action="index.php?controller=admin&task=viewTrash" method="POST">
                     <div class="card border-0">
                         <div class="card-header px-xl-0 bg-info border-0">
-                            <ul class="nav nav-tabs card-header-tabs">
+                            <ul class="nav nav-tabs card-header-tabs justify-responsive">
                                 <li class="nav-item">
                                     <button class="btn" type="submit" name="trash" value="articles" active>
                                         <h4 class="color-hover<?php if($param == 'articles'){ ?> text-primary selected <?php } ?> ">Articles <sup class="border-bottom-0">(<?= count($articles) ?>)</sup></h4>
                                     </button>
                                 </li>
                                 <li class="nav-item">
-                                    <button class="btn mx-3" type="submit" name="trash" id="drafts" value="drafts">
+                                    <button class="btn" type="submit" name="trash" id="drafts" value="drafts">
                                         <h4 class="color-hover<?php if($param == 'drafts'){ ?> text-primary selected<?php } ?> ">Brouillons <sup class="border-bottom-0">(<?= count($drafts) ?>)</sup></h4>
                                     </button>
                                 </li>

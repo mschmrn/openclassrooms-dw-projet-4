@@ -3,16 +3,15 @@
 		<!-- FORM -->
 		<form action="index.php?controller=article&task=edit&id=<?php if(isset($draft)){ echo $draft['id']; } ?>" method="POST">
 			<div class="row mx-auto">
-				<div class="col-12 d-flex flex-wrap justify-content-between align-items-center">
-					<div class="">
-						<h1 class="text-secondary">
-							<?= $pageTitle ?></h1>
-					</div>
+				<div class="col-12 d-flex flex-wrap justify-responsive align-items-center">
+					<h1 class="text-secondary mobile-center">
+						<?= $pageTitle ?>
+					</h1>
 					<!-- BUTTONS -->
-					<div class="d-flex flex-wrap">
+					<div class="d-flex mobile-column column-height justify-content-around">
 						<button type="submit" name="answer" class="btn btn-outline-primary text-uppercase" value="preview" id="preview">Visualiser</button>
-						<button type="submit" name="answer" class="btn btn-outline-primary text-uppercase ml-4" id="draft" value="draft">Brouillon</button>
-						<button type="submit" name="answer" id="publish" class="btn btn-primary text-uppercase ml-4" value="publish">Publier</button>
+						<button type="submit" name="answer" class="btn btn-outline-primary text-uppercase mx-md-3 mx-lg-1 mx-xl-2" id="draft" value="draft">Brouillon</button>
+						<button type="submit" name="answer" id="publish" class="btn btn-primary text-uppercase" value="publish">Publier</button>
 					</div>
 				</div>
 			</div>
@@ -44,27 +43,29 @@
 					<input type="text" class="form-control bg-form border-0" minlength="1" maxlength="3" name="chapter" id="chapter" placeholder="Entrez le numéro de chapitre" value='<?php if(isset($draft)){ echo $draft['chapters']; } else { echo $new; } ?>' required <?php if(isset($draft)){ ?> readonly <?php } ?>>
 				</div>
 			</div>
-			<!-- TEST -->
+			<!-- IMAGES SELECTION -->
 			<div class="row mx-auto form-group">
 				<div class="col-12">
 					<label for="chapter">
 						<h3 class="m-0">Image de l'article</h3>
 					</label>
+					<!-- IF EDIT -->
 					<?php if(isset($draft)){ ?>
-						<small id="imageHelp" class="form-text text-muted">Image d'illustration pour votre article.</small>
+						<small id="cradimgHelp" class="form-text text-muted">Image d'illustration pour votre article.</small>
 						<figure id='cardimg'>
-							<img class="cardimg" src="<?= $draft['img_url'] ?>"
-						></figure>
+							<img class="cardimg" src="<?= $draft['img_url'] ?>">
+						</figure>
 						<input type="hidden" id="photo" name="photo" value="<?= $draft['img_url'] ?>">
+					<!-- ELSE NEW -->
 					<?php } else { ?>					
-						<small id="imagesHelp" class="form-text text-muted">Veuillez sélectionner une vignette d'illustration pour votre chapitre.</small>
-						<figure id='cardimages' class="d-flex flex-row flex-wrap justify-content-around align-items-center w-75"></figure>
+						<small id="cardimagesHelp" class="form-text text-muted">Veuillez sélectionner une vignette d'illustration pour votre chapitre.</small>
+						<figure id='cardimages' class="d-flex flex-row flex-wrap align-items-center"></figure>
 						<small id="imagesHelp" class="form-text text-muted">Autres mots-clés disponibles :</small>
-						<div class="d-flex">
-							<span class="btn btn-secondary testJS">Dark</span>
-							<span class="btn btn-secondary testJS mx-2">Northern Lights</span>
-							<span class="btn btn-secondary testJS ">Alaska</span>
-							<span class="btn btn-secondary testJS mx-2">Forest</span>
+						<div class="d-flex mobile-column flex-nowrap w-100">
+							<span class="btn btn-secondary textJS">Dark</span>
+							<span class="btn btn-secondary textJS">Northern Lights</span>
+							<span class="btn btn-secondary textJS">Alaska</span>
+							<span class="btn btn-secondary textJS">Forest</span>
 						</div>
 						<input type="hidden" id="photo" name="photo" value="<?php if(isset($draft)){ echo $draft['img_url']; } ?>">
 					<?php } ?>

@@ -1,13 +1,13 @@
-<section id="list-drafts" class="<?php if(isset($drafts)){ ?>vh-100<?php } ?> bg-info">
+<section id="list-drafts" class="<?php if(!isset($drafts)){ ?>vh-100<?php } ?> bg-info">
     <!-- CONTAINER -->
 	<div class="container-fluid py-5">
         <!-- TITLE -->
         <div class="row mx-auto">
-            <div class="col-12 d-inline-flex justify-content-between align-items-center">
-                <div class="">
+            <div class="col-12 d-inline-flex justify-responsive mobile-column mobile-center align-items-center">
+                <div>
                     <h1 class="text-secondary">Tous les brouillons</h1>
                 </div>
-                <div class="">
+                <div>
                     <a href="index.php?controller=admin&task=editArticle"><button name="write-article" class="btn btn-primary text-uppercase" value="write" id="write">Écrire un article</button></a>
                 </div>
             </div>
@@ -21,7 +21,7 @@
         <!-- TITLE -->
         <div class="row mx-auto">
             <div class="col-12">
-                <h4>Listing des brouillons</h4>
+                <h4 class="mobile-center">Listing des brouillons</h4>
             </div>
         </div>
         <!-- DRAFTS LIST -->

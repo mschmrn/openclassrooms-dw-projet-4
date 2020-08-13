@@ -2,7 +2,7 @@
 	<!-- INTRODUCTION -->
 	<div class="container-fluid py-5">
 		<div class="row mx-auto">
-			<div class="col-12">
+			<div class="col-12 mobile-center">
 				<h1 class="text-secondary">Bienvenue <?= $user['name'] ?> !</h1>
 				<!--<p>Vous êtes actuellement connecté comme <i><?php //echo $_SESSION['username']; ?></i> à votre espace administrateur.</p>-->
 				<p>Votre page d’accueil centralise toutes vos publications, les modifications et le développement de votre site.</p>
@@ -17,7 +17,7 @@
 		<!-- FIRST COLUMN -->
 		<div class="row mx-auto mt-2">		
 			<!-- ARTICLES LIST -->
-			<div class="col-8">
+			<div class="col-xl-8 col-lg-7 col-md-7 col-sm-12">
 			<?php foreach ($articles as $article) : ?>	
 				<div class="container p-0 border-bottom border-grey border-top-0 bg-form">
 					<!-- CARD -->
@@ -27,16 +27,16 @@
 							<img src="<?= $article['img_url'] ?>" class="w-100" alt="">
 						</div>
 						<!-- CONTENT -->
-						<div class="card-block col-xl-9 p-2 bg-white">
+						<div class="card-block col-xl-9 p-xl-2 px-lg-4 px-md-4 bg-white">
 							<h2 class="card-title card-chapter text-primary">Chapitre <?= $article['chapters'] ?></h2>
 							<h5 class="card-title"><?= $article['title'] ?></h5>
 							<!-- ARTICLE INFO DATE -->
 							<div class="d-flex justify-content-between text-muted border-0 bg-white w-100">
 								<div class="d-flex">							
 									<?php if(isset($article['modified_at'])) { ?>
-										<p class="card-text text-muted">Dernière modification le <?= \Text::display_date($article['modified_at']); ?></p>
+										<p class="card-text text-muted">Dernière modification <?= \Text::display_date($article['modified_at']); ?></p>
 									<?php } else { ?>
-										<p class="card-text text-muted">Publié le <?= \Text::display_date($article['created_at']); ?></p>
+										<p class="card-text text-muted">Publié <?= \Text::display_date($article['created_at']); ?></p>
 									<?php } ?>
 								</div>
 								<!-- ARROW -->
@@ -56,7 +56,7 @@
 				</div>
 			</div>
 		<!-- SECOND COLUMN -->
-		<div class="col-4">	
+		<div class="col-xl-4 col-lg-5 col-md-5 col-sm-12">	
 			<!-- BUTTON -->
 			<a href="index.php?controller=admin&task=editArticle"><button class="btn btn-primary py-3 col-12 text-uppercase"><img src="../public/images/+.svg" alt=""> Écrire un article</button></a>	
 			<!-- COMMENTS LIST -->

@@ -1,48 +1,17 @@
 class Ajax
 {
     /**
-     * @method 
+     * @method get_images Unsplash API connection to get images
+     * @method images_options API connection auto-refresh based on keyword selection
      */
 
     constructor()
     {      
-        this.get_images();
-        this.images_options();
-
-        //this.fetch();
-        //this.request();
-        //this.htmlProvider();
-        //this.test();
-
-        this.apiKey = 'LWTE7Qs3-PXo38YWLlKnXoypsn6xGLK7Vr2HR93jua0';
-        this.per_page = '4';
-        this.page = Math.floor(Math.random() * 10) ;
+        this.getImages();
+        this.imagesOptions();
     }
 
-    images_options()
-    {
-        $('.testJS').click(function() 
-        {            
-            $('.select-image').remove();
-
-            console.log('ok');
-            let query = $(this).text();
-            let page = Math.floor(Math.random() * 10) ;
-            let dataURL = 'https://api.unsplash.com/search/photos?query='+ query +'&per_page=4&orientation=landscape&page='+ page +'&client_id=LWTE7Qs3-PXo38YWLlKnXoypsn6xGLK7Vr2HR93jua0';
-
-            $.getJSON(dataURL, function(data)
-            {    
-                let item = data.results; 
-                $.each(item, function(i, val) 
-                {
-                    let imageURL = val.urls.regular;
-                    $('#cardimages').append('<img class="select-image" src="'+ imageURL +'">'); 
-                });  
-            });
-        })
-    }
-
-    get_images()
+    getImages()
     {
         let query = "Alaska";
         let apiKey = 'LWTE7Qs3-PXo38YWLlKnXoypsn6xGLK7Vr2HR93jua0';
@@ -63,10 +32,32 @@ class Ajax
 
                 if (imageWidth > imageHeight) 
                 {
-                    $('#cardimages').append('<img class="select-image" src="'+ imageURL +'">');
+                    $('#cardimages').append('<img class="select-image" src="'+ imageURL +'">');            
                 } 
             });  
         });
+    }
+
+    imagesOptions()
+    {
+        $('span.textJS').click(function() 
+        {            
+            $('.select-image').remove();
+
+            let query = $(this).text();
+            let page = Math.floor(Math.random() * 10) ;
+            let dataURL = 'https://api.unsplash.com/search/photos?query='+ query +'&per_page=4&orientation=landscape&page='+ page +'&client_id=LWTE7Qs3-PXo38YWLlKnXoypsn6xGLK7Vr2HR93jua0';
+
+            $.getJSON(dataURL, function(data)
+            {    
+                let item = data.results; 
+                $.each(item, function(i, val) 
+                {
+                    let imageURL = val.urls.regular;
+                    $('#cardimages').append('<img class="select-image" src="'+ imageURL +'">'); 
+                });  
+            });
+        })
     }
 
 }

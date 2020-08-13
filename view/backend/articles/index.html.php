@@ -2,7 +2,7 @@
 	<div class="container-fluid py-5">
         <!-- TITLE -->
         <div class="row mx-auto">
-            <div class="col-12 d-inline-flex justify-content-between align-items-center">
+            <div class="col-12 d-inline-flex justify-responsive mobile-column mobile-center align-items-center">
                 <div class="">
                     <h1 class="text-secondary">Tous les articles publiés</h1>
                 </div>
@@ -20,7 +20,7 @@
         <!-- TITLE -->
         <div class="row mx-auto">
             <div class="col-12">
-                <h4>Listing des articles</h4>
+                <h4 class="mobile-center">Listing des articles</h4>
             </div>
         </div>
         <!-- ARTICLES LIST -->

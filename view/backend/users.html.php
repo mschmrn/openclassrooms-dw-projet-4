@@ -20,14 +20,14 @@
                 <form action="index.php?controller=admin&task=viewUsers" method="POST">
                     <div class="card border-0">
                         <div class="card-header px-xl-0 bg-info border-0">
-                            <ul class="nav nav-tabs card-header-tabs">
+                            <ul class="nav nav-tabs card-header-tabs justify-responsive">
                                 <li class="nav-item">
                                     <button class="btn" type="submit" name="user_type" value="admin" id="admin" active>
                                         <h4 class="color-hover<?php if($type == 'admin'){ $condition = 'admin'; ?> text-primary border border-top-0 border-right-0 border-left-0 border-primary border-bottom <?php } ?> ">Administrateurs <sup>(<?= $count = count($admin) ?>)</sup></h4>
                                     </button>
                                 </li>
                                 <li class="nav-item">
-                                    <button class="btn mx-3" type="submit" name="user_type" id="regular" value="regular">
+                                    <button class="btn" type="submit" name="user_type" id="regular" value="regular">
                                         <h4 class="color-hover<?php if($type == 'regular'){ $condition = 'user'; ?> text-primary border border-top-0 border-right-0 border-left-0 border-primary border-bottom<?php } ?> ">Utilisateurs <sup>(<?= $count = count($users)-count($admin) ?>)</sup></h4>
                                     </button>
                                 </li>

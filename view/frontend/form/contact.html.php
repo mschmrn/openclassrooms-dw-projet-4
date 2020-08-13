@@ -5,8 +5,8 @@
             <img src="../public/images/author.jpg">
         </figure>
         <div class="row mx-auto">
-            <h1 class="col-md-9 col-lg-8 col-xl-6 col-sm-1 m-0 text-left text-secondary display-3 color-invert">Jean Forteroche</h1>
-            <h4 class="col-md-3 col-lg-4 col-xl-6 align-self-end text-right text-white text-uppercase color-invert">Écrivain et conteur</h4>
+            <h1 class="col-md-9 col-lg-8 col-xl-6 col-sm-12 m-0 text-left text-secondary display-3 mobile-3 color-invert">Jean Forteroche</h1>
+            <h4 class="col-md-3 col-lg-4 col-xl-6 col-sm-12 align-self-end text-md-right text-white text-uppercase color-invert">Écrivain et conteur</h4>
         </div>
         <div class="row mx-auto">
             <div class="col-12">

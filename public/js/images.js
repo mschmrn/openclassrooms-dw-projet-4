@@ -1,18 +1,14 @@
 class Images
 {
     /**
-     * @method 
+     * @method selectImage Allow to select cover image for an article
      */
 
     constructor()
     {
         this.selectImage();
-
-        //this.fetch();
-        //this.request();
-        //this.htmlProvider();
-        //this.test();
     }
+
     selectImage()
     {
         $('#cardimages').on('click', '.select-image', function() 

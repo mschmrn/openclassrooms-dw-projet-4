@@ -471,13 +471,6 @@ header em
 	color:#F00000!important;
 }
 
-/*** ADMIN TRASH ***/ 
-
-sup
-{
-	font-size:0.2rem;
-}
-
 /*** ADMIN SELECT PHOTO ***/ 
 
 .img-opacity
@@ -490,6 +483,7 @@ sup
 {
 	width:200px;
 	height:auto;
+	margin-right:10px;
 	cursor:pointer;
 }
 
@@ -626,24 +620,114 @@ sup
 **************************************** RESPONSIVE ******************************************
 *********************************************************************************************/
 
-/* Large == 4K */
+/* > 4K */
 
 @media all and (min-width: 2160px)
 {
 	
 }
 
+
+/* > 4K */
+
+@media all and (max-width: 2160px)
+{
+	#cardimages
+	{
+		height:150px;
+	}
+
+	.justify-responsive
+	{
+		justify-content: space-between;
+	}
+
+
+
+
+}
+
 /* Desktop */
 
 @media all and (max-width: 1024px)
 {
-	
+	.responsive-100
+	{
+		min-height:100vh!important;
+	}
+
+	.line-height-2
+	{
+		line-height:1.5!important; 
+	}
+
+	.mobile-author
+	{
+		display:flex;
+		flex-direction: row reverse!important;
+		overflow:hidden;
+	}
+
+	.menu .item
+	{
+		margin:1.3rem 0;
+	}
+
+	#cardimages
+	{
+		height:320px;
+	}
+
+	sup 
+	{
+		font-size:1.1rem;
+	}
+
 }
 
 /* Tablet */
 
-@media all and (max-width: 725px)
+@media all and (max-width: 768px)
 {
+	.responsive-100
+	{
+		min-height:100vh!important;
+	}
+
+	.hide
+	{
+		display:none!important;
+	}
+
+	.menu .hide
+	{
+		display:none;
+	}
+
+	.nav-link .item 
+	{
+		margin:10% 0;
+	}
+
+	#cardimages
+	{
+		height:300px;
+	}
+
+	.justify-responsive
+	{
+		justify-content: space-between;
+	}
+
+	sup 
+	{
+		font-size:1.2rem;
+	}
+
+	.card-header .img 
+	{
+		padding:5%!important;
+	}
 
 }
 
@@ -663,12 +747,12 @@ sup
 
 	.mobile-4
 	{
-		font-size:2.5rem;
+		font-size:2.5rem!important;
 	}
 
 	h4,em
 	{
-		font-size:1.2rem;
+		font-size:1.2rem!important;
 	}
 
 	.mobile-author
@@ -682,5 +766,41 @@ sup
 	{
 		display:none;
 	}
+
+	.responsive-100
+	{
+		min-height:100vh!important;
+	}
+
+	.mobile-center
+	{
+		text-align: center;
+	}
+
+	.mobile-column
+	{
+		flex-flow:column wrap;
+	}
+
+	.column-height
+	{
+		height:150px;
+	}
+
+	#cardimages
+	{
+		height:600px;
+	}
+
+	.justify-responsive
+	{
+		justify-content: center;
+	}
+
+	sup 
+	{
+		font-size:1rem;
+	}
+
 
 }
