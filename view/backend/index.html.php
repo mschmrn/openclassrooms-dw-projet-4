@@ -7,6 +7,14 @@
 				<!--<p>Vous êtes actuellement connecté comme <i><?php //echo $_SESSION['username']; ?></i> à votre espace administrateur.</p>-->
 				<p>Votre page d’accueil centralise toutes vos publications, les modifications et le développement de votre site.</p>
 			</div>
+		</div>
+		<!-- ONLY MOBILE -->
+		<div id="mobile-content" class="col-12">
+			<a href="index.php?controller=admin&task=editArticle">
+				<button class="btn btn-primary py-3 col-12 text-uppercase">
+					<img src="../public/images/+.svg" alt=""> Écrire un article
+				</button>
+			</a>
 		</div>					
 		<!-- SEPARATOR -->
 		<div class="row mx-auto mt-2">
@@ -49,7 +57,7 @@
 				</div>				
 				<?php endforeach ?>
 				<!-- MANAGE ARTICLES -->
-				<div class="col-12 bg-white">
+				<div class="col-12 bg-white mobile-hide">
 					<div class="row mx-auto w-100 px-2 py-4">
 						<a href="index.php?controller=admin&task=viewArticles"><h4 class="text-primary">Gérer les articles</h4>
 					</div>
@@ -58,7 +66,11 @@
 		<!-- SECOND COLUMN -->
 		<div class="col-xl-4 col-lg-5 col-md-5 col-sm-12">	
 			<!-- BUTTON -->
-			<a href="index.php?controller=admin&task=editArticle"><button class="btn btn-primary py-3 col-12 text-uppercase"><img src="../public/images/+.svg" alt=""> Écrire un article</button></a>	
+			<a href="index.php?controller=admin&task=editArticle" class="mobile-hide">
+				<button class="btn btn-primary py-3 col-12 text-uppercase">
+					<img src="../public/images/+.svg" alt=""> Écrire un article
+				</button>
+			</a>
 			<!-- COMMENTS LIST -->
 			<div class="row mx-auto">
 				<h4 class="mt-3 mb-2">Les derniers commentaires</h4>
@@ -78,7 +90,7 @@
 				</div>
 				<?php endforeach ?>
 				<!-- MANAGE COMMENTS -->
-				<div class="col-12 bg-white">
+				<div class="col-12 bg-white mobile-hide">
 					<div class="row mx-auto w-100 px-2 py-4">
 						<a href="index.php?controller=admin&task=viewComments"><h4 class="text-primary">Gérer les commentaires</h4>
 					</div>

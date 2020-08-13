@@ -37,7 +37,7 @@
                         <?php include 'header.php'; ?>
                     </header>
                     <!-- PAGE CONTENT-->
-                    <main class="col-12 main ">
+                    <main class="col-12 main mobile-tablet">
                         <?= $pageContent; ?>
                     </main>
                 </div>    

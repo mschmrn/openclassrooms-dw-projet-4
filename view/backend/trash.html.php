@@ -20,7 +20,7 @@
                 <form action="index.php?controller=admin&task=viewTrash" method="POST">
                     <div class="card border-0">
                         <div class="card-header px-xl-0 bg-info border-0">
-                            <ul class="nav nav-tabs card-header-tabs justify-responsive">
+                            <ul class="nav nav-tabs card-header-tabs start-between">
                                 <li class="nav-item">
                                     <button class="btn" type="submit" name="trash" value="articles" active>
                                         <h4 class="color-hover<?php if($param == 'articles'){ ?> text-primary selected <?php } ?> ">Articles <sup class="border-bottom-0">(<?= count($articles) ?>)</sup></h4>

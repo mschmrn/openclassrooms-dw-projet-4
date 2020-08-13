@@ -7,6 +7,9 @@ class Modal
      constructor()
      {
         this.logout();
+        this.button();
+
+
      }
 
     logout()
@@ -16,5 +19,6 @@ class Modal
             $('#myInput').trigger('focus');
         })
     }
+
     
 }

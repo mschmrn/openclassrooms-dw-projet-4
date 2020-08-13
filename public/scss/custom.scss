@@ -642,7 +642,10 @@ header em
 		justify-content: space-between;
 	}
 
-
+	#mobile-content
+	{
+		display:none;
+	}
 
 
 }
@@ -729,6 +732,11 @@ header em
 		padding:5%!important;
 	}
 
+	.mobile-tablet
+	{
+		padding:0;
+	}
+
 }
 
 /* Mobile */
@@ -796,11 +804,42 @@ header em
 	{
 		justify-content: center;
 	}
+	
+	.start-between
+	{
+		flex-flow: column nowrap;
+		align-items:center;
+		margin-bottom:5%;
+	}
 
 	sup 
 	{
 		font-size:1rem;
 	}
 
+	.mobile-hide
+	{
+		display:none;
+	}
 
+	#mobile-content
+	{
+		display:block;
+	}
+
+}
+
+.menu img:hover
+{
+	filter: invert(8%) sepia(98%) saturate(7425%) hue-rotate(360deg) brightness(102%) contrast(120%);
+}
+
+.invert-colors
+{
+	filter: invert(100%);
+}
+
+.filter-test
+{
+	filter: invert(8%) sepia(98%) saturate(6700%) hue-rotate(359deg) brightness(103%) contrast(121%);
 }
