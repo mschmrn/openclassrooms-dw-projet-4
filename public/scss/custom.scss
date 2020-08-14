@@ -220,11 +220,6 @@ aside li
 	margin-right: 8%;
 }
 
-.menu img:hover
-{
-	cursor: pointer;
-}
-
 .menu-user:hover
 {
 	color:black!important;
@@ -244,6 +239,23 @@ aside .sidebar-btn
 {
 	color:#F00000!important;
 	transition:.2s ease-in-out; 
+}
+
+.menu .img:hover
+{
+	filter: invert(8%) sepia(98%) saturate(7425%) hue-rotate(360deg) brightness(102%) contrast(120%);
+	cursor:pointer;
+}
+
+.invert-colors 
+{
+	filter: invert(100%);
+	cursor:pointer;
+}
+
+.svg-red
+{
+	filter: invert(8%) sepia(98%) saturate(6700%) hue-rotate(359deg) brightness(103%) contrast(121%);
 }
 
 .selected
@@ -293,10 +305,6 @@ aside .sidebar-btn
 	cursor: pointer;
 }
 
-.background-hover:hover
-{
-	background-color:#F00000!important; 
-}
 
 /*** FOOTER FRONTEND ***/
 
@@ -707,11 +715,6 @@ header em
 		display:none;
 	}
 
-	.nav-link .item 
-	{
-		margin:10% 0;
-	}
-
 	#cardimages
 	{
 		height:300px;
@@ -829,17 +832,3 @@ header em
 
 }
 
-.menu img:hover
-{
-	filter: invert(8%) sepia(98%) saturate(7425%) hue-rotate(360deg) brightness(102%) contrast(120%);
-}
-
-.invert-colors
-{
-	filter: invert(100%);
-}
-
-.filter-test
-{
-	filter: invert(8%) sepia(98%) saturate(6700%) hue-rotate(359deg) brightness(103%) contrast(121%);
-}
