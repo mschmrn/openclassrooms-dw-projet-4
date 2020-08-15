@@ -23,7 +23,7 @@
         <p class="text-uppercase pt-4 ">Site officiel de Jean Forteroche</p>
       </div>
       <!-- ADMIN -->
-      <div class="d-flex flex-column col-md-4 mb-md-0 mb-3 align-items-md-end">
+      <div class="d-flex flex-column col-md-4 mb-md-0 mb-3 align-items-md-end text-md-right text-lg-right text-xl-right text-sm-center">
         <h5 class="text-uppercase">Espace Administrateur</h5>
         <ul class="list-unstyled">
           <!-- ADMIN OPTIONS -->
