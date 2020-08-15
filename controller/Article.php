@@ -48,7 +48,6 @@ class Article extends Controller
             $id = $_SESSION['id'];
             $_SESSION['id'] = null;
         }
-
         $pageTitle = "Aperçu de l'article";
         $article = $this->model->find($id);
 

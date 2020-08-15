@@ -14,13 +14,13 @@
                     <!-- BUTTONS -->
                     <div class="d-flex flex-nowrap pr-2">
                         <?php if($condition == 'published') { ?>
-                            <a href="index.php?controller=comment&task=preview&id=<?= $comment['id'] ?>"><img src="../public/images/view.svg" alt="" class="px-2"></a>
+                            <a href="index.php?controller=comment&task=preview&id=<?= $comment['id'] ?>"><img src="../public/images/view.svg" alt="Prévisualiser le commentaire" class="px-2"></a>
                         <?php } else if ($condition != 'trash') { ?>
-                            <a href="index.php?controller=comment&task=valid&id=<?= $comment['id'] ?>"><img src="../public/images/check.svg" alt="" class="px-2"></a>
+                            <a href="index.php?controller=comment&task=valid&id=<?= $comment['id'] ?>"><img src="../public/images/check.svg" alt="Valider le commentaire" class="px-2"></a>
                         <?php } else { ?>
-                            <a href="index.php?controller=comment&task=restore&id=<?= $comment['id'] ?>"><img src="../public/images/restore.svg" alt="" class="px-2"></a>
+                            <a href="index.php?controller=comment&task=restore&id=<?= $comment['id'] ?>"><img src="../public/images/restore.svg" alt="Restaurer le commentaire" class="px-2"></a>
                         <?php } ?>
-                            <a href="index.php?controller=comment&task=delete&id=<?= $comment['id'] ?>"><img src="../public/images/delete.svg" alt="" onclick="return window.confirm(`Êtes vous sûr de vouloir supprimer ce commentaire ?`)"></a>
+                            <a href="index.php?controller=comment&task=delete&id=<?= $comment['id'] ?>"><img src="../public/images/delete.svg" alt="Supprimer le commentaire" onclick="return window.confirm(`Êtes vous sûr de vouloir supprimer ce commentaire ?`)"></a>
                 
                     </div>
                 </div>

@@ -22,7 +22,7 @@
             </div>
             <!-- BOOK COVER -->
             <div class="col-12 col-sm-6 col-md-12 col-lg-6 col-xl-6">
-                <img src="../public/images/cover-2.png" class="img-fluid" alt="...">
+                <img src="../public/images/cover-2.png" class="img-fluid" alt="Couverture du livre">
             </div>
         </div>
     </div>
@@ -37,11 +37,13 @@
                         <h3 class="text-center text-uppercase text-primary">Chapitre <?= $article['chapters'] ?></h3>
                         <a class="text-decoration-none" href="index.php?controller=article&task=show&id=<?= $article['id'] ?>"><h4 class="card-title card-height text-center text-secondary"><?= $article['title'] ?></h4></a>
                         <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">
-                        <img class="card-img-top preview" src="<?= $article['img_url'] ?>" alt="Vignette d'illustration de l'article" max-height='220px' width='auto'></a>
+                        <figure>
+                            <img class="card-img-top preview" src="<?= $article['img_url'] ?>" alt="Vignette d'illustration de l'article" max-height='220px' width='auto'></a>
+                        </figure>
                         <div class="card-body px-0">
                             <p class="card-text p-0"><?= \Text::truncate($article['introduction'], 30, true, true); ?><p>                                
                             <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">             
-                                <img src="../public/images/arrow.svg" class="slide-right" alt="...">
+                                <img src="../public/images/arrow.svg" class="slide-right" alt="Lire le chapitre">
                             </a>
                             <p class="date card-text text-muted text-height-3"><?= $test = \Text::display_date($article['created_at']); ?></p>
                         </div>

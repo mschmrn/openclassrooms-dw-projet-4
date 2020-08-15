@@ -7,10 +7,10 @@
   <?php } ?>
     <!-- LOGO -->
     <a class="navbar-brand color-invert ml-4" href="index.php">
-      <img src="../public/images/logo.svg" width="30" height="30" alt="">
+      <img src="../public/images/logo.svg" width="30" height="30" alt="Logo Jean Forteroche">
     </a>
     <!-- RESPONSIVE NAVBAR TOGGLE -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler border-0 text-white" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <!-- PAGES LINKS -->

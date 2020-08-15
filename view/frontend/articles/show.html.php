@@ -13,18 +13,20 @@
                 <hr class="bg-secondary">
             </div>
     </div>
-    <!-- CHAPTER -->
-    <div class="row mx-auto">
-        <div class="col-8">
-            <h3 class="text-uppercase text-primary">Chapitre <?= $article['chapters'] ?></h3>
-        </div>  
-        <!-- DATE -->
-        <div class="col-2">
-            <p class="text-muted"><?= \Text::display_date($article['created_at']); ?></p>
-        </div>
-        <!-- READING TIME -->
-        <div class="col-2">
-            <p class="text-muted">Temps de lecture : <?= \Text::read_time($article['content']) ?> minutes</p>
+    <div class="container-fluid ">
+        <div class="row mx-auto">    
+            <!-- CHAPTER -->
+            <div class="col-sm-12 col-md-4 col-lg-6 col-xl-6">
+                <h3 class="text-uppercase text-primary">Chapitre <?= $article['chapters'] ?></h3>
+            </div>  
+            <!-- DATE -->
+            <div class="col-sm-6 col-md-3">
+                <p class="text-muted text-sm-center text-md-right text-lg-right text-xl-right"><?= \Text::display_date($article['created_at']); ?></p>
+            </div>
+            <!-- READING TIME -->
+            <div class="col-sm-6 col-md-3">
+                <p class="text-muted text-sm-center text-md-right text-lg-right text-xl-right">Temps de lecture : <?= \Text::read_time($article['content']) ?> minutes</p>
+            </div>
         </div>
     </div>
     <!-- IMAGE -->
@@ -36,7 +38,7 @@
 <section id="chapter-content">
     <div class="container-fluid">
         <div class="row mx-auto">
-            <div class="col-9 offset-1">
+            <div class="col-sm-12 col-md-12 col-lg-10 offset-lg-1 col-xl-9 offset-xl-1">
                 <?= $article['content'] ?>
             </div>
         </div>
@@ -46,15 +48,16 @@
 <section id="chapter-comments" class="py-5">
     <div class="container-fluid">
         <div class="row mx-auto">
-            <?php if (count($comments) === 0) : ?>
-                <p>Il n'y a pas encore de commentaires pour cet article.</p>
-            <?php else : ?>
-                <h3 class="text-center text-uppercase text-primary"><?= count($comments) ?> commentaires</h3>
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <?php if (count($comments) === 0) : ?>
+                    <p>Il n'y a pas encore de commentaires pour cet article.</p>
+                <?php else : ?>
+                    <h3 class="text-sm-left text-md-left text-uppercase text-primary"><?= count($comments) ?> commentaires</h3>
+            </div>
         </div>
             <?php endif ?>
-
         <div class="row mx-auto">
-            <div class="col-8 offset-2">
+            <div class="col-sm-12 col-md-12 col-lg-9 offset-lg-2 col-xl-9 offset-xl-2">
                 <?php foreach ($comments as $comment) : if($comment['pending'] == '0') {  ?>
                     <div class="author">@<?= $comment['author'] ?></div>
                     <small class="text-primary"><?= \Text::display_date($comment['created_at']); ?></small>
@@ -70,7 +73,7 @@
             </div>
         </div>
         <div class="row mx-auto">
-            <div class="col-8 offset-2">
+            <div class="col-sm-12 col-md-12 col-lg-9 offset-lg-2 col-xl-9 offset-xl-2">
                 <hr class="bg-secondary">
                 <?php } endforeach ?> 
             </div>   
@@ -79,10 +82,12 @@
     <!-- ADD A COMMENT FORM -->
     <div class="container-fluid">
         <div class="row mx-auto">
-            <h3 class="text-center text-uppercase text-primary py-3">Vous souhaitez réagir ?</h3>
+            <div class="col-sm-12">
+                <h3 class="text-sm-left text-md-left text-uppercase text-primary py-3">Vous souhaitez réagir ?</h3>
+            </div>
         </div>
         <div class="row mx-auto">
-            <div class="col-8 offset-2">
+            <div class="col-sm-12 col-md-12 col-lg-9 offset-lg-2">
                 <form action="index.php?controller=comment&task=insert" method="POST">
                     <div class="form-group">
                         <label for="author">Votre pseudo</label>

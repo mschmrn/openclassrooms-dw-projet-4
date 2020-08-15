@@ -6,7 +6,7 @@
         <div class="card flex-row flex-wrap border-top-0 border-left-0 border-right-0 border-bottom border-grey py-2">
             <!-- IMAGE -->
             <div class="card-header col-xl-3 border-0 bg-white">
-                <img src="<?= $article['img_url'] ?>" class="w-100" alt="">
+                <img src="<?= $article['img_url'] ?>" class="w-100" alt="Image d'illustration de l'article">
             </div>
             <!-- CONTENT -->
             <div class="card-block col-xl-9 p-xl-2 p-4 bg-white">
@@ -25,13 +25,13 @@
                     <!-- BUTTONS -->
                     <?php if($article['trash'] == '0'){ ?>
                         <div class="d-flex flex-nowrap pr-2">
-                            <a href="index.php?controller=admin&task=editArticle&id=<?= $article['id'] ?>"><img src="../public/images/edit.svg" alt=""></a>
-                            <a class='px-2' href="index.php?controller=article&task=delete&id=<?= $article['id'] ?>"><img src="../public/images/delete.svg" alt="" onclick="return window.confirm(`Êtes vous sûr de vouloir mettre cet article à la corbeille ?`)"></a>
+                            <a href="index.php?controller=admin&task=editArticle&id=<?= $article['id'] ?>"><img src="../public/images/edit.svg" alt="Editer article"></a>
+                            <a class='px-2' href="index.php?controller=article&task=delete&id=<?= $article['id'] ?>"><img src="../public/images/delete.svg" alt="Mettre l'article à la corbeille" onclick="return window.confirm(`Êtes vous sûr de vouloir mettre cet article à la corbeille ?`)"></a>
                         </div>
                     <?php } else { ?>	
                         <div class="d-flex flex-nowrap pr-2">
-                            <a href="index.php?controller=article&task=restore&id=<?= $article['id'] ?>"><img src="../public/images/restore.svg" alt="" class="px-2"></a>
-                            <a href="index.php?controller=article&task=delete&id=<?= $article['id'] ?>"><img src="../public/images/delete.svg" alt="" onclick="return window.confirm(`Êtes vous sûr de vouloir définitivement supprimer cet article ?`)"></a>
+                            <a href="index.php?controller=article&task=restore&id=<?= $article['id'] ?>"><img src="../public/images/restore.svg" alt="Restaurer article" class="px-2"></a>
+                            <a href="index.php?controller=article&task=delete&id=<?= $article['id'] ?>"><img src="../public/images/delete.svg" alt="Supprimer article" onclick="return window.confirm(`Êtes vous sûr de vouloir définitivement supprimer cet article ?`)"></a>
                         </div> 
                 </div>
                     <?php } ?>

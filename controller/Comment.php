@@ -54,8 +54,12 @@ class Comment extends Controller
             $article_id = $comment['article_id'];
             $article = $this->articleModel->find($article_id);
 
-            \Renderer::render('frontend','preview', compact('pageTitle','article','comment'));
+            \Renderer::render('frontend','preview', compact('pageTitle','comment','article'));
         } 
+        else
+        {
+            die('Aucun commentaire trouvé, veillez à renseigner un id');
+        }
     }
 
     public function insert() // Insert a comment

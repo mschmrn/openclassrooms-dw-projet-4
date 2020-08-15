@@ -6,7 +6,7 @@
       <div class="modal-header border-0">
         <h5 class="modal-title justify-content-center text-secondary" id="exampleModalLongTitle">Souhaitez-vous vous déconnecter ?</h5>
         <button type="button" class="close ml-3 align-self-center" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true"><img src="../public/images/close.svg" alt=""></span>
+          <span aria-hidden="true"><img src="../public/images/close.svg" alt="Fermer la fenêtre"></span>
         </button>
       </div>
       <!-- MODAL BODY -->

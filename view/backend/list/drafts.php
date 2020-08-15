@@ -6,7 +6,7 @@
         <div class="card flex-row flex-wrap border-0 py-2">
             <!-- IMAGE -->
             <div class="card-header col-xl-3 border-0 bg-white">
-                <img src="<?= $draft['img_url'] ?>" class="w-100" alt="">
+                <img src="<?= $draft['img_url'] ?>" class="w-100" alt="Image d'illustration du brouillon">
             </div>
             <!-- CONTENT -->
             <div class="card-block col-xl-9 p-xl-2 p-4 bg-white">
@@ -24,18 +24,16 @@
                     </div>
                     <!-- BUTTONS -->
                     <?php if($draft['trash'] == '0'){ ?>
-                    <div class="d-flex flex-nowrap pr-2">
-                        <a href="index.php?controller=admin&task=editArticle&id=<?= $draft['id'] ?>"><img src="../public/images/edit.svg" alt=""></a>                        
-                        <a href="index.php?controller=article&task=preview&id=<?= $draft['id'] ?>"><img src="../public/images/view.svg" alt="" class="px-2"></a>                    
-
-                        <a href="index.php?controller=article&task=delete&id=<?= $draft['id'] ?>"><img src="../public/images/delete.svg" alt="" onclick="return window.confirm(`Êtes vous sûr de vouloir mettre cet article à la corbeille ?`)"></a>
-                    </div> 
-
+                        <div class="d-flex flex-nowrap pr-2">
+                            <a href="index.php?controller=admin&task=editArticle&id=<?= $draft['id'] ?>"><img src="../public/images/edit.svg" alt="Editer le brouillon"></a>                        
+                            <a href="index.php?controller=article&task=preview&id=<?= $draft['id'] ?>"><img src="../public/images/view.svg" alt="Prévisualiser le brouillon" class="px-2"></a>
+                            <a href="index.php?controller=article&task=delete&id=<?= $draft['id'] ?>"><img src="../public/images/delete.svg" alt="Mettre le brouillon à la corbeille" onclick="return window.confirm(`Êtes vous sûr de vouloir mettre cet article à la corbeille ?`)"></a>
+                        </div> 
                     <?php } else { ?>	
                         <div class="d-flex flex-nowrap pr-2">
-                        <a href="index.php?controller=article&task=restore&id=<?= $draft['id'] ?>"><img src="../public/images/restore.svg" alt="" class="px-2"></a>
-                        <a href="index.php?controller=article&task=delete&id=<?= $draft['id'] ?>"><img src="../public/images/delete.svg" alt="" onclick="return window.confirm(`Êtes vous sûr de vouloir définitivement supprimer cet article ?`)"></a>
-                    </div>
+                            <a href="index.php?controller=article&task=restore&id=<?= $draft['id'] ?>"><img src="../public/images/restore.svg" alt="Restaurer le brouillon" class="px-2"></a>
+                            <a href="index.php?controller=article&task=delete&id=<?= $draft['id'] ?>"><img src="../public/images/delete.svg" alt="Supprimer le brouillon" onclick="return window.confirm(`Êtes vous sûr de vouloir définitivement supprimer cet article ?`)"></a>
+                        </div>
                     <?php } ?>	
                 </div>
             </div>

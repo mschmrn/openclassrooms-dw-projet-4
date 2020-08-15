@@ -12,7 +12,7 @@
 		<div id="mobile-content" class="col-12">
 			<a href="index.php?controller=admin&task=editArticle">
 				<button class="btn btn-primary py-3 col-12 text-uppercase">
-					<img src="../public/images/+.svg" alt=""> Écrire un article
+					<img src="../public/images/+.svg" alt="Écrire un article"> Écrire un article
 				</button>
 			</a>
 		</div>					
@@ -32,7 +32,7 @@
 					<div class="card flex-row flex-wrap border-0 py-2">
 						<!-- IMAGE -->
 						<div class="card-header col-xl-3 border-0 bg-white">
-							<img src="<?= $article['img_url'] ?>" class="w-100" alt="">
+							<img src="<?= $article['img_url'] ?>" class="w-100" alt="Illustration de l'article">
 						</div>
 						<!-- CONTENT -->
 						<div class="card-block col-xl-9 p-xl-2 px-lg-4 px-md-4 bg-white">
@@ -49,7 +49,7 @@
 								</div>
 								<!-- ARROW -->
 								<div class="d-flex pr-2">							
-									<a href="index.php?controller=article&task=preview&id=<?= $article['id'] ?>"><img src="../public/images/arrow.svg" style="height:10px;" alt=""></a>
+									<a href="index.php?controller=article&task=preview&id=<?= $article['id'] ?>"><img src="../public/images/arrow.svg" style="height:10px;" alt="Prévisualiser l'article"></a>
 								</div>
 							</div>
 						</div>
@@ -68,7 +68,7 @@
 			<!-- BUTTON -->
 			<a href="index.php?controller=admin&task=editArticle" class="mobile-hide">
 				<button class="btn btn-primary py-3 col-12 text-uppercase">
-					<img src="../public/images/+.svg" alt=""> Écrire un article
+					<img src="../public/images/+.svg" alt="Nouvel article"> Écrire un article
 				</button>
 			</a>
 			<!-- COMMENTS LIST -->
@@ -84,7 +84,7 @@
 						<p class="card-text"><?= \Text::truncate($comment['content'], 20, true, true) ?></p>
 						<div class="d-flex justify-content-between pr-2">									
 							<p class="card-text text-muted"><?= \Text::display_date($comment['created_at']); ?></p>
-							<a href="index.php?controller=comment&task=preview&id=<?= $comment['id'] ?>"><img src="../public/images/arrow.svg" style="height:10px;" alt=""></a>
+							<a href="index.php?controller=comment&task=preview&id=<?= $comment['id'] ?>"><img src="../public/images/arrow.svg" style="height:10px;" alt="Prévisualiser le commentaire"></a>
 						</div>
 					</div>
 				</div>

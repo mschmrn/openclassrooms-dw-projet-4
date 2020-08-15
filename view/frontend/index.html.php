@@ -23,7 +23,7 @@
             </div>
             <!-- LOGO -->
             <div class="d-flex w-100 col-sm-12 col-lg-7 col-md-5 col-8 justify-content-center align-items-lg-center align-items-md-end">
-                <img src="../public/images/logo.svg" class="align-self-center img-fluid border-0" alt="...">
+                <img src="../public/images/logo.svg" class="align-self-center img-fluid border-0" alt="Logo du site">
             </div>
         </div>
     </div>

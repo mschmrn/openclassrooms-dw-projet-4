@@ -2,7 +2,7 @@
 <section id="author-introduction" class="bg-primary py-5">
     <div class="container-fluid ">
         <figure class="d-flex flex-row-reverse mobile-author">
-            <img src="../public/images/author.jpg">
+            <img src="../public/images/author.jpg" alt="Photo de l'écrivain Jean Forteroche">
         </figure>
         <div class="row mx-auto">
             <h1 class="col-md-9 col-lg-8 col-xl-6 col-sm-12 m-0 text-left text-secondary display-3 mobile-3 color-invert">Jean Forteroche</h1>

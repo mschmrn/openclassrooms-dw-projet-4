@@ -381,6 +381,20 @@ figure#article-image
 	border-radius:0!important;
 }
 
+.card-img-top:hover
+{
+	transform:scale(1.05)!important;
+	filter:saturate(1);
+	transition:all .5s ease-in-out;
+}
+
+.card-img-top:not(:hover)
+{
+	transform:scale(1);
+	transition:all .5s ease-out;
+}
+
+
 /*** EACH ARTICLE ***/
 
 #chapter-content p
@@ -831,4 +845,3 @@ header em
 	}
 
 }
-

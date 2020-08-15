@@ -51,9 +51,9 @@
 					</label>
 					<!-- IF EDIT -->
 					<?php if(isset($draft)){ ?>
-						<small id="cradimgHelp" class="form-text text-muted">Image d'illustration pour votre article.</small>
+						<small id="cardimgHelp" class="form-text text-muted">Image d'illustration pour votre article.</small>
 						<figure id='cardimg'>
-							<img class="cardimg" src="<?= $draft['img_url'] ?>">
+							<img class="cardimg" src="<?= $draft['img_url'] ?>" alt="Image d'illustration de l'article" >
 						</figure>
 						<input type="hidden" id="photo" name="photo" value="<?= $draft['img_url'] ?>">
 					<!-- ELSE NEW -->

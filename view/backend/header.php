@@ -5,7 +5,7 @@
     </em>
     <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <!-- BUTTON -->
-      <img src="../public/images/more.svg" alt="">
+      <img src="../public/images/more.svg" alt="Plus d'options">
     </button>
     <div class="dropdown-menu bg-form border-0" aria-labelledby="dropdownMenu2">
         <!-- FORM OPTIONS -->

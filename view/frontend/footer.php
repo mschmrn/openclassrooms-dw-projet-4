@@ -19,7 +19,7 @@
       </div>
       <!-- TITLE -->
       <div class="col-md-4 mb-md-0 mb-3 text-center icon-footer">
-        <img src="../public/images/logo.svg" alt="">        
+        <img src="../public/images/logo.svg" alt="Logo du site Jean Forteroche">        
         <p class="text-uppercase pt-4 ">Site officiel de Jean Forteroche</p>
       </div>
       <!-- ADMIN -->

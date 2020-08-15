@@ -12,7 +12,7 @@
                     <p class="card-text text-muted"><?= $user['email']; ?></p>
                     <!-- BUTTONS -->
                     <div class="d-flex flex-nowrap pr-2">
-                            <a href="index.php?controller=user&task=delete&id=<?= $user['id'] ?>"><img src="../public/images/delete.svg" alt="" onclick="return window.confirm(`Êtes vous sûr de vouloir supprimer ce commentaire ?`)"></a>
+                            <a href="index.php?controller=user&task=delete&id=<?= $user['id'] ?>"><img src="../public/images/delete.svg" alt="Supprimer l'utilisateur" onclick="return window.confirm(`Êtes vous sûr de vouloir supprimer ce commentaire ?`)"></a>
                     </div>
                 </div>
             </div>
