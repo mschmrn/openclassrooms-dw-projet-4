@@ -108,7 +108,7 @@ class Comment extends Controller
         /**
          * Vérification que l'id de l'article pointe bien vers un article qui existe
          */
-        $article = $this->model->find($article_id);
+        $article = $this->articleModel->find($article_id);
 
         // Si rien n'est revenu, on fait une erreur
         if ($article === false) 

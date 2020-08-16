@@ -1,20 +1,20 @@
 <!-- HOME -->
-<section id="welcome-home mb-0" class="responsive-100 bg-primary py-md-5">
+<section id="welcome-home" class="responsive-100 bg-primary py-md-5">
     <div class="container-fluid">
         <div class="row mx-2">
-            <div class="col-12 col-sm-4 col-md-7 col-lg-5 col-xl-4 m-0 pt-xl-5">
+            <div class="col-12 col-sm-4 col-md-7 col-lg-5 col-xl-4 m-0 pt-xl-5 pt-sm-4">
                 <!-- TITLE -->
                 <div class="row mx-auto">
                     <h1 class="text-focus-in display-1 mobile-1 text-left color-invert">Jean Forteroche</h1>
                 </div>
                 <!-- INTRODUCTION -->
                 <div class="row mx-auto">
-                    <h4 class="text-left py-md-4 line-height-2">Passionné de lettres depuis plus de 20 ans, je vous partage ici les chapitres de mon nouveau livre à paraître à la rentrée <i>Un billet pour L'Alaska.</i></h2>
+                    <h4 class="text-left py-md-4 line-height-2">Passionné de lettres depuis plus de 20 ans, je vous partage ici les chapitres de mon nouveau livre à paraître à la rentrée <i>Un billet pour L'Alaska.</i></h4>
                 </div>
                 <!-- BUTTONS -->
                 <div class="d-flex py-4">
-                    <a href="index.php?controller=article&task=index"><button type="button" class="btn btn-light mr-2">Mon nouveau livre</button></a>
-                    <a href="#welcome-book"><button type="button" class="btn btn-outline-secondary">Mon dernier livre</button></a>
+                    <a href="index.php?controller=article&task=index"><div class="btn btn-light mr-2">Mon nouveau livre</div></a>
+                    <a href="#welcome-book"><div class="btn btn-outline-secondary">Mon dernier livre</div></a>
                 </div>
                 <!-- SUBTITLE -->
                 <div class="row mx-auto pt-xl-5 py-md-4">
@@ -52,7 +52,7 @@
     <div class="container-fluid">
         <div class="row mx-auto">
             <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 offset-xl-1 offset-lg-1 pt-4">
-                <em class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat dictum purus cursus nibh pellentesque quam. Quis nibh faucibus in iaculis. Quis etiam et quis varius volutpat enim. Dolor, non tristique elementum sed dolor, risus, habitasse fermentum nulla. Id dolor suspendisse mauris, tincidunt velit viverra in. Convallis facilisi laoreet sit ut amet.
+                <em class="text-white">D'étranges murmurations annoncent un tableau effrayant : plusieurs corps mutilés sont retrouvés le long des côtes du Finistère. Inscrits sur leurs mains, des symboles étrangement familiers, qui semblent former un message indéchiffrable. Dans le huis clos de l'Île de Sein, la petite nièce de Julia Deniau a disparu, alors que l'on annonce de prochaines migrations. Débute un dangereux jeu de pistes à travers les îles du Finistère.
                 </em>
                 <p class="text-white text-uppercase pt-4"> Acheter sur </p>
                 <div class="d-flex flex-wrap">

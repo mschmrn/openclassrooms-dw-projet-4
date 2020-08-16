@@ -43,11 +43,11 @@ class Text
         setlocale(LC_TIME, "fr_FR");
         if ($details)
         {
-            $timeStamp = strftime('%d %B %G à %H:%M', strtotime($timeStamp));
+            $timeStamp = utf8_encode(strftime('%d %B %G', strtotime($timeStamp))) . " à " . utf8_encode(strftime('%H:%M',strtotime($timeStamp))); // utf8 allows to display special caracters
         }
         else
         {
-            $timeStamp = strftime("%A %d %B %G", strtotime($timeStamp));
+            $timeStamp = utf8_encode(strftime("%A %d %B %G", strtotime($timeStamp)));
         }
         return $timeStamp;
     }

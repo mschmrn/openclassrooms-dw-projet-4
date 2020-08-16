@@ -139,7 +139,7 @@ class Article extends Controller
         {
             $id = $_GET['id'];
 
-            $this->model->update($id, $title, $introduction, $content, 0, 1, $chapter, $img_url);  
+            $this->model->update($id, $title, $introduction, $content, 0, 1, $chapter);  
         }  
         // Identification de l'article pour redirection
         $article = $this->model->getArticleBy($title);

@@ -34,9 +34,9 @@ class Article extends Model
         $query->execute(compact('title', 'introduction', 'content', 'draft', 'published', 'chapters', 'img_url'));
     }
 
-    public function update(int $id, string $title, string $introduction, string $content, int $draft, int $published, string $img_url) : void
+    public function update(int $id, string $title, string $introduction, string $content, int $draft, int $published) : void
     {
-        $query = $this->pdo->prepare("UPDATE oc_projet4_articles SET title = :title, introduction = :introduction, content = :content, draft = :draft, published = :published, img_url = :img_url, modified_at = NOW() WHERE id = :id");
+        $query = $this->pdo->prepare("UPDATE oc_projet4_articles SET title = :title, introduction = :introduction, content = :content, draft = :draft, published = :published, modified_at = NOW() WHERE id = :id");
         $query->execute(compact('title', 'introduction', 'content', 'draft', 'published', 'img_url', 'id'));
     }
 

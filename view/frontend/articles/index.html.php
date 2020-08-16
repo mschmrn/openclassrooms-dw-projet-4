@@ -18,7 +18,7 @@
         <!-- TEXT -->
         <div class="row mx-auto">
             <div class="col-12 col-sm-5 col-md-12 col-lg-5 col-xl-5 offset-sm-0 offset-lg-1 offset-xl-1 pt-4">
-                <em class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat dictum purus cursus nibh pellentesque quam. Quis nibh faucibus in iaculis. Quis etiam et quis varius volutpat enim. Dolor, non tristique elementum sed dolor, risus, habitasse fermentum nulla. Id dolor suspendisse mauris, tincidunt velit viverra in. Convallis facilisi laoreet sit ut amet.</em>
+                <em class="text-white"> Une introspection intime et psychologique dans la mémoire d'un tueur en série. L'histoire vraie de Jacques Fiore, le monstre de Montmartre, qui avoue en 2002 les meurtres de vingt-et-une personnes commis par étranglement. Son histoire, et sa fuite vers l'Alaska en 1994, sont ici racontées au travers de notes personnelles retrouvées plusieurs années plus tard. Jacques Fiore est le double, l'ombre maudite de Jean Forteroche qu'il cherche à exorciser dans ce puzzle troublant.</em>
             </div>
             <!-- BOOK COVER -->
             <div class="col-12 col-sm-6 col-md-12 col-lg-6 col-xl-6">
@@ -36,9 +36,10 @@
                     <div class="card mt-4 border-0">
                         <h3 class="text-center text-uppercase text-primary">Chapitre <?= $article['chapters'] ?></h3>
                         <a class="text-decoration-none" href="index.php?controller=article&task=show&id=<?= $article['id'] ?>"><h4 class="card-title card-height text-center text-secondary"><?= $article['title'] ?></h4></a>
-                        <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">
                         <figure>
-                            <img class="card-img-top preview" src="<?= $article['img_url'] ?>" alt="Vignette d'illustration de l'article" max-height='220px' width='auto'></a>
+                            <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">
+                                <img class="card-img-top preview" src="<?= $article['img_url'] ?>" alt="Vignette d'illustration de l'article">
+                            </a>
                         </figure>
                         <div class="card-body px-0">
                             <p class="card-text p-0"><?= \Text::truncate($article['introduction'], 30, true, true); ?><p>                                

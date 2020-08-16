@@ -23,7 +23,7 @@
           <a class="nav-link" href="index.php?controller=article&task=index">Chapitres</a>
         </li>
          <li class="nav-item <?php if ($path == "form/contact"){?> active <?php } ?>">
-          <a class="nav-link" href="index.php?controller=contact&task=contact">Contact</a>
+          <a class="nav-link" href="index.php?controller=contact&task=contact_author">Contact</a>
         </li>
       </ul>
     </div>

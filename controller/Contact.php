@@ -11,7 +11,7 @@ class Contact extends Controller
 
     protected $modelName = \Model\Contact::class;
 
-    public function contact()
+    public function contact_author()
     {
         $pageTitle = "Contact";
         \Renderer::render('frontend','form/contact', compact('pageTitle'));
@@ -40,45 +40,54 @@ class Contact extends Controller
         }
     }
 
-    public function mail()
+    public function send_mail()
     {
-        if(!isset($_POST['send']))
-        {
-            //This page should not be accessed directly. Need to submit the form.
-            echo "error; you need to submit the form!";
-        }
-
         // Email info
-        $recipient = "ismael.jouhari@gmail.com";
-        $subject = htmlspecialchars($_POST["topic"]);
-        $sender = htmlspecialchars($_POST["name"]);
-        $senderEmail = htmlspecialchars($_POST["email"]);
-        $message = htmlspecialchars($_POST["content"]);
+     
+        $to    = "ismael.jouhari@gmail.com";
+        $from  = "ismael.jouhari@lebensraum.fr";
+  
+        ini_set("SMTP", "smtp.ismaeljouhari.com");   
 
-        //Validate first
-        if(empty($sender) || empty($senderEmail))
+        $JOUR  = date("Y-m-d");
+        $HEURE = date("H:i");
+        $Subject = htmlspecialchars($_POST["topic"]);
+        $Content = htmlspecialchars($_POST["content"]);
+        $Sender = htmlspecialchars($_POST["name"]);
+        $SenderMail = htmlspecialchars($_POST["email"]);
+        $mail_Data = "";
+        $mail_Data .= "<html> \n";
+        $mail_Data .= "<head> \n";
+        $mail_Data .= "<title> Subject </title> \n";
+        $mail_Data .= "</head> \n";
+        $mail_Data .= "<body> \n";
+        $mail_Data .= "À destination de Jean Forteroche : <b> $Content </b> <br> \n";
+        $mail_Data .= "<br> \n";
+        $mail_Data .= "Message envoyé par : $Sender <br> \n";
+        $mail_Data .= "<br> \n";
+        $mail_Data .= "Adresse d'expedition : $SenderMail <br> \n";
+        $mail_Data .= "<br> \n";
+        $mail_Data .= "</body> \n";
+        $mail_Data .= "</HTML> \n";
+        $headers  = "MIME-Version: 1.0 \n";
+        $headers .= "Content-type: text/html; charset=iso-8859-1 \n";
+        $headers .= "From: $from  \n";
+        $headers .= "Disposition-Notification-To: $from  \n";
+
+        // High priority message
+        $headers .= "X-Priority: 1  \n";
+        $headers .= "X-MSMail-Priority: High \n";
+        $CR_Mail = TRUE;
+        $CR_Mail = @mail ($to, $Subject, $mail_Data, $headers);
+
+        if ($CR_Mail === FALSE)
         {
-            echo "Name and email are mandatory!";
-            exit;
+            echo "Erreur durant envoi du mail, veuillez réessayer";
+        }
+        else
+        {
+            echo "Votre mail a bien été envoyé.";
         }
 
-        if($this->IsInjected($senderEmail))
-        {
-            echo "Bad email value!";
-            exit;
-        }
-
-        $mailBody="Name: $sender\nEmail: $senderEmail\n\n$message";
-        
-        // Headers
-        $headers = "From: $recipient \r\n";
-        $headers .= "Reply-To: $senderEmail \r\n";
-
-        //Send the email!
-        //mail($to,$email_subject,$email_body,$headers);
-        mail($recipient, $subject, $mailBody, "From: $sender <$senderEmail>", $headers);
-
-        //Confirmation
-        echo 'message envoyé ';
     }
 }

@@ -32,8 +32,8 @@
 			<div class="row mx-auto form-group">
 				<div class="col-12">
 					<label for="introduction"><h3 class="m-0">Description</h3></label>
-					<input type="text" class="form-control bg-form border-0" minlength="20" maxlength="140" name="introduction" id="introduction" placeholder="Décrivez le chapitre en quelques mots" value='<?php if(isset($draft)){ echo htmlspecialchars($draft['introduction'], ENT_QUOTES);} ?>' required>
-					<small id="descriptionHelp" class="form-text text-muted">Vous êtes limités à 20 mots minimum et 140 mots maximum.</small>
+					<input type="text" class="form-control bg-form border-0" minlength="20" maxlength="240" name="introduction" id="introduction" placeholder="Décrivez le chapitre en quelques mots" value='<?php if(isset($draft)){ echo htmlspecialchars($draft['introduction'], ENT_QUOTES);} ?>' required>
+					<small id="descriptionHelp" class="form-text text-muted">Vous êtes limités à 20 mots minimum et 240 mots maximum.</small>
 				</div>
 			</div>
 			<!-- CHAPTER -->

@@ -13,7 +13,7 @@
     <div class="container-fluid">
         <div class="row mx-auto">
             <div class="col-12">
-                <h1 class="text-left text-secondary display-3"><?= $article['title'] ?>.</h1>
+                <h1 class="text-left text-secondary display-3"><?= $article['title'] ?></h1>
             </div>
         </div>
     </div>
@@ -45,6 +45,7 @@
     <div class="container-fluid py-2">
         <div class="row mx-auto">
             <div class="col-sm-12 col-md-12 col-lg-10 offset-lg-1 col-xl-9 offset-xl-1">
+                <b><p><?= $article['introduction'] ?><p></b>
                 <?= $article['content'] ?>
             </div>
         </div>

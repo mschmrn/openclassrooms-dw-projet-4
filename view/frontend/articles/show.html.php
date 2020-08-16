@@ -31,12 +31,17 @@
     </div>
     <!-- IMAGE -->
     <figure id="article-image" class="d-flex flex-row justify-content-center">
-        <img src="<?= $article['img_url'] ?>" />
+        <img src="<?= $article['img_url'] ?>" alt="Image d'illustration de l'article" />
     </figure>
 </section>
 <!-- CONTENT -->
 <section id="chapter-content">
     <div class="container-fluid">
+        <div class="row mx-auto mb-3">
+            <div class="col-sm-12 col-md-12 col-lg-10 offset-lg-1 col-xl-9 offset-xl-1">
+                <p><b><?= $article['introduction'] ?></b></p>
+            </div>
+        </div>
         <div class="row mx-auto">
             <div class="col-sm-12 col-md-12 col-lg-10 offset-lg-1 col-xl-9 offset-xl-1">
                 <?= $article['content'] ?>

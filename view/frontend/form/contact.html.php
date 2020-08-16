@@ -42,7 +42,11 @@
         <!-- AUTHOR'S PRESENTATION -->
         <div class="d-flex flex-column col-sm-12 col-md-7 col-lg-8 col-xl-7">
             <div class="p-2">
-                <em>Romancier et acteur, lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit amet,dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit amet, Romancier et acteur, lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit amet,dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit ame.</em>
+                <em>
+                Jean Forteroche, né le 14 mars 1962 à Paris, est un écrivain, archéozoologue et romancier français.              L'auteur part en 1982 aux États-Unis, où il écrit ses premiers articles sous le pseudonyme de Shatan Bogat et se passionne pour le profilage. 
+                À partir de 2003, il réalise des documents audiovisuels et donne des conférences autour des tueurs en série et du profilage criminel.
+                Grand passionné de thrillers, on retrouve dans ses romans quelques clins d'œil à d'autres auteurs, comme Stephen King ou encore James Ellroy.
+                </em>
             </div>
         </div>
     </div>
@@ -64,10 +68,10 @@
         <div class="row mx-auto">
             <div class="col-xl-6 offset-xl-1 py-4">
                 <!-- FORM -->
-                <form action="index.php?controller=contact&task=mail" method="POST">
+                <form action="index.php?controller=contact&task=send_mail" method="POST">
                     <div class="form-group">
                         <label for="content">Nom</label>
-                        <input type="name" class="form-control" name="name" id="name" placeholder="Jean Dumont">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Jean Dumont">
                     </div>
                     <div class="form-group">
                         <label for="email">Mail</label>
@@ -93,7 +97,8 @@
                 </form>
             </div>
             <div class="col-xl-3 offset-xl-1 align-self-center">
-                <p>Romancier et acteur, lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit amet,dolor sit amet, consectetur adipiscing elit. Purus libero, eu sagittis tellus augue luctus lorem ipsum dolor sit amet, Romancier et acteur, lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Si certains faits relatés sont fictifs, vous pouvez toutefois me contacter pour, par exemple, apporter un témoignage supplémentaire ou un éclairage sur certains points du texte.</p><p>Pour toute question relative aux droits d'auteur, veuillez directement contacter la maison d'édition <i>Lointaines Écritures</i>, à l'adresse suivante : 87, quai Panhard-et-Levassor, 75647 Paris Cedex 13.</p>
             </div>
         </div>
+    </div>
 </section>

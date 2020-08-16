@@ -340,13 +340,13 @@ footer h5
 
 figure#article-image
 {
-	width:100vw;
+	width:100%;
 	height:auto;
 }
 
 #article-image img
 {
-	width:100%;
+	max-width:100%;
 	height:auto;
 }
 
@@ -379,6 +379,12 @@ figure#article-image
 .card-img, .card-img-top
 {
 	border-radius:0!important;
+}
+
+.card-img-top
+{
+	max-height :220px;
+ 	width : auto;
 }
 
 .card-img-top:hover
@@ -842,6 +848,18 @@ header em
 	#mobile-content
 	{
 		display:block;
+	}
+
+	figure#article-image img
+	{
+		object-fit: contain;
+		width:100%;
+		height:auto;
+	}
+
+	figure#article-image
+	{
+		max-height:300px;
 	}
 
 }

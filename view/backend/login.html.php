@@ -13,7 +13,7 @@
 						<input type="text" class="form-control" name="username" id="username" placeholder="Nom d'utilisateur" required>
 					</div>
 					<div class="form-group">
-						<label for="inputPassword6">Mot de passe</label>
+						<label for="password">Mot de passe</label>
 						<input type="password" id="password" name="password" class="form-control" aria-describedby="passwordHelpInline" placeholder="Mot de passe" required>
 						<small id="passwordHelpInline" class="text-muted">
 						Veuillez entrer un mot de passe composé de 8 à 20 caractères.
