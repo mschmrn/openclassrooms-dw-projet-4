@@ -13,7 +13,7 @@
             <a href="index.php?controller=article&task=index" class="text-white">Chapitres</a>
           </li>
           <li>
-            <a href="index.php?controller=contact&task=contact" class="text-white">Contact</a>
+            <a href="index.php?controller=contact&task=contact_author" class="text-white">Contact</a>
           </li>
         </ul>
       </div>
