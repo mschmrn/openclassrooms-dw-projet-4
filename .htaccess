@@ -1,3 +1,27 @@
 Options -Indexes
 
 # if someone tries to browse the contents of the app folder they'll get a 403 (Forbidden) error.
+
+
+# ----------------------------------------------------------------------
+# | Redirect to HTTPS & remove www                                     |
+# ----------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{https} off
+RewriteRule ^(.*)$ https://projet-4-oc.ismaeljouhari.com/$1 [R=301,L]
+
+# ----------------------------------------------------------------------
+# | Remove .php extension                                              |
+# ----------------------------------------------------------------------
+
+# Unless directory, remove trailing slash
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^([^/]+)/$ http://projet-4-oc.ismaeljouhari.com/$1 [R=301,L]
+
+# Redirect external .php requests to extensionless URL
+# RewriteCond %{THE_REQUEST} ^(.+)\.php([#?][^\ ]*)?\ HTTP/
+# RewriteRule ^(.+)\.php$ http://projet-4-oc.ismaeljouhari.com/$1 [R=301,L]
+
+# Resolve .php file for extensionless PHP URLs
+# RewriteRule ^([^/.]+)$ $1.php [L]
