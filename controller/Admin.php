@@ -50,9 +50,13 @@ class Admin extends Controller
             // Vérifier le username entré
             $username = htmlspecialchars($_POST['username']);
             // Chercher l'utilisateur dans la BDD
+            $user = null;
             $user = $this->model->find_user($username);
-
-            if ($user)
+            if ($user === null)
+            {
+                die('Le nom d\'utilisateur que vous avez saisi n\'existe pas');
+            }
+            else if ($user)
             {
                 if (password_verify($_POST['password'], $user['password']))
                 {

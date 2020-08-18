@@ -17,12 +17,15 @@ class Admin extends Model
         $query->execute(compact('username', 'email', 'type', 'password'));
     }
 
-    public function find_user(string $username) : array
+    public function find_user(string $username)
     {
         $query = $this->pdo->prepare("SELECT * FROM `oc_projet4_users` WHERE username='$username'");
         $query->execute(['username' => $username]);
         $user = $query->fetch();
-        return $user;
+        if($user)
+        {
+            return $user;
+        }
     }
 }
 
