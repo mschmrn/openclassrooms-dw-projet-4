@@ -1,4 +1,4 @@
-# [En cours] Projet 4 OpenClassrooms : Concevez une carte interactive de location de vélos
+# [Terminé] Projet 4 OpenClassrooms : Créez un blog d'écrivain
 
 [![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](http://forthebadge.com)  [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](http://forthebadge.com)  [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](http://forthebadge.com)
 
